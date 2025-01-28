@@ -2,7 +2,7 @@
 
 {
   imports = [
-
+    ./terminal/atuin.nix
   ];
 
   environment.systemPackages = with pkgs; [

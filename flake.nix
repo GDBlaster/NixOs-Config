@@ -6,10 +6,10 @@
   };
 
   outputs = { nixpkgs, ... }@inputs: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSyste{
+    nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem{
       specialArgs = { inherit inputs; };
       modules = [
-        ./hosts/Nixos-VM/configuration.nix
+        ./hosts/nixos-vm/configuration.nix
       ];
     };
   };

@@ -11,6 +11,8 @@
     ./../../modules/default.nix
   ];
 
+  networking.hostName = "nixos-vm"; # Define your hostname.
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.paul = {
     isNormalUser = true;
@@ -23,11 +25,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    blesh
-    atuin
     sl
   ];
 

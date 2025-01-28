@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.11";
   };
 
-  outputs = { nixpkgs }@inputs: {
+  outputs = { nixpkgs, ... }@inputs: {
     nixosConfigurations.default = nixpkgs.lib.nixosSyste{
       specialArgs = { inherit inputs; };
       modules = [

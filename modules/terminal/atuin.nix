@@ -1,7 +1,7 @@
-{config, nixpkgs , ... }:
+{config, pkgs , ... }:
 
 {
-  environment.systemPackages = with nixpkgs; [
+  environment.systemPackages = with pkgs; [
     atuin
   ];
   services.atuin.enable = true;

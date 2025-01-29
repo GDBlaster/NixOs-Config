@@ -38,7 +38,7 @@
 
   programs.atuin = {
     enable = true;
-    sync_enabled = false;
+    auto_sync = false;
     theme = "dark";
   };
 

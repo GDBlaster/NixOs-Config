@@ -10,8 +10,9 @@
     };
   };
 
-  outputs = { nixpkgs, ... }@inputs: { 
+  outputs = { nixpkgs, home-manager,... }@inputs: { 
     nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem{
+      system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/nixos-vm/configuration.nix

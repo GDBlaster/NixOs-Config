@@ -5,7 +5,7 @@
   home.homeDirectory = "/home/paul";
 
   home.packages = with pkgs; [
-
+    sl
   ];
 
   home.sessionVariables = {

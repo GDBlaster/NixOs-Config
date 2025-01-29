@@ -27,10 +27,6 @@
       };
     };
     initExtra = ''
-
-      # loads atuin
-      eval "$(${pkgs.atuin}/bin/atuin init bash)"
-
       clear
       neofetch
     '';
@@ -38,8 +34,10 @@
 
   programs.atuin = {
     enable = true;
-    auto_sync = false;
-    theme = "dark";
+    settings = {
+      auto_sync = false;
+      theme = "dark";
+    };
   };
 
   home.stateVersion = "24.05";

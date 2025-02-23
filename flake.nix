@@ -10,14 +10,24 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager,... }@inputs: { 
-    nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem{
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./modules/generate-hardware-config.nix
-        ./hosts/nixos-vm/configuration.nix
-      ];
+  outputs =
+    { nixpkgs, home-manager, ... }@inputs:
+    {
+      nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./modules/generate-hardware-config.nix
+          # Use the generated hardware-configuration.nix file
+          (
+            { config, ... }:
+            {
+              imports = [ config.system.build.hardware-configuration ];
+            }
+          )
+
+          ./hosts/nixos-vm/configuration.nix
+        ];
+      };
     };
-  };
 }

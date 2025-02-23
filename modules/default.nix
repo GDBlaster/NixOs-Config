@@ -6,9 +6,9 @@
 
   # clone config in /etc/nixos
 
-  environment.etc."nixos".source = pkgs.fetchgit {
-    url = "git@github.com:GDBlaster/NixOs-Config";
-  };
+  #environment.etc."nixos".source = pkgs.fetchgit {
+  #  url = "git@github.com:GDBlaster/NixOs-Config";
+  #};
 
 
   environment.systemPackages = with pkgs; [

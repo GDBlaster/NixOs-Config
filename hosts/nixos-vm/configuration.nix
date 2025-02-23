@@ -11,8 +11,6 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
-    config.system.build.hardware-configuration
     ./../../modules/default.nix
     #./../../modules/home-manager/home-manager.nix
     ./../../modules/nh/nh.nix

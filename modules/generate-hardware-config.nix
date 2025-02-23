@@ -13,5 +13,5 @@
       '';
 
   # Import the generated hardware-configuration.nix file
-  config.imports = [ config.system.build.hardware-configuration ];
+  imports = [ config.system.build.hardware-configuration ];
 }

@@ -12,7 +12,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    #./hardware-configuration.nix
     ./../../modules/default.nix
     #./../../modules/home-manager/home-manager.nix
     ./../../modules/nh/nh.nix

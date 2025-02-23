@@ -15,6 +15,7 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
+        ./modules/generate-hardware-config.nix
         ./hosts/nixos-vm/configuration.nix
       ];
     };

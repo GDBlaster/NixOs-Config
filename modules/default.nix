@@ -8,7 +8,6 @@
 
   environment.etc."nixos".source = pkgs.fetchgit {
     url = "git@github.com:GDBlaster/NixOs-Config";
-    sha256 = "sha256-hash-of-the-repo";
   };
 
 

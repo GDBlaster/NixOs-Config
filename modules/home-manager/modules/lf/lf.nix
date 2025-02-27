@@ -12,6 +12,7 @@
       drawbox = true;
       icons = true;
       ignorecase = true;
+      mouse = true;
     };
 
     commands = {
@@ -26,6 +27,9 @@
       '';
     };
 
-    previewer.source = pkgs.pistol;
+    previewer.source = pkgs.writeShellScript "pv.sh" ''
+      #!/bin/sh
+      ${pkgs.pistol}/bin/pistol "$@"
+    '';
   };
 }

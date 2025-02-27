@@ -6,6 +6,9 @@
 
   # clone config in /etc/nixos
   system.activationScripts.setGitRemote = ''
+    export PATH="${pkgs.git}/bin:$PATH"
+
+
     REPO_PATH="/etc/nixos"
     REMOTE_URL="git@github.com:GDBlaster/NixOs-Config.git"
 
@@ -18,8 +21,6 @@
       git -C "$REPO_PATH" remote add origin "$REMOTE_URL"
     fi
   '';
-
-
 
   environment.systemPackages = with pkgs; [
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.

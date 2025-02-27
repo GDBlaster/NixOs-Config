@@ -9,9 +9,9 @@
     export PATH="${pkgs.git}/bin:$PATH"
 
 
-    REPO_PATH="/path/to/your/repo"
-    HTTPS_URL="https://github.com/username/repository.git"
-    SSH_URL="git@github.com:username/repository.git"
+    REPO_PATH="/etc/nixos"
+    HTTPS_URL="https://github.com/GDBlaster/NixOs-Config.git"
+    SSH_URL="git@github.com:GDBlaster/NixOs-Config.git"
 
     if [ -d "$REPO_PATH/.git" ]; then
       echo "Configuring Git remotes for repository at $REPO_PATH."

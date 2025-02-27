@@ -33,6 +33,9 @@
         auto_sync = false;
         theme = "dark";
       };
+      flags = [
+        "--disable-up-arrow"
+      ];
     };
 
     git = {

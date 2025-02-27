@@ -31,8 +31,12 @@
   };
 
   environment.systemPackages = with pkgs; [
-    sl
+    docker
   ];
+
+  # GUI
+  programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.package."${pkgs.system}".hyprland;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

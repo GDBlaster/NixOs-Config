@@ -26,6 +26,7 @@
 
   imports = [
     ./../modules/lf/lf.nix
+    ./../modules/hyprland/hyprland.nix
   ];
 
   programs = {

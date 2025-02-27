@@ -11,6 +11,7 @@
 
 {
   imports = [
+    ./hardware-configuration.nix
     ./../../modules/default.nix
     #./../../modules/home-manager/home-manager.nix
     ./../../modules/nh/nh.nix

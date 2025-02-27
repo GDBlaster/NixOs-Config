@@ -24,6 +24,10 @@
 
   };
 
+  imports = [
+    ./../modules/lf/lf.nix
+  ];
+
   programs = {
     bash = {
       enable = true;

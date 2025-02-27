@@ -30,8 +30,6 @@
     wget
     curl
     git
-    # blesh
-    # atuin
   ];
 
   # Enable Flakes

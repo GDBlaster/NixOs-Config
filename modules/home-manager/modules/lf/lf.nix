@@ -1,4 +1,4 @@
-{pkgs, config, ...}:
+{ pkgs, config, ... }:
 {
 
   xdg.configFile."lf/icons".source = ./icons;
@@ -18,16 +18,17 @@
       dragon-out = ''%${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';
       editor-open = ''$$EDITOR $f'';
       mkdir = ''
-      ''${{
-      printf "Directory Name:"
-      read DIR
-      mkdir $DIR
-      }}
+        ''${{
+        printf "Directory Name:"
+        read DIR
+        mkdir $DIR
+        }}
       '';
     };
 
-    previewer.source = ''
-    %${pkgs.pistol}/bin/pistol
-    '';
+    previewer.source = pkgs.writeShellScript "previewer.sh" ''
+      #!/bin/sh
+      %${pkgs.pistol}/bin/pistol "$1"
+    	'';
   };
 }

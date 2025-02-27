@@ -5,8 +5,10 @@
   home.homeDirectory = "/home/paul";
 
   home.packages = with pkgs; [
+    neofetch
     atuin
     bash
+    git
   ];
 
   home.sessionVariables = {
@@ -17,26 +19,26 @@
 
   };
 
-  programs.bash = {
-    enable = true;
-    blesh = {
+  programs = {
+    bash = {
+      enable = true;
+      initExtra = ''
+        neofetch
+      '';
+    };
+
+    atuin = {
       enable = true;
       settings = {
-        prompt_eol_mark = "⏎";
-        prompt_ps1_transient = true;
+        auto_sync = false;
+        theme = "dark";
       };
     };
-    initExtra = ''
-      clear
-      neofetch
-    '';
-  };
 
-  programs.atuin = {
-    enable = true;
-    settings = {
-      auto_sync = false;
-      theme = "dark";
+    git = {
+      enable = true;
+      userName = "GDBlaster";
+      userEmail = "65135527+GDBlaster@users.noreply.github.com";
     };
   };
 

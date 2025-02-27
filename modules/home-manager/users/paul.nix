@@ -9,6 +9,7 @@
     atuin
     bash
     git
+    neovim
   ];
 
   home.sessionVariables = {
@@ -44,5 +45,4 @@
 
   home.stateVersion = "24.05";
 
-  programs.home-manager.enable = true;
 }

@@ -5,10 +5,20 @@
   ];
 
   # clone config in /etc/nixos
+  system.activationScripts.setGitRemote = ''
+    REPO_PATH="/etc/nixos"
+    REMOTE_URL="git@github.com:GDBlaster/NixOs-Config.git"
 
-  #environment.etc."nixos".source = pkgs.fetchgit {
-  #  url = "git@github.com:GDBlaster/NixOs-Config";
-  #};
+    if [ -d "$REPO_PATH/.git" ]; then
+      echo "Repository already exists at $REPO_PATH. Setting remote 'origin' to '$REMOTE_URL'."
+      git -C "$REPO_PATH" remote set-url origin "$REMOTE_URL"
+    else
+      echo "No repository found at $REPO_PATH. Initializing a new Git repository and setting remote."
+      git -C "$REPO_PATH" init
+      git -C "$REPO_PATH" remote add origin "$REMOTE_URL"
+    fi
+  '';
+
 
 
   environment.systemPackages = with pkgs; [

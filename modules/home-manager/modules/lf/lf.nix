@@ -26,6 +26,6 @@
       '';
     };
 
-    previewer.source = pkgs.pistol
+    previewer.source = pkgs.pistol;
   };
 }

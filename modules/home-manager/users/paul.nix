@@ -15,6 +15,11 @@
     EDITOR = "nvim";
   };
 
+  home.shellAliases = {
+    nr = "git -C /etc/nixos pull ; nh os switch";
+    nu = "git -C /etc/nixos pull ; nh os switch -u";
+  };
+
   home.file = {
 
   };

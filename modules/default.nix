@@ -9,16 +9,19 @@
     export PATH="${pkgs.git}/bin:$PATH"
 
 
-    REPO_PATH="/etc/nixos"
-    REMOTE_URL="git@github.com:GDBlaster/NixOs-Config.git"
+    REPO_PATH="/path/to/your/repo"
+    HTTPS_URL="https://github.com/username/repository.git"
+    SSH_URL="git@github.com:username/repository.git"
 
     if [ -d "$REPO_PATH/.git" ]; then
-      echo "Repository already exists at $REPO_PATH. Setting remote 'origin' to '$REMOTE_URL'."
-      git -C "$REPO_PATH" remote set-url origin "$REMOTE_URL"
+      echo "Configuring Git remotes for repository at $REPO_PATH."
+      git -C "$REPO_PATH" remote set-url origin "$HTTPS_URL"
+      git -C "$REPO_PATH" remote set-url --push origin "$SSH_URL"
     else
-      echo "No repository found at $REPO_PATH. Initializing a new Git repository and setting remote."
+      echo "No repository found at $REPO_PATH. Initializing a new Git repository and configuring remotes."
       git -C "$REPO_PATH" init
-      git -C "$REPO_PATH" remote add origin "$REMOTE_URL"
+      git -C "$REPO_PATH" remote add origin "$HTTPS_URL"
+      git -C "$REPO_PATH" remote set-url --push origin "$SSH_URL"
     fi
   '';
 

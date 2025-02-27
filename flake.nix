@@ -8,24 +8,25 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    git-repo-manager = {
+      url = "github:hakoerber/git-repo-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
   outputs =
     { nixpkgs, home-manager, ... }@inputs:
     {
+      pkgs = import inputs.nixpkgs {
+        overlays = [ inputs.git-repo-manager.overlays.git-repo-manager ];
+      };
+
       nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./modules/generate-hardware-config.nix
-          # Use the generated hardware-configuration.nix file
-          (
-            { config, ... }:
-            {
-              imports = [ config.system.build.hardware-configuration ];
-            }
-          )
-
           ./hosts/nixos-vm/configuration.nix
         ];
       };

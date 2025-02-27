@@ -12,7 +12,6 @@
     git-repo-manager = {
       url = "github:hakoerber/git-repo-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
   };
 

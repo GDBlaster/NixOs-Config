@@ -33,6 +33,11 @@
   environment.systemPackages = with pkgs; [
     docker
     kitty
+    waybar
+    dunst
+    libnotify
+    swww
+    rofi-wayland
   ];
 
   # GUI

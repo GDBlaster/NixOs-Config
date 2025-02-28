@@ -36,7 +36,7 @@
 
   # GUI
   programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

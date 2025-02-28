@@ -4,7 +4,7 @@
     enable = true;
     
     settings = {
-      "$mod" = "SUPER";
+      "$mod" = "/";
 
       # Keybindings
       binds = [

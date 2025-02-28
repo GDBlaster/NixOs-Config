@@ -1,6 +1,12 @@
 {...}:
 {
   wayland.windowManager.hyprland = {
-    #enable = true;
+    enable = true;
+
+    # use packages from nixpkgs
+    package = null;
+    portalPackage = null;
   };
+  programs.kitty.enable = true;
+
 }

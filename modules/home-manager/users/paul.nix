@@ -18,6 +18,7 @@
   home.shellAliases = {
     nr = "git -C /etc/nixos pull ; nh os switch";
     nu = "git -C /etc/nixos pull ; nh os switch -u";
+    nb = "git -C /etc/nixos pull ; nh os boot";
   };
 
   home.file = {

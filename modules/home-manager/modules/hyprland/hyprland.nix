@@ -91,4 +91,5 @@
   };
   programs.kitty.enable = true;
 
+  programs.waybar.enable = true;
 }

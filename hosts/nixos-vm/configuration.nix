@@ -32,6 +32,7 @@
 
   environment.systemPackages = with pkgs; [
     docker
+    alsa-lib
   ];
 
   # GUI
@@ -43,9 +44,6 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  environment.systemPackages = with pkgs; [
-    alsa-lib
-  ];
 
 
   # Some programs need SUID wrappers, can be configured further or are

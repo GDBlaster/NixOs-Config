@@ -4,7 +4,7 @@
     enable = true;
     
     settings = {
-      "$mod" = "/";
+      "$mod" = "CONTROL SHIFT";
 
       # Keybindings
       binds = [

@@ -45,9 +45,13 @@
     enable = true;
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

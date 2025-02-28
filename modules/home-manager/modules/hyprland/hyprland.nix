@@ -5,7 +5,6 @@
 
     # use packages from nixpkgs
     package = null;
-    portalPackage = null;
   };
   programs.kitty.enable = true;
 

@@ -61,10 +61,6 @@
           size = 3;
           passes = 1;
         };
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
       };
 
       # Animations
@@ -85,11 +81,6 @@
       dwindle = {
         pseudotile = true;
         preserve_split = true;
-      };
-
-      # Master layout
-      master = {
-        new_is_master = true;
       };
 
       # Gestures

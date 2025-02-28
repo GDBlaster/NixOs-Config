@@ -40,6 +40,8 @@
     enable = true;
   };
 
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm.wayland.enable = true;
 
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -9,6 +9,7 @@
         "$mod, Q, exec, kitty"
       ];
     };
+  }
   programs.kitty.enable = true;
 
 }

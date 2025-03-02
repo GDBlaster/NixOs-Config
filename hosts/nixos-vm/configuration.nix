@@ -4,7 +4,7 @@
 
 {
   #inputs,
-  #config,
+  config,
   pkgs,
   ...
 }:
@@ -33,6 +33,8 @@
   environment.systemPackages = with pkgs; [
     docker
   ];
+
+  config.desktop = "gnome";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

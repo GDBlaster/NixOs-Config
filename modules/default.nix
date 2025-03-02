@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./hyprland.nix
+    ./gnome.nix
   ];
 
   # clone config in /etc/nixos

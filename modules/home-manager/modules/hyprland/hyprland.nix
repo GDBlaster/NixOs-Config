@@ -1,8 +1,8 @@
-{lib,config,...}:
-lib.mkIf (config.desktop == "hyprland"){
+{ lib, config, ... }:
+lib.mkIf (config.desktop == "hyprland") {
   wayland.windowManager.hyprland = {
     enable = true;
-    
+
     settings = {
       "$mod" = "CONTROL SHIFT";
 

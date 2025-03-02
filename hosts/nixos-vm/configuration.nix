@@ -3,8 +3,8 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  inputs,
-  config,
+  #inputs,
+  #config,
   pkgs,
   ...
 }:
@@ -27,7 +27,7 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [ ];
+    # packages = with pkgs; [ ];
   };
 
   environment.systemPackages = with pkgs; [

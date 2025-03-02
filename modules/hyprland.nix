@@ -6,7 +6,7 @@
 }:
 {
   options = {
-    desktop = lib.mkOption {
+    config.desktop = lib.mkOption {
       type = lib.types.enum [
         "hyprland"
         "gnome"

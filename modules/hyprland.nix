@@ -19,7 +19,7 @@
 
   config = lib.mkIf (config.desktop == "hyprland") {
 
-    environment.system.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       kitty
       waybar
       dunst

@@ -34,7 +34,7 @@
     docker
   ];
 
-  config.desktop = "gnome";
+  desktop = "gnome";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

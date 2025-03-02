@@ -1,5 +1,6 @@
 { lib, options, ... }:
-lib.mkIf (options.desktop == "hyprland") {
+#lib.mkIf (options.desktop == "hyprland") 
+{
   wayland.windowManager.hyprland = {
     enable = true;
 

@@ -1,4 +1,4 @@
-{lib,...}:
+{lib,config,pkgs,...}:
 {
   options = {
     desktop = lib.mkOption {
@@ -9,7 +9,6 @@
   };
 }
 
-{lib,config,pkgs,...}:
 lib.mkIf (config.desktop == "hyprland"){
 
   environment.system.packages = with pkgs;[

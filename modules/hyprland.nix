@@ -1,24 +1,11 @@
 {
   lib,
   config,
-  options,
   pkgs,
   ...
 }:
 {
-  options = {
-    desktop = lib.mkOption {
-      type = lib.types.enum [
-        "hyprland"
-        "gnome"
-        "none"
-      ];
-      default = "none";
-      description = "Select desktop environment. Options: hyprland, gnome, none.";
-    };
-  };
-
-  config = lib.mkIf (options.desktop == "hyprland") {
+  config = lib.mkIf (config.desktop == "hyprland") {
 
     environment.systemPackages = with pkgs; [
       kitty

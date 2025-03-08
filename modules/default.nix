@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
+    ./options.nix
     ./hyprland.nix
     ./gnome.nix
   ];

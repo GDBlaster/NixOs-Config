@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   home.username = "paul";
@@ -6,33 +11,66 @@
 
   home.packages = with pkgs; [
     neofetch
+    neovim
     atuin
     bash
     git
+    blesh
+    nh
   ];
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables = lib.mkMerge [
+    {
+      EDITOR = "nvim";
+    }
 
-  home.shellAliases = {
-    nr = "git -C /etc/nixos pull ; nh os switch";
-    nu = "git -C /etc/nixos pull ; nh os switch -u";
-    nb = "git -C /etc/nixos pull ; nh os boot";
-  };
+    (lib.mkIf (!config.hmIsModule) {
+      FLAKE = "${config.home.homeDirectory}/nixos";
+    })
+  ];
+
+  home.shellAliases = lib.mkMerge [
+    (lib.mkIf config.hmIsModule {
+      nr = "git -C /etc/nixos pull ; nh os switch";
+      nu = "git -C /etc/nixos pull ; nh os switch -u";
+      nb = "git -C /etc/nixos pull ; nh os boot";
+    })
+
+    (lib.mkIf (!config.hmIsModule) {
+      nr = "git -C ~/nixos pull ; nh home switch -c $HOSTNAME -b backup";
+      nu = "git -C ~/nixos pull ; nh home switch -c $HOSTNAME -b backup -u";
+    })
+
+    {
+      ls = "ls --color=auto";
+      grep = "grep --color=auto";
+      fgrep = "fgrep --color=auto";
+      egrep = "egrep --color=auto";
+
+      ll = "ls -alF";
+      la = "ls -A";
+      lc = "ls -CF";
+
+    }
+  ];
 
   home.file = {
-
+    ".bashrc".text = lib.mkBefore ''
+      # blesh beggining line
+      source ${pkgs.blesh}/share/blesh/ble.sh
+    '';
   };
 
   imports = [
     ./../modules/lf/lf.nix
     ./../modules/hyprland/hyprland.nix
+    ./../modules/starship.nix
   ];
 
   programs = {
     bash = {
       enable = true;
+      historyControl = ["ignoreboth"];
       initExtra = ''
         neofetch
       '';

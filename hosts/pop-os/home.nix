@@ -5,6 +5,7 @@
   ];
 
   hmIsModule = false;
+  desktop = "none";
 
   home.username = lib.mkForce "paulb";
   home.homeDirectory = lib.mkForce "/home/paulb";

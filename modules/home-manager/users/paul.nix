@@ -8,10 +8,10 @@
 
 {
   config = lib.mkMerge [
-    (lib.mkIf(builtins.hasAttr"desktop" osConfig){
+    (lib.mkIf(builtins ? osConfig){
       desktop = osConfig.desktop;
     })
-    
+
     {
     home.username = "paul";
     home.homeDirectory = "/home/paul";

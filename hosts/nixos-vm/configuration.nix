@@ -5,7 +5,6 @@
 {
   #inputs,
   #config,
-  pkgs,
   ...
 }:
 
@@ -29,10 +28,6 @@
     ];
     # packages = with pkgs; [ ];
   };
-
-  environment.systemPackages = with pkgs; [
-    docker
-  ];
 
   desktop = "gnome";
 

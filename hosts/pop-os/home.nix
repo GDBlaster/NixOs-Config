@@ -2,7 +2,6 @@
 {
   imports = [
     ./../../modules/home-manager/users/paul.nix
-    ./../../modules/options.nix
   ];
 
   hmIsModule = false;

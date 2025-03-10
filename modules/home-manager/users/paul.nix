@@ -10,7 +10,7 @@
   home.username = "paul";
   home.homeDirectory = "/home/paul";
 
-  config.desktop = lib.mkIf (builtins.hasAttr "desktop" osConfig) osConfig.desktop;
+  desktop = lib.mkIf (builtins.hasAttr "desktop" osConfig) osConfig.desktop;
 
 
   home.packages = with pkgs; [
@@ -66,6 +66,7 @@
   };
 
   imports = [
+    ./../../options.nix
     ./../modules/lf/lf.nix
     ./../modules/hyprland/hyprland.nix
     ./../modules/starship.nix

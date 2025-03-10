@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   #pkgs,
   ...
 }:
@@ -11,14 +12,12 @@
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
-      config = {
-        desktop = config.desktop;
-        hmIsModule = config.hmIsModule;
-      };
     };
     backupFileExtension = ".backup";
-    users = {
-      paul = import ./users/paul.nix;
-    };
+    users = lib.mkMerge [
+      { paul = import ./users/paul.nix; }
+      { paul.config.desktop = config.desktop; } # Ensure it correctly modifies paul
+    ];
+
   };
 }

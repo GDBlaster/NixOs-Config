@@ -10,7 +10,7 @@
   home.username = "paul";
   home.homeDirectory = "/home/paul";
 
-  desktop = lib.mkIf (builtins.hasAttr "desktop" osConfig) osConfig.desktop;
+  config.desktop = lib.mkIf (builtins.hasAttr "desktop" osConfig) osConfig.desktop;
 
 
   home.packages = with pkgs; [

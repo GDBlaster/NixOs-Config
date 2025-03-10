@@ -4,8 +4,14 @@ lib.mkIf (config.desktop == "gnome") {
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+
+  environment.systemPackages = with pkgs; [
+    gnome-terminal
+  ];
+
   environment.gnome.excludePackages = with pkgs; [
     geary
     gnome-weather
+    gnome-console
   ];
 }

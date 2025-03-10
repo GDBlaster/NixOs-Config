@@ -20,7 +20,7 @@
 
   nix.settings = { # To change when on a real host
     cores = 2;
-    jobs = 4;
+    max-jobs = 4;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

@@ -9,7 +9,7 @@
 
   config = lib.mkMerge [
 
-    (lib.mkIf (!config.desktop == "none"){
+    (lib.mkIf (!(config.desktop == "none")){
       fonts.packages = with pkgs; [ nerdfonts ];
     })
 

@@ -4,6 +4,5 @@
   };
   imports = lib.mkIf (config.desktop == "gnome") [
     ./gnometerminal.nix
-    cock;
   ];
 }

@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 {
   imports = [
@@ -9,8 +14,17 @@
 
   config = lib.mkMerge [
 
-    (lib.mkIf (!(config.desktop == "none")){
-      fonts.packages = with pkgs; [ nerdfonts ];
+    (lib.mkIf (!(config.desktop == "none")) {
+      fonts.packages = with pkgs; [
+        (nerdfonts.override {
+          fonts = [
+            "FiraCode"
+          ];
+        })
+        fira-code
+        droid-sans-mono
+      ];
+
     })
 
     {

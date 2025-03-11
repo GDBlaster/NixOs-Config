@@ -8,7 +8,7 @@
 
 {
   config = lib.mkMerge [
-    (lib.mkIf(osConfig != null){
+    (lib.mkIf(osConfig){
       desktop = osConfig.desktop;
     })
 

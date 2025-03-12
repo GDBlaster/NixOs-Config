@@ -5,7 +5,7 @@
   ];
 
   hmIsModule = false;
-  desktop = "none";
+  desktop = "gnome";
 
   home.username = lib.mkForce "paulb";
   home.homeDirectory = lib.mkForce "/home/paulb";

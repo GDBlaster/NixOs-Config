@@ -104,6 +104,7 @@
     ./../../options.nix
     ./../modules/lf/lf.nix
     ./../modules/hyprland/hyprland.nix
+    ./../modules/gnome/gnome.nix
     ./../modules/starship.nix
   ];
 }

@@ -22,9 +22,9 @@
         "$hostname"
         "[](fg:indigo bg:midnight)"
         "$directory"
-        "[](fg:midnight bg:navy)"
+        "[](fg:midnight bg:purple_again)"
         "$git_branch"
-        "[](fg:navy bg:plum)"
+        "[](fg:purple_again bg:plum)"
         "$git_metrics"
         "$git_status"
         "[](fg:plum bg:magenta)"
@@ -60,7 +60,7 @@
       };
 
       git_branch = {
-        style = "bold white bg:navy";
+        style = "bold white bg:purple_again";
         format = "[$symbol$branch(:$remote_branch)]($style)";
       };
 
@@ -88,9 +88,9 @@
       palettes.purpleblue = {
         dark_gray = "#333333";
         purple = "#600080";
-        indigo = "#400087";
-        midnight = "#200083";
-        navy = "#000080";
+        indigo = "#400080";
+        midnight = "#200080";
+        purple_again = "#800080";
         plum = "#600070";
         magenta = "#a00080";
       };

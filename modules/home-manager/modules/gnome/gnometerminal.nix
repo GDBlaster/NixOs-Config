@@ -5,7 +5,7 @@
 }:
 {
   config = lib.mkIf (config.desktop == "gnome") {
-    programs.dconf.enable = true;
+    dconf.enable = true;
     dconf.settings = {
       "legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
         audible-bell = false;

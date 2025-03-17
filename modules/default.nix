@@ -53,6 +53,7 @@
         wget
         curl
         git
+        htop
       ];
 
       # Enable Flakes

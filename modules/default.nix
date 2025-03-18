@@ -62,6 +62,9 @@
         "flakes"
       ];
 
+      # Zsh Completion for system packages
+      environment.pathsToLink = [ "/share/zsh" ];
+
       nix.optimise.automatic = true;
 
       # Bootloader

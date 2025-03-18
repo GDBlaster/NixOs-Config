@@ -20,7 +20,6 @@
         neofetch
         neovim
         atuin
-        bash
         git
         blesh
         nh
@@ -76,6 +75,19 @@
           historyControl = [ "ignoreboth" ];
           initExtra = ''
             neofetch
+          '';
+        };
+
+        zsh = {
+          enable = true;
+          enableVteIntegration = true;
+          autosuggestion = {
+            enable = true;
+            highlight = "fg=grey,underline";
+          };
+          history.append = true;
+          initExtra = ''
+          neofetch
           '';
         };
 

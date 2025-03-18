@@ -5,6 +5,7 @@
 {
   #inputs,
   #config,
+  pkgs,
   ...
 }:
 
@@ -18,12 +19,14 @@
 
   networking.hostName = "nixos-vm"; # Define your hostname.
 
-  nix.settings = { # To change when on a real host
+  nix.settings = {
+    # To change when on a real host
     cores = 2;
     max-jobs = 4;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.zsh.enable = true;
   users.users.paul = {
     isNormalUser = true;
     description = "Paul";
@@ -31,6 +34,7 @@
       "networkmanager"
       "wheel"
     ];
+    shell = pkgs.zsh;
     # packages = with pkgs; [ ];
   };
 

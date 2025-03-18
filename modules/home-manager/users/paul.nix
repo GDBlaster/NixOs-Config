@@ -24,6 +24,8 @@
         git
         blesh
         nh
+        jellyfin-media-player
+        obsidian
       ];
 
       home.sessionVariables = lib.mkMerge [
@@ -106,5 +108,6 @@
     ./../modules/hyprland/hyprland.nix
     ./../modules/gnome/gnome.nix
     ./../modules/starship.nix
+    ./../modules/discord.nix
   ];
 }

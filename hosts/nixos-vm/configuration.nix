@@ -53,6 +53,8 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  virtualisation.vmware.guest.enable = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

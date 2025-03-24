@@ -25,7 +25,7 @@
         nh
         jellyfin-media-player
         obsidian
-	vscode
+        vscode
       ];
 
       home.sessionVariables = lib.mkMerge [
@@ -88,7 +88,7 @@
           };
           history.append = true;
           initExtra = ''
-          neofetch
+            neofetch
           '';
         };
 

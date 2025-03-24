@@ -16,14 +16,8 @@
 
     (lib.mkIf (!(config.desktop == "none")) {
       fonts.packages = with pkgs; [
-        (nerdfonts.override {
-          fonts = [
-            "FiraCode"
-          ];
-        })
-        fira-code
+        nerd-fonts.fira-code
       ];
-
     })
 
     {

@@ -26,6 +26,7 @@
         jellyfin-media-player
         obsidian
         vscode
+        nodejs
       ];
 
       home.sessionVariables = lib.mkMerge [

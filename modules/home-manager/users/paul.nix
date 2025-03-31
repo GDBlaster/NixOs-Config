@@ -97,7 +97,6 @@
           enable = true;
           settings = {
             auto_sync = false;
-            theme = "dark";
           };
           flags = [
             "--disable-up-arrow"

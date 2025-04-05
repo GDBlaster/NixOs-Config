@@ -42,13 +42,13 @@
       home.shellAliases = lib.mkMerge [
         (lib.mkIf config.hmIsModule {
           nr = "git -C /etc/nixos pull ; nh os switch";
-          nu = "git -C /etc/nixos pull ; nh os switch -u";
+          ## nu = "git -C /etc/nixos pull ; nh os switch -u";
           nb = "git -C /etc/nixos pull ; nh os boot";
         })
 
         (lib.mkIf (!config.hmIsModule) {
           nr = "git -C ~/nixos pull ; nh home switch -c $HOSTNAME -b backup";
-          nu = "git -C ~/nixos pull ; nh home switch -c $HOSTNAME -b backup -u";
+          ## nu = "git -C ~/nixos pull ; nh home switch -c $HOSTNAME -b backup -u";
         })
 
         {
@@ -122,5 +122,6 @@
     ./../modules/gnome/gnome.nix
     ./../modules/starship.nix
     ./../modules/discord.nix
+    ./../scripts/nu.nix
   ];
 }

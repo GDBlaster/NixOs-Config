@@ -25,6 +25,18 @@
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
+    programs.thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    };
+    programs.xfconf.enable = true;
+
+    services.gvfs.enable = true;
+    services.tumbler.enable =true;
+
     services.displayManager.sddm.enable = true;
     services.displayManager.sddm.wayland.enable = true;
   };

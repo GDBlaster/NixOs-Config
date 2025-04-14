@@ -48,6 +48,8 @@
         curl
         git
         htop
+        nil
+    nixfmt-rfc-style
 	firefox
       ];
 

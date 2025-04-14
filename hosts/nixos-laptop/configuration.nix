@@ -15,6 +15,7 @@
     ./../../modules/default.nix
     ./../../modules/home-manager/home-manager.nix
     ./../../modules/nh.nix
+    ./../../modules/stylix/stylix.nix
   ];
 
   networking.hostName = "nixos-laptop"; # Define your hostname.

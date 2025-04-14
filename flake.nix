@@ -8,6 +8,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs =
@@ -18,6 +20,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/nixos-vm/configuration.nix
+          inputs.stylix.nixosModules.stylix
         ];
       };
       nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
@@ -25,6 +28,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/nixos-laptop/configuration.nix
+          inputs.stylix.nixosModules.stylix
         ];
       };
  

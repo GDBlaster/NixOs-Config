@@ -43,7 +43,7 @@
     # packages = with pkgs; [ ];
   };
 
-  desktop = "gnome";
+  desktop = "hyprland";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -49,8 +49,8 @@
         git
         htop
         nil
-    nixfmt-rfc-style
-	firefox
+        nixfmt-rfc-style
+        firefox
       ];
 
       # Enable Flakes

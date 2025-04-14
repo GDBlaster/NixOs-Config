@@ -9,24 +9,33 @@
       enable = true;
 
       settings = {
-        "$mod" = "CONTROL SHIFT";
+        "$mod" = "SUPER";
+        "$move" = "ALT";
 
         # Keybindings
-        binds = [
-          "$mod, Q, exec, kitty"
+        bind = [
+          "$mod, A, exec, kitty"
           "$mod, D, exec, rofi -show drun"
           "$mod, F, exec, firefox"
           "$mod, E, exec, thunar"
           "$mod, C, killactive"
-          "$mod, M, exit"
+          "$mod, M, fullscreen, 1"
           "$mod, V, togglefloating"
           "$mod, P, pseudo"
           "$mod, J, togglesplit"
           "$mod, L, exec, swaylock"
         ];
 
+        bindm = [
+          "$move, mouse:272, movewindow"
+        ];
+
+        monitor = [
+          "eDP-1, highres, auto, 1"
+        ];
+
         # Autostart applications
-        exec = [
+        exec-once = [
           "swww init"
           "swww img ~/Pictures/wallpaper.jpg"
           "waybar"
@@ -43,9 +52,10 @@
 
         # Input configuration
         input = {
-          kb_layout = "us";
+          kb_layout = "fr";
           follow_mouse = 1;
           sensitivity = 0;
+          numlock_by_default = true;
         };
 
         # General configuration

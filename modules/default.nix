@@ -48,6 +48,7 @@
         curl
         git
         htop
+	firefox
       ];
 
       # Enable Flakes

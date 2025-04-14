@@ -20,6 +20,14 @@
           ./hosts/nixos-vm/configuration.nix
         ];
       };
+      nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/nixos-laptop/configuration.nix
+        ];
+      };
+ 
       homeConfigurations."pop-os" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";

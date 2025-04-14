@@ -25,11 +25,10 @@
     tpm2-tss
   ];
 
-#  nix.settings = {
-#    # To change when on a real host
-#    cores = 2;
-#    max-jobs = 4;
-#  };
+  swapDevices = [{
+  	device = "/var/lib/swapfile";
+	size = 8*1024;
+  }];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;

@@ -59,6 +59,8 @@
         "flakes"
       ];
 
+      services.tailscale.enable = true;
+
       # Zsh Completion for system packages
       environment.pathsToLink = [ "/share/zsh" ];
 

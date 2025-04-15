@@ -17,11 +17,11 @@
       home.homeDirectory = "/home/paul";
 
       home.packages = with pkgs; [
+        tailscale
         neofetch
         neovim
         atuin
         git
-        blesh
         nh
         jellyfin-media-player
         obsidian

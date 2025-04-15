@@ -4,7 +4,12 @@
   ...
 }:
 {
+  imports = [
+    ./hyprlock.nix
+  ];
+
   config = lib.mkIf (config.desktop == "hyprland") {
+
     wayland.windowManager.hyprland = {
       enable = true;
 

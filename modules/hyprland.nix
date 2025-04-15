@@ -35,9 +35,15 @@
     programs.xfconf.enable = true;
 
     services.gvfs.enable = true;
-    services.tumbler.enable =true;
+    services.tumbler.enable = true;
 
-    services.displayManager.sddm.enable = true;
-    services.displayManager.sddm.wayland.enable = true;
+    services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      settings.Autologin = {
+        Session = "Hyprland";
+        User = "paul";
+      };
+    };
   };
 }

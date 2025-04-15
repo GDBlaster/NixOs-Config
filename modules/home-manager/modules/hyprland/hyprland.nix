@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 {
@@ -28,7 +29,7 @@
           "$mod, V, togglefloating"
           "$mod, P, pseudo"
           "$mod, J, togglesplit"
-          "$mod, L, exec, swaylock"
+          "$mod, L, exec, hyprlock"
         ];
 
         bindm = [
@@ -41,10 +42,12 @@
 
         # Autostart applications
         exec-once = [
+          "hyprlock"
           "swww init"
           "swww img ~/Pictures/wallpaper.jpg"
           "waybar"
           "dunst"
+          "systemctl --user start hyprpolkitagent"
         ];
 
         # Environment variables
@@ -109,8 +112,51 @@
         };
       };
     };
+
     programs.kitty.enable = true;
 
     programs.waybar.enable = true;
+
+    services.hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = "hyprlock";
+          before_sleep_cmd = "hyprlock";
+          ignore_dbus_inhibit = false;
+        };
+        listener = [
+          {
+            timeout = 140;
+            on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -s set 1";
+            on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r";
+          }
+          {
+            timeout = 150;
+            on-timeout = "hyprlock; systemd-ac-power || hyprctl dispatch dpms off";
+            on-resume = ''hyprctl dispatch dpms on ; echo "unlocked"'';
+          }
+          {
+            timeout = 170;
+            on-timeout = "systemd-ac-power && systemctl suspend || systemctl hibernate";
+          }
+        ];
+      };
+    };
+
+    services.gnome-keyring = {
+      enable = true;
+      components = [
+        "pkcs11"
+        "secrets"
+        "ssh"
+      ];
+    };
+
+    home.packages = with pkgs; [
+      libsecret
+      hyprpolkitagent
+    ];
+
   };
 }

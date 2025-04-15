@@ -11,12 +11,19 @@
 
   config = lib.mkIf (config.desktop == "hyprland") {
 
+    home.sessionVariables = {
+      XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
+      XDG_DOWNLOADS_DIR = "${config.home.homeDirectory}/Downloads";
+      XDG_DOCUMENTS_DIR = "${config.home.homeDirectory}/Documents";
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
 
       settings = {
         "$mod" = "SUPER";
         "$move" = "ALT";
+        "$shift" = "SHIFT";
 
         # Keybindings
         bind = [
@@ -30,6 +37,9 @@
           "$mod, P, pseudo"
           "$mod, J, togglesplit"
           "$mod, L, exec, hyprlock"
+          "$mod, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m window"
+          ", PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m output"
+          "$shift, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
         ];
 
         bindm = [

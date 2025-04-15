@@ -2,6 +2,7 @@
 {
   stylix = {
     enable = true;
+    image = ./nixos-wallpaper.png;
     base16Scheme = {
       # tinted-theming: stella
       base00 = "#2B213C";

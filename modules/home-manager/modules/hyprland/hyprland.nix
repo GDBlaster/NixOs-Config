@@ -137,7 +137,7 @@
             on-resume = ''hyprctl dispatch dpms on ; echo "unlocked"'';
           }
           {
-            timeout = 170;
+            timeout = 300;
             on-timeout = "systemd-ac-power && systemctl suspend || systemctl hibernate";
           }
         ];

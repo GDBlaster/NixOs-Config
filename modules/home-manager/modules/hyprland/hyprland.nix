@@ -42,7 +42,6 @@
 
         # Autostart applications
         exec-once = [
-          "hyprlock"
           "swww init"
           "swww img ~/Pictures/wallpaper.jpg"
           "waybar"

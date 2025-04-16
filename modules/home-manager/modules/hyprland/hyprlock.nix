@@ -5,6 +5,7 @@
       enable = true;
       settings = {
         background.blur_passes = 3;
+
         input-field = {
           monitor = "eDP-1";
           size = "200, 50";
@@ -15,6 +16,26 @@
           placeholder_text = "Password...";
           shadow_passes = 2;
         };
+
+        label = [
+          {
+            monitor = "eDP-1";
+            text = "$TIME";
+            position = "0, 70";
+            font_size = 80;
+            halign = "center";
+            valign = "center";
+          }
+
+          {
+            monitor = "eDP-1";
+            text = ''cmd[update:1000] echo "$(date +"%a %x")"'';
+            position = "0, 0";
+            font_size = 18;
+            halign = "center";
+            valign = "center";
+          }
+        ];
       };
     };
   };

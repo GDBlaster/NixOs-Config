@@ -64,13 +64,6 @@
         }
       ];
 
-      home.file = {
-        ".bashrc".text = lib.mkBefore ''
-          # blesh beggining line
-          source ${pkgs.blesh}/share/blesh/ble.sh
-        '';
-      };
-
       programs = {
         bash = {
           enable = true;

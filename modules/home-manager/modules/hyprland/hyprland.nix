@@ -7,6 +7,7 @@
 {
   imports = [
     ./hyprlock.nix
+    ./waybar.nix
   ];
 
   config = lib.mkIf (config.desktop == "hyprland") {
@@ -57,6 +58,7 @@
           "waybar"
           "dunst"
           "systemctl --user start hyprpolkitagent"
+          "nm-applet &"
         ];
 
         # Environment variables
@@ -123,8 +125,6 @@
     };
 
     programs.kitty.enable = true;
-
-    programs.waybar.enable = true;
 
     services.hypridle = {
       enable = true;

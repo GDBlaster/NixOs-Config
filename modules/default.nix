@@ -61,6 +61,8 @@
 
       services.tailscale.enable = true;
 
+      programs.steam.enable = lib.mkIf (!(config.desktop == "none")) true;
+
       # Zsh Completion for system packages
       environment.pathsToLink = [ "/share/zsh" ];
 

@@ -12,6 +12,14 @@
 
   config = lib.mkIf (config.desktop == "hyprland") {
 
+    gtk= {
+      enable = true;
+      iconTheme = {
+        name = "Papirus";
+        package = pkgs.papirus-icon-theme;
+      };
+    };
+
     home.sessionVariables = {
       XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
       XDG_DOWNLOADS_DIR = "${config.home.homeDirectory}/Downloads";

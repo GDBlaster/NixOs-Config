@@ -12,6 +12,16 @@
       desktop = osConfig.desktop;
     })
 
+    (lib.mkIf (!(config.desktop == "none")) {
+      home.packages = with pkgs; [
+        jellyfin-media-player
+        obsidian
+        vscode
+        lutris
+        wine
+      ];
+    })
+
     {
       home.username = "paul";
       home.homeDirectory = "/home/paul";
@@ -23,9 +33,6 @@
         atuin
         git
         nh
-        jellyfin-media-player
-        obsidian
-        vscode
         nodejs
       ];
 

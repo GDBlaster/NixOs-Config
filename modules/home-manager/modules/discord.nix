@@ -10,5 +10,7 @@
       vesktop
       jellyfin-rpc
     ];
+
+    services.arrpc.enable = true;
   };
 }

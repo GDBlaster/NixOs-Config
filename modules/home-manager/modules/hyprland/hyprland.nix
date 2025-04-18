@@ -12,7 +12,7 @@
 
   config = lib.mkIf (config.desktop == "hyprland") {
 
-    gtk= {
+    gtk = {
       enable = true;
       iconTheme = {
         name = "Papirus";
@@ -133,6 +133,19 @@
     };
 
     programs.kitty.enable = true;
+
+    services.dunst = {
+      enable = true;
+      settings = {
+        global = {
+          sort = true;
+          corner_radius = 15;
+          mouse_left_click = "do_action";
+          mouse_middle_click = "do_action";
+          mouse_right_click = "close_current";
+        };
+      };
+    };
 
     services.hypridle = {
       enable = true;

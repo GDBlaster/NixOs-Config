@@ -14,6 +14,7 @@
       libnotify
       swww
       rofi-wayland
+      xarchiver
     ];
 
     programs.hyprland = {
@@ -32,6 +33,7 @@
         thunar-volman
       ];
     };
+
     programs.xfconf.enable = true;
 
     services.gvfs.enable = true;

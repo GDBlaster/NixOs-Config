@@ -18,7 +18,7 @@
         obsidian
         vscode
         lutris
-        wine
+        wineWowPackages.full
       ];
     })
 

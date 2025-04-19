@@ -39,14 +39,17 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     shell = pkgs.zsh;
     # packages = with pkgs; [ ];
   };
 
+  virtualisation.docker.enable = true;
+
   desktop = "hyprland";
 
-  services.logind.powerKey = "suspend-then-hibernate";
+  services.logind.powerKey = "suspend";
   services.logind.powerKeyLongPress = "poweroff";
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -37,7 +37,6 @@
         # Keybindings
         bind = [
           "$mod, A, exec, kitty"
-          "$mod, D, exec, rofi -show drun"
           "$mod, F, exec, firefox"
           "$mod, E, exec, thunar"
           "$mod, C, killactive"
@@ -49,6 +48,10 @@
           "$mod, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m window"
           ", PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m output"
           "$shift, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
+        ];
+
+        bindr = [
+          "$mod, Super_L, exec, rofi -show drun"
         ];
 
         bindm = [
@@ -168,7 +171,7 @@
           }
           {
             timeout = 300;
-            on-timeout = "systemd-ac-power && systemctl suspend || systemctl hibernate";
+            on-timeout = "systemd-ac-power || systemctl hibernate";
           }
         ];
       };

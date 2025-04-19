@@ -37,12 +37,17 @@
         # Keybindings
         bind = [
           "$mod, A, exec, kitty"
+          "$mod, Q, movetoworkspace, -1"
+          "$mod, D, movetoworkspace, +1"
+          "$move, Z, movewindow, u"
+          "$move, S, movewindow, d"
+          "$move, Q, movewindow, l"
+          "$move, D, movewindow, r"
           "$mod, F, exec, firefox"
           "$mod, E, exec, thunar"
           "$mod, C, killactive"
           "$mod, M, fullscreen, 1"
           "$mod, V, togglefloating"
-          "$mod, P, pseudo"
           "$mod, J, togglesplit"
           "$mod, L, exec, hyprlock"
           "$mod, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m window"

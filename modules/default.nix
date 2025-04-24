@@ -73,8 +73,11 @@
       nix.optimise.automatic = true;
 
       # Bootloader
-      boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
+      boot.loader.grub = {
+        efiSupport = true;
+        device = "nodev";
+      };
 
       # Enable networking
       networking.networkmanager.enable = true;

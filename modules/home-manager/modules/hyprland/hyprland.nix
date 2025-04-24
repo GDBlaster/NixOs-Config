@@ -176,7 +176,7 @@
           }
           {
             timeout = 300;
-            on-timeout = "systemd-ac-power || systemctl hibernate";
+            on-timeout = "systemd-ac-power || systemctl sleep";
           }
         ];
       };

@@ -49,6 +49,11 @@
       };
     };
 
+    systemd.services.greetd = {
+      serviceConfig.Type = "idle";
+      unitConfig.After = ["docker.service"];
+    };
+
     systemd.services.numLockOnTty = {
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {

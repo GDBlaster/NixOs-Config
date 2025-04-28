@@ -103,6 +103,8 @@
           ];
         };
 
+        thefuck.enable = true;
+
         git = {
           enable = true;
           userName = "GDBlaster";

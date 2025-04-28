@@ -5,7 +5,7 @@
   ];
 
   environment.sessionVariables = {
-    FLAKE = "/etc/nixos";
+    NH_FLAKE = "/etc/nixos";
   };
 
   programs.nh = {

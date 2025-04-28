@@ -56,9 +56,9 @@
         ];
 
         bindl = [
-          ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%+"
-          ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%-"
-          ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle"
+          '', XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%+; MUTE=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE "\[MUTED\]"); VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}'); if [ -n "$MUTE" ]; then notify-send "Muted" "" -h int:value:0 -h string:x-dunst-stack-tag:volume -u low; else notify-send "Volume: ''${VOLUME}%" "" -h int:value:''${VOLUME} -h string:x-dunst-stack-tag:volume -u low; fi''
+          '', XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%-; MUTE=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE "\[MUTED\]"); VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}'); if [ -n "$MUTE" ]; then notify-send "Muted" "" -h int:value:0 -h string:x-dunst-stack-tag:volume -u low; else notify-send "Volume: ''${VOLUME}%" "" -h int:value:''${VOLUME} -h string:x-dunst-stack-tag:volume -u low; fi''
+          '', XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle; MUTE=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE "\[MUTED\]"); VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}'); if [ -n "$MUTE" ]; then notify-send "Muted" "" -h int:value:0 -h string:x-dunst-stack-tag:volume -u low; else notify-send "Volume: ''${VOLUME}%" "" -h int:value:''${VOLUME} -h string:x-dunst-stack-tag:volume -u low; fi''
           ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
           ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
           ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
@@ -175,7 +175,12 @@
 
     services.batsignal = {
       enable = true;
-      extraArgs = ["-ep" "-w 25" "-c 10" ''-W "Battery Low" -C "Battery Critical" -D "systemctl hibernate"'' ];
+      extraArgs = [
+        "-ep"
+        "-w 25"
+        "-c 10"
+        ''-W "Battery Low" -C "Battery Critical" -D "systemctl hibernate"''
+      ];
     };
 
     services.dunst = {

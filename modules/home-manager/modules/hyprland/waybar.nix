@@ -66,7 +66,6 @@
       };
       style = lib.mkAfter ''
 
-
         #battery.warning {
           color: ${config.lib.stylix.colors.withHashtag.base08};
         }

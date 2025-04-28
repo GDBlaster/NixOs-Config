@@ -88,7 +88,7 @@
             highlight = "fg=grey,underline";
           };
           history.append = true;
-          initExtra = ''
+          initContent = ''
             neofetch
           '';
         };

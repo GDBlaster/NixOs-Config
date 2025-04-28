@@ -7,10 +7,10 @@
 {
   config = lib.mkIf (config.desktop != "none") {
     home.packages = with pkgs; [
-      vesktop
       jellyfin-rpc
     ];
 
+    programs.vesktop.enable = true;
     services.arrpc.enable = true;
   };
 }

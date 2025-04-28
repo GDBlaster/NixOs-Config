@@ -205,10 +205,10 @@
             on-timeout = "hyprlock; systemd-ac-power || hyprctl dispatch dpms off";
             on-resume = ''hyprctl dispatch dpms on ; echo "unlocked"'';
           }
-          {
-            timeout = 300;
-            on-timeout = "systemd-ac-power || systemctl sleep";
-          }
+          # {
+          #   timeout = 300;
+          #   on-timeout = "systemd-ac-power || systemctl sleep";
+          # }
         ];
       };
     };

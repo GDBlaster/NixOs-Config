@@ -42,7 +42,7 @@
       "docker"
     ];
     shell = pkgs.zsh;
-    # packages = with pkgs; [ ];
+    packages = with pkgs; [python314];
   };
 
   virtualisation.docker.enable = true;

@@ -42,7 +42,7 @@
         }
 
         (lib.mkIf (!config.hmIsModule) {
-          FLAKE = "${config.home.homeDirectory}/nixos";
+          NH_FLAKE = "${config.home.homeDirectory}/nixos";
         })
       ];
 

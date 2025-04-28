@@ -173,6 +173,11 @@
         };
     };
 
+    services.batsignal = {
+      enable = true;
+      extraArgs = ["-ep" "-w 25" "-c 10" ''-W "Battery Low" -C "Battery Critical" -D "systemctl hibernate"'' ];
+    };
+
     services.dunst = {
       enable = true;
       settings = {
@@ -191,7 +196,7 @@
       settings = {
         general = {
           lock_cmd = "hyprlock";
-          before_sleep_cmd = "hyprlock";
+          before_sleep_cmd = "hyprlock; sleep 1";
           ignore_dbus_inhibit = false;
         };
         listener = [
@@ -203,7 +208,7 @@
           {
             timeout = 150;
             on-timeout = "hyprlock; systemd-ac-power || hyprctl dispatch dpms off";
-            on-resume = ''hyprctl dispatch dpms on ; echo "unlocked"'';
+            on-resume = ''hyprctl dispatch dpms on"'';
           }
           # {
           #   timeout = 300;

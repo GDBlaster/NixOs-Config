@@ -55,6 +55,16 @@
           "$shift, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
         ];
 
+        bindl = [
+          ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%-"
+          ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle"
+          ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+          ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+          ", XF86AudioStop, exec, ${pkgs.playerctl}/bin/playerctl stop"
+        ];
+
         bindr = [
           "$mod, Super_L, exec, rofi -show drun"
         ];
@@ -141,6 +151,27 @@
     };
 
     programs.kitty.enable = true;
+
+    programs.rofi = {
+      enable = true;
+      theme =
+        let
+          inherit (config.lib.formats.rasi) mkLiteral;
+        in
+        {
+          window = {
+            border = 2;
+            border-radius = 10;
+            padding = mkLiteral "5 0";
+          };
+          "#inputbar" = {
+            padding = mkLiteral "0 5";
+          };
+          element = {
+            padding = mkLiteral "0 5";
+          };
+        };
+    };
 
     services.dunst = {
       enable = true;

@@ -125,5 +125,6 @@
     ./../modules/starship.nix
     ./../modules/discord.nix
     ./../scripts/nu.nix
+    ./../stylix/stylix.nix
   ];
 }

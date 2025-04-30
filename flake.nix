@@ -43,5 +43,17 @@
           ./hosts/pop-os/home.nix
         ];
       };
+
+      homeConfigurations."paul-primergytx1330m1" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };
+        modules = [
+          ./hosts/fujiserver/home.nix
+        ];
+      };
     };
 }

@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  nixpkgs,
   ...
 }:
 
@@ -23,6 +22,9 @@
       environment.systemPackages = with pkgs; [
         lan-mouse
       ];
+
+      hardware.bluetooth.enable = true;
+      hardware.bluetooth.powerOnBoot = true;
     })
 
 

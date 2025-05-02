@@ -15,6 +15,7 @@
       swww
       rofi-wayland
       xarchiver
+      rofi-bluetooth
     ];
 
     programs.hyprland = {
@@ -38,6 +39,7 @@
 
     services.gvfs.enable = true;
     services.tumbler.enable = true;
+    services.blueman.enable = true;
 
     services.greetd = {
       enable = true;

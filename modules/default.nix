@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  nixpkgs,
   ...
 }:
 
@@ -24,7 +25,10 @@
       ];
     })
 
+
     {
+      nixpkgs.overlays = [(import ./../overlays/papirus-icon-theme.nix)];
+
       # clone config in /etc/nixos
       system.activationScripts.setGitRemote = ''
         export PATH="${pkgs.git}/bin:$PATH"

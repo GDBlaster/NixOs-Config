@@ -42,7 +42,7 @@
         }
 
         (lib.mkIf (!config.hmIsModule) {
-          NH_FLAKE = "${config.home.homeDirectory}/nixos";
+          NH_FLAKE = "${config.home.homeDirectory}/NixOs-Config";
         })
       ];
 
@@ -54,7 +54,7 @@
         })
 
         (lib.mkIf (!config.hmIsModule) {
-          nr = "git -C ~/nixos pull ; nh home switch -c $HOSTNAME -b backup";
+          nr = "git -C ~/NixOs-Config pull ; nh home switch -c $HOSTNAME -b backup";
           ## nu = "git -C ~/nixos pull ; nh home switch -c $HOSTNAME -b backup -u";
         })
 

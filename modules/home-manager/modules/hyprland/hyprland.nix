@@ -66,7 +66,7 @@
         ];
 
         bindr = [
-          "$mod, Super_L, exec, rofi -show drun"
+          "$mod, Super_L, exec, pkill rofi || rofi -modes drun,ssh -show drun -layer -click-to-exit"
         ];
 
         bindm = [
@@ -154,6 +154,8 @@
 
     programs.rofi = {
       enable = true;
+      package = pkgs.rofi-wayland;
+      terminal = "${pkgs.kitty}/bin/kitty";
       theme =
         let
           inherit (config.lib.formats.rasi) mkLiteral;
@@ -197,10 +199,11 @@
     };
 
     services.hypridle = {
-      enable = true;
+      enable = false;
       settings = {
         general = {
-          lock_cmd = "hyprlock";
+          lock_cmd = "hyprlock --immediate";
+          unlock_cmd = "pkill hyprlock; hyprctl dispatch dpms on";
           before_sleep_cmd = "hyprlock; sleep 1";
           ignore_dbus_inhibit = false;
         };

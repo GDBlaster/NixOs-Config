@@ -5,7 +5,7 @@
       enable = true;
       settings = {
         background.blur_passes = 3;
-        hide-cursor = true;
+        hide_cursor = true;
 
         input-field = {
           monitor = "eDP-1";

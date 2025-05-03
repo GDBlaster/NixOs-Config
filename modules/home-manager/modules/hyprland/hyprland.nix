@@ -165,7 +165,13 @@
       };
     };
 
-    programs.kitty.enable = true;
+    programs.kitty = {
+      enable = true;
+      settings = lib.mkForce {
+        background_opacity = 0.8;
+        background_blur = 1;
+      };
+    };
 
     programs.rofi = {
       enable = true;

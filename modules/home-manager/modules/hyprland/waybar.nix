@@ -50,30 +50,35 @@
             format = "󰌾";
             tooltip-format = "Lock";
             on-click = "hyprlock";
+            class = "button";
           };
 
           "custom/sleep" = {
             format = "󰤄";
             tooltip-format = "Suspend";
             on-click = "systemctl suspend";
+            class = "button";
           };
 
           "custom/hibernate" = {
             format = "󰜗";
             tooltip-format = "Hibernate";
             on-click = "systemctl hibernate";
+            class = "button";
           };
 
           "custom/logout" = {
             format = "󰗽";
             tooltip-format = "Logout";
-            on-click = "hyprctl dispatch exit"; # change if using a different WM
+            on-click = "hyprctl dispatch exit";
+            class = "button";
           };
 
           "custom/shutdown" = {
             format = "󰐥";
             tooltip-format = "Shutdown";
             on-click = "systemctl poweroff";
+            class = "button";
           };
 
           "battery" = {
@@ -131,26 +136,73 @@
 
         #image {
           margin-right: 5px;
+          margin-left: 5px;
         }
 
         #custom-shutdown {
-          margin-right: 5px;
+          padding-left: 4px;
+          padding-right: 4px;
+          margin-left: 1px;
+          margin-right: 1px;
         }
 
         #custom-sleep {
-          margin-right: 5px;
-        }
-
-        #custom-hibernate {
-          margin-right: 5px;
+          padding-left: 4px;
+          padding-right: 4px;
+          margin-left: 1px;
+          margin-right: 1px;
         }
 
         #custom-lock {
-          margin-right: 5px;
+          padding-left: 4px;
+          padding-right: 4px;
+          margin-left: 1px;
+          margin-right: 1px;
+        }
+
+        #custom-hibernate {
+          padding-left: 4px;
+          padding-right: 4px;
+          margin-left: 1px;
+          margin-right: 1px;
         }
 
         #custom-logout {
-          margin-right: 5px;
+          padding-left: 4px;
+          padding-right: 4px;
+          margin-left: 1px;
+          margin-right: 1px;
+        }
+
+                
+        #custom-shutdown:hover {
+          background: ${config.lib.stylix.colors.withHashtag.base04};
+          border-radius: 5px;
+          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+        }
+
+        #custom-sleep:hover {
+          background: ${config.lib.stylix.colors.withHashtag.base04};
+          border-radius: 5px;
+          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+        }
+
+        #custom-lock:hover {
+          background: ${config.lib.stylix.colors.withHashtag.base04};
+          border-radius: 5px;
+          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+        }
+
+        #custom-hibernate:hover {
+          background: ${config.lib.stylix.colors.withHashtag.base04};
+          border-radius: 5px;
+          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+        }
+
+        #custom-logout:hover {
+          background: ${config.lib.stylix.colors.withHashtag.base04};
+          border-radius: 5px;
+          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
         }
       '';
     };

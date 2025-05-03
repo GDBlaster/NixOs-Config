@@ -18,17 +18,68 @@
           layer = "top";
           position = "top";
           height = 30;
-          modules-left = ["tray"];
-          modules-center = ["clock"];
+          modules-left = [
+            "image"
+            "tray"
+            "hyprland/window"
+          ];
+          modules-center = [ "clock" ];
           modules-right = [
+            #"group/hardware"
             "backlight"
             "battery"
+            "group/power"
           ];
+
+          "group/power" = {
+            orientation = "horizontal";
+            drawer = {
+              transition-duration = 200;
+              transition-left-to-right = true;
+            };
+            modules = [
+              "custom/shutdown"
+              "custom/lock"
+              "custom/sleep"
+              "custom/hibernate"
+              "custom/logout"
+            ];
+          };
+
+          "custom/lock" = {
+            format = "󰌾";
+            tooltip-format = "Lock";
+            on-click = "hyprlock";
+          };
+
+          "custom/sleep" = {
+            format = "󰤄";
+            tooltip-format = "Suspend";
+            on-click = "systemctl suspend";
+          };
+
+          "custom/hibernate" = {
+            format = "󰜗";
+            tooltip-format = "Hibernate";
+            on-click = "systemctl hibernate";
+          };
+
+          "custom/logout" = {
+            format = "󰗽";
+            tooltip-format = "Logout";
+            on-click = "hyprctl dispatch exit"; # change if using a different WM
+          };
+
+          "custom/shutdown" = {
+            format = "󰐥";
+            tooltip-format = "Shutdown";
+            on-click = "systemctl poweroff";
+          };
 
           "battery" = {
             bat = "BAT1";
-            format = "{icon}  {capacity}%";
-            format-charging = "{icon}󱐋 {capacity}%";
+            format = "{icon} {capacity}%";
+            format-charging = "{icon}󱐋{capacity}%";
             format-icons = {
               default = [
                 "󰂎"
@@ -50,7 +101,7 @@
           };
 
           backlight = {
-            device = "intel_backlight"; # change this if needed (run `brightnessctl` to list)
+            device = "intel_backlight";
             format = "{icon} {percent}%";
             format-icons = [
               "󰃜"
@@ -62,6 +113,8 @@
             on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
           };
 
+          "image".path = "${./nixos-logo.png}";
+
         };
       };
       style = lib.mkAfter ''
@@ -70,10 +123,34 @@
           color: ${config.lib.stylix.colors.withHashtag.base08};
         }
         #battery.critical {
-            color: red;
+          color: red;
         }
         #battery.full {
-            color: ${config.lib.stylix.colors.withHashtag.base0B};
+          color: ${config.lib.stylix.colors.withHashtag.base0B};
+        }
+
+        #image {
+          margin-right: 5px;
+        }
+
+        #custom-shutdown {
+          margin-right: 5px;
+        }
+
+        #custom-sleep {
+          margin-right: 5px;
+        }
+
+        #custom-hibernate {
+          margin-right: 5px;
+        }
+
+        #custom-lock {
+          margin-right: 5px;
+        }
+
+        #custom-logout {
+          margin-right: 5px;
         }
       '';
     };

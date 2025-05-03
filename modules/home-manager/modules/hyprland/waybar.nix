@@ -35,7 +35,7 @@
             orientation = "horizontal";
             drawer = {
               transition-duration = 200;
-              transition-left-to-right = true;
+              transition-left-to-right = false;
             };
             modules = [
               "custom/shutdown"

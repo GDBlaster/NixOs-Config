@@ -103,6 +103,20 @@
           numlock_by_default = true;
         };
 
+        windowrulev2 = [
+          "rounding 0, fullscreen:1"
+          "bordersize 0, fullscreen:1"
+          "bordersize 0, floating:0, onworkspace:w[tv1]"
+          "rounding 0, floating:0, onworkspace:w[tv1]"
+          "bordersize 0, floating:0, onworkspace:f[1]"
+          "rounding 0, floating:0, onworkspace:f[1]"
+        ];
+
+        workspace = [
+          "w[tv1], gapsout:0, gapsin:0"
+          "f[1], gapsout:0, gapsin:0"
+        ];
+
         # General configuration
         general = {
           gaps_in = 5;
@@ -111,6 +125,7 @@
           "col.active_border" = lib.mkDefault "rgba(33ccffee) rgba(00ff99ee) 45deg";
           "col.inactive_border" = lib.mkDefault "rgba(595959aa)";
           layout = "dwindle";
+          no_border_on_floating = true;
         };
 
         # Decoration configuration

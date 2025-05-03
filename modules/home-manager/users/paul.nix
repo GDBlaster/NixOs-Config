@@ -19,6 +19,7 @@
         vscode
         lutris
         wineWowPackages.full
+        qbittorrent
       ];
     })
 

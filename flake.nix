@@ -45,7 +45,7 @@
         ];
       };
 
-      homeConfigurations."fujiserver" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."paul@fujiserver" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config = {

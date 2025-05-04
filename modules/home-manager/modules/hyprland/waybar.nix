@@ -47,35 +47,35 @@
           };
 
           "custom/lock" = {
-            format = "󰌾";
+            format = " 󰌾 ";
             tooltip-format = "Lock";
             on-click = "hyprlock";
             class = "button";
           };
 
           "custom/sleep" = {
-            format = "󰤄";
+            format = " 󰤄 ";
             tooltip-format = "Suspend";
             on-click = "systemctl suspend";
             class = "button";
           };
 
           "custom/hibernate" = {
-            format = "󰜗";
+            format = " 󰜗 ";
             tooltip-format = "Hibernate";
             on-click = "systemctl hibernate";
             class = "button";
           };
 
           "custom/logout" = {
-            format = "󰗽";
+            format = " 󰗽 ";
             tooltip-format = "Logout";
             on-click = "hyprctl dispatch exit";
             class = "button";
           };
 
           "custom/shutdown" = {
-            format = "󰐥";
+            format = " 󰐥 ";
             tooltip-format = "Shutdown";
             on-click = "systemctl poweroff";
             class = "button";
@@ -124,6 +124,51 @@
       };
       style = lib.mkAfter ''
 
+        window#waybar {
+          background: transparent;
+        }
+
+        window#waybar.solo {
+          background: alpha(@base00, 1.00000)
+        }
+
+        window#waybar.fullscreen {
+          background: alpha(@base00, 1.00000)
+        }
+
+        .modules-left, .modules-right, .modules-center {
+          background: @base00;
+          border-color: rgb(51,204,255);
+        }
+
+        .modules-left {
+          border-bottom: 2px solid;
+          border-right: 2px solid;
+          border-bottom-right-radius: 5px;
+        }
+
+        .modules-center {
+          border-bottom: 2px solid;
+          border-left: 2px solid;
+          border-right: 2px solid;
+          border-bottom-right-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+
+        .modules-right {
+          border-bottom: 2px solid;
+          border-left: 2px solid;
+          border-bottom-left-radius: 5px;
+        }
+
+        window#waybar.fullscreen box.horizontal.modules-left, window#waybar.fullscreen box.horizontal.modules-center, window#waybar.fullscreen box.horizontal.modules-right {
+          border: 0px solid;
+        }
+
+        window#waybar.solo box.horizontal.modules-left, window#waybar.solo box.horizontal.modules-center, window#waybar.solo box.horizontal.modules-right {
+          border: 0px solid;
+        }
+
         #battery.warning {
           color: ${config.lib.stylix.colors.withHashtag.base08};
         }
@@ -135,7 +180,7 @@
         }
 
         #image {
-          margin-right: 5px;
+          margin-right: 10px;
           margin-left: 5px;
         }
 
@@ -143,7 +188,8 @@
           padding-left: 4px;
           padding-right: 4px;
           margin-left: 1px;
-          margin-right: 1px;
+          margin-right: 6px;
+          border-radius: 3px;
         }
 
         #custom-sleep {
@@ -151,6 +197,7 @@
           padding-right: 4px;
           margin-left: 1px;
           margin-right: 1px;
+          border-radius: 3px;
         }
 
         #custom-lock {
@@ -158,6 +205,7 @@
           padding-right: 4px;
           margin-left: 1px;
           margin-right: 1px;
+          border-radius: 3px;
         }
 
         #custom-hibernate {
@@ -165,6 +213,7 @@
           padding-right: 4px;
           margin-left: 1px;
           margin-right: 1px;
+          border-radius: 3px;
         }
 
         #custom-logout {
@@ -172,6 +221,7 @@
           padding-right: 4px;
           margin-left: 1px;
           margin-right: 1px;
+          border-radius: 3px;
         }
 
                 

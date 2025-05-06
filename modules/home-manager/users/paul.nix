@@ -14,11 +14,16 @@
 
     (lib.mkIf (!(config.desktop == "none")) {
       home.packages = with pkgs; [
+        libreoffice
+        aspell
+        aspellDicts.en
+        aspellDicts.fr
         jellyfin-media-player
         obsidian
         vscode
         lutris
-        wineWowPackages.full
+        wineWowPackages.stable
+        winetricks
         qbittorrent
       ];
     })

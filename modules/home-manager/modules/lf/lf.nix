@@ -1,7 +1,12 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
 
-  xdg.configFile."lf/icons".source = ./icons;
+  xdg.configFile = lib.mkIf (config.desktop != "none") {"lf/icons".source = ./icons;}
 
   programs.lf = {
     enable = true;

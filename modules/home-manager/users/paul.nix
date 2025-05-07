@@ -14,6 +14,7 @@
 
     (lib.mkIf (!(config.desktop == "none")) {
       home.packages = with pkgs; [
+        gimp
         libreoffice
         aspell
         aspellDicts.en

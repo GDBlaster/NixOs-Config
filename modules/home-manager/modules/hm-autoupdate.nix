@@ -24,7 +24,7 @@ let cfg = config.services.hm-autoupdate; in {
           set -euo pipefail
           echo "[Home Manager] - starting rebuild at $(date)"
           ${pkgs.git}/bin/git -C ${config.home.homeDirectory}/NixOs-Config pull
-          ${pkgs.home-manager}/bin/home-manager switch --flake ${config.home.homeDirectory}/NixOs-Config#$(hostname)
+          ${pkgs.home-manager}/bin/home-manager switch --flake ${config.home.homeDirectory}/NixOs-Config#$(${pkgs.coreutils}/bin/hostname)
         '';
       };
     };

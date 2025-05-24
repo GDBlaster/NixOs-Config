@@ -20,7 +20,7 @@ let cfg = config.services.hm-autoupdate; in {
 
       Service = {
         Type = "oneshot";
-        ExecStart = pkgs.writeShellScriptBin "hm-rebuild" ''
+        ExecStart = pkgs.writeShellScript "hm-rebuild" ''
           set -euo pipefail
 
           export HOME=${config.home.homeDirectory}

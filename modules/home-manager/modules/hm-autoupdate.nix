@@ -1,4 +1,4 @@
-{pkgs,lib,...}:
+{pkgs,lib,config,...}:
 let cfg = config.services.hm-autoupdate; in {
 
   options.services.hm-autoupdate = {

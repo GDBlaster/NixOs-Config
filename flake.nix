@@ -40,7 +40,7 @@
           };
         };
         modules = [
-          inputs.stylix.homeManagerModules.stylix
+          inputs.stylix.homeModules.stylix
           ./hosts/pop-os/home.nix
         ];
       };
@@ -53,7 +53,7 @@
           };
         };
         modules = [
-          inputs.stylix.homeManagerModules.stylix
+          inputs.stylix.homeModules.stylix
           ./hosts/fujiserver/home.nix
         ];
       };

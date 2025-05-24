@@ -22,6 +22,12 @@ let cfg = config.services.hm-autoupdate; in {
         Type = "oneshot";
         ExecStart = pkgs.writeShellScript "hm-rebuild" ''
           set -euo pipefail
+
+          echo "[Debug] PATH: $PATH"
+          echo "[Debug] SHELL: $SHELL"
+          echo "[Debug] whoami: $(whoami)"
+          echo "[Debug] which git: $(which git || echo 'not found')"
+
           echo "[Home Manager] - starting rebuild at $(date)"
           ${pkgs.git}/bin/git -C ${config.home.homeDirectory}/NixOs-Config pull
           ${pkgs.home-manager}/bin/home-manager switch --flake ${config.home.homeDirectory}/NixOs-Config#$(${pkgs.coreutils}/bin/hostname)

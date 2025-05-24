@@ -1,0 +1,43 @@
+{pkgs,lib,...}:
+let cfg = config.services.hm-autoupdate; in {
+
+  options.services.hm-autoupdate = {
+    enable = lib.mkEnableOption "Enable automatic Home manager pulls and rebuilds";
+    frequency = lib.mkOption {
+      type = lib.types.enum [
+        "daily"
+        "weekly"
+        "monthly"
+      ];
+      default = "daily";
+      description = "Select frequency of auto rebuild. Options: daily, weekly, monthly.";
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    systemd.user.services.home-manager-rebuild = {
+      Unit.Description = "Pull and rebuild config";
+
+      Service = {
+        Type = "oneshot";
+        ExecStart = pkgs.writeShellScript "hm-rebuild" ''
+          set -euo pipefail
+          echo "[Home Manager] - starting rebuild at $(date)"
+          ${pkgs.git}/bin/git -C ${config.home.homeDirectory}/NixOs-Config pull
+          ${pkgs.home-manager}/bin/home-manager switch --flake ${config.home.homeDirectory}/NixOs-Config#$(hostname)
+        ''
+      };
+    };
+
+    systemd.user.timers.home-manager-rebuild = {
+      Unit.Description = "Pull and rebuild config";
+
+      Timer = {
+        OnCalendar = cfg.frequency;
+        Persistent = true;
+      };
+
+      Install.WantedBy = ["timers.target"];
+    };
+  };
+}

@@ -132,6 +132,7 @@
     ./../modules/gnome/gnome.nix
     ./../modules/starship.nix
     ./../modules/discord.nix
+    ./../modules/hm-autoupdate.nix
     ./../scripts/nu.nix
     ./../../stylix/stylix.nix
   ];

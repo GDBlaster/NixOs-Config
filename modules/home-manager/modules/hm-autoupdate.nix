@@ -20,17 +20,15 @@ let cfg = config.services.hm-autoupdate; in {
 
       Service = {
         Type = "oneshot";
-        ExecStart = pkgs.writeShellScript "hm-rebuild" ''
+        ExecStart = pkgs.writeShellScriptBin "hm-rebuild" ''
           set -euo pipefail
 
-          echo "[Debug] PATH: $PATH"
-          echo "[Debug] SHELL: $SHELL"
-          echo "[Debug] whoami: $(whoami)"
-          echo "[Debug] which git: $(which git || echo 'not found')"
+          export HOME=${config.home.homeDirectory}
+          export PATH=${lib.makeBinPath [ pkgs.git pkgs.coreutils ]}:$HOME/.nix-profile/bin:/usr/bin:/bin
 
           echo "[Home Manager] - starting rebuild at $(date)"
-          ${pkgs.git}/bin/git -C ${config.home.homeDirectory}/NixOs-Config pull
-          ${pkgs.home-manager}/bin/home-manager switch --flake "${config.home.homeDirectory}/NixOs-Config#$(${pkgs.coreutils}/bin/hostname)"
+          git -C ${config.home.homeDirectory}/NixOs-Config pull
+          $HOME/.nix-profile/bin/home-manager switch --flake ${config.home.homeDirectory}/NixOs-Config#"$(hostname)"
         '';
       };
     };

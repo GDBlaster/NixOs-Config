@@ -22,7 +22,7 @@ let cfg = config.services.hm-autoupdate; in {
       Service = {
         Type = "oneshot";
         # Get the absolute path to your flake
-        ExecStart = "${pkgs.nh}/bin/nh home switch -b backup";
+        ExecStart = "${pkgs.home-manager}/bin/home-manager switch --flake path:/home/paul/NixOs-Config#paul@fujiserver";
         Environment = [
           "NIX_CONFIG=experimental-features=nix-command flakes"
           "NH_FLAKE=${config.home.homeDirectory}/NixOs-Config"

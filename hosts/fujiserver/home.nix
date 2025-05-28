@@ -6,5 +6,5 @@
 
   hmIsModule = false;
   desktop = "none";
-  services.hm-autoupdate.enable = true;
+  # services.hm-autoupdate.enable = true;
 }

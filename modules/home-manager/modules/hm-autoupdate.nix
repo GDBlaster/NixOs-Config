@@ -16,32 +16,31 @@ let cfg = config.services.hm-autoupdate; in {
 
   config = lib.mkIf cfg.enable {
     systemd.user.services.home-manager-rebuild = {
-      Unit.Description = "Pull and rebuild config";
-
+      Unit = {
+        Description = "Rebuild Home Manager configuration from flake";
+      };
       Service = {
         Type = "oneshot";
-        ExecStart = pkgs.writeShellScript "hm-rebuild" ''
-          set -euo pipefail
-
-          export HOME=${config.home.homeDirectory}
-          export PATH=${lib.makeBinPath [ pkgs.git pkgs.coreutils ]}:$HOME/.nix-profile/bin:/usr/bin:/bin
-
-          echo "[Home Manager] - starting rebuild at $(date)"
-          git -C ${config.home.homeDirectory}/NixOs-Config pull
-          $HOME/.nix-profile/bin/home-manager switch --flake ${config.home.homeDirectory}/NixOs-Config#"$(hostname)"
-        '';
+        # Get the absolute path to your flake
+        ExecStart = "${config.home.profileDirectory}/bin/home-manager switch --flake path:$HOME/NixOs-Config#$(${pkgs.hostname}/bin/hostname)";
+        Environment = [
+          "NIX_CONFIG=experimental-features = nix-command flakes"
+        ];
       };
     };
 
     systemd.user.timers.home-manager-rebuild = {
-      Unit.Description = "Pull and rebuild config";
-
+      Unit = {
+        Description = "Daily rebuild of Home Manager flake configuration";
+      };
       Timer = {
         OnCalendar = cfg.frequency;
         Persistent = true;
+        RandomizedDelaySec = "1h";
       };
-
-      Install.WantedBy = ["timers.target"];
+      Install = {
+        WantedBy = ["timers.target"];
+      };
     };
   };
 }

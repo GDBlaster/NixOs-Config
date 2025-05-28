@@ -21,7 +21,7 @@ let cfg = config.services.hm-autoupdate; in {
       };
       Service = {
         Type = "oneshot";
-        ExecStart = "${pkgs.home-manager}/bin/home-manager switch --flake path:${home.homeDirectory}/NixOs-Config#${home.username}@%H";
+        ExecStart = "${pkgs.home-manager}/bin/home-manager switch --flake path:${config.home.homeDirectory}/NixOs-Config#${config.home.username}@%H";
         Environment = [
           "NIX_CONFIG=experimental-features=nix-command flakes"
         ];

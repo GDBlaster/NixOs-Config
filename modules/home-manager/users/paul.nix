@@ -124,6 +124,7 @@
     }
   ];
   imports = [
+    ./default.nix
     ./../../options.nix
     ./../modules/lf/lf.nix
     ./../modules/hyprland/hyprland.nix

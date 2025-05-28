@@ -57,13 +57,11 @@
       home.shellAliases = lib.mkMerge [
         (lib.mkIf config.hmIsModule {
           nr = "git -C /etc/nixos pull ; nh os switch";
-          ## nu = "git -C /etc/nixos pull ; nh os switch -u";
           nb = "git -C /etc/nixos pull ; nh os boot";
         })
 
         (lib.mkIf (!config.hmIsModule) {
-          nr = "git -C ~/NixOs-Config pull ; nh home switch -c $HOSTNAME -b backup";
-          ## nu = "git -C ~/nixos pull ; nh home switch -c $HOSTNAME -b backup -u";
+          nr = "git -C ~/NixOs-Config pull ; nh home switch -b backup";
         })
 
         {

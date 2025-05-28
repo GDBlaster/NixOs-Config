@@ -6,7 +6,7 @@
 let
   standalone = pkgs.writeShellScriptBin "nu" ''
     git -C ~/NixOs-Config pull
-    nh home switch -c $HOSTNAME -b backup -u
+    nh home switch -b backup -u
 
     if [ $? -eq 0 ]; then
       COMMIT_DATE=$(date +%Y%m%d)

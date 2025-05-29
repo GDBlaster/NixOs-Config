@@ -24,6 +24,7 @@ let cfg = config.services.hm-autoupdate; in {
         ExecStart = "${pkgs.home-manager}/bin/home-manager switch --flake path:${config.home.homeDirectory}/NixOs-Config#${config.home.username}@%H";
         Environment = [
           ''NIX_CONFIG="experimental-features=nix-command flakes"''
+          "PATH=${lib.makeSearchPath "bin" [ pkgs.nix ]}"
         ];
       };
     };

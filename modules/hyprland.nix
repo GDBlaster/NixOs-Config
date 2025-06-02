@@ -53,7 +53,7 @@
 
     systemd.services.greetd = {
       serviceConfig.Type = "idle";
-      unitConfig.After = ["docker.service"];
+      unitConfig.After = ["docker.service" "nh-clean.service"];
     };
 
     systemd.services.numLockOnTty = {

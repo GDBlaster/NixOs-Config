@@ -105,6 +105,13 @@
             };
           };
 
+          "hyprland/window" = {
+            rewrite = {
+              "(.*) — Mozilla Firefox" = "<span font='16'>󰈹</span> $1";
+              "(.*) - Visual Studio Code" = "<span font='16'></span> $1";
+            };
+          };
+
           backlight = {
             device = "intel_backlight";
             format = "{icon} {percent}%";

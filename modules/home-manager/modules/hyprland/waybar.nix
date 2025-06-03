@@ -106,9 +106,12 @@
           };
 
           "hyprland/window" = {
+            format = " {}";
             rewrite = {
               "(.*) — Mozilla Firefox" = "<span font='16'>󰈹</span> $1";
               "(.*) - Visual Studio Code" = "<span font='16'></span> $1";
+              "^(\\(\\d+\\) )?Discord \\| (.+)$" = "<span font='16'></span> $1 $2";
+              #"(.*)" = "| $1";
             };
           };
 

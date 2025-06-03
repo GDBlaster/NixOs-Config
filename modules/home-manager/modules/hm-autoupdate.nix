@@ -1,5 +1,13 @@
-{pkgs,lib,config,...}:
-let cfg = config.services.hm-autoupdate; in {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
+  cfg = config.services.hm-autoupdate;
+in
+{
 
   options.services.hm-autoupdate = {
     enable = lib.mkEnableOption "Enable automatic Home manager pulls and rebuilds";
@@ -21,10 +29,15 @@ let cfg = config.services.hm-autoupdate; in {
       };
       Service = {
         Type = "oneshot";
-        ExecStart = "${pkgs.home-manager}/bin/home-manager switch --flake path:${config.home.homeDirectory}/NixOs-Config#${config.home.username}@%H";
+        ExecStart = pkgs.writeShellScript "rebuild" ''
+          set -auEeo pipefail
+
+          PATH="$PATH:/run/current-system/sw/bin:/home/$USER/.nix-profile/bin"
+
+          home-manager switch --flake ~/NixOs-Config#$USER@%H
+        '';
         Environment = [
           ''NIX_CONFIG="experimental-features=nix-command flakes"''
-          "PATH=${lib.makeSearchPath "bin" [ pkgs.nix ]}"
         ];
       };
     };
@@ -39,7 +52,7 @@ let cfg = config.services.hm-autoupdate; in {
         RandomizedDelaySec = "1h";
       };
       Install = {
-        WantedBy = ["timers.target"];
+        WantedBy = [ "timers.target" ];
       };
     };
   };

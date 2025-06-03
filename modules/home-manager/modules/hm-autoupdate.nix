@@ -29,7 +29,7 @@ in
       };
       Service = {
         Type = "oneshot";
-        ExecStart = ''bin/sh -xc "set -auEeo pipefail ; home-manager switch --flake ~/NixOs-Config#$USER@%H"'';
+        ExecStart = ''bin/sh -xc \"set -auEeo pipefail ; home-manager switch --flake ~/NixOs-Config#$USER@%H\"'';
         Environment = [
           ''NIX_CONFIG="experimental-features=nix-command flakes"''
           ''PATH="$PATH:/run/current-system/sw/bin:/home/$USER/.nix-profile/bin"''

@@ -109,7 +109,10 @@
           ];
         };
 
-        thefuck.enable = true;
+        pay-respects = {
+          enable = true;
+          options = ["--alias" "fuck"];
+        };
 
         git = {
           enable = true;

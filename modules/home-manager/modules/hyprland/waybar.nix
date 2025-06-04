@@ -21,6 +21,7 @@
           modules-left = [
             "image"
             "tray"
+            "custom/separator"
             "hyprland/window"
           ];
           modules-center = [ "clock" ];
@@ -44,6 +45,11 @@
               "custom/hibernate"
               "custom/logout"
             ];
+          };
+
+          "custom/separator" = {
+            format = " |";
+            class = "separator";
           };
 
           "custom/lock" = {
@@ -108,10 +114,12 @@
           "hyprland/window" = {
             format = " {}";
             rewrite = {
-              "(.*) — Mozilla Firefox" = "<span font='16'>󰈹</span> $1";
-              "(.*) - Visual Studio Code" = "<span font='16'></span> $1";
+              "^ $" = "Desktop";
+              "^(.*) - YouTube — Mozilla Firefox$" = "<span font='16'>󰗃</span> $1";
+              "^(.*?)(?: - (?!YouTube).*?)? — Mozilla Firefox$" = "<span font='16'>󰈹</span> $1";
+              "^(.*) - Visual Studio Code$" = "<span font='16'></span> $1";
               "^(\\(\\d+\\) )?Discord \\| (.+)$" = "<span font='16'></span> $1 $2";
-              #"(.*)" = "| $1";
+              #"(.*)" = "| $1"; # fallback rule disabled because nix attribute sets are not ordered
             };
           };
 

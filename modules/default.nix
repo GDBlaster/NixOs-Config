@@ -27,9 +27,8 @@
       hardware.bluetooth.powerOnBoot = true;
     })
 
-
     {
-      nixpkgs.overlays = [(import ./../overlays/papirus-icon-theme.nix)];
+      nixpkgs.overlays = [ (import ./../overlays/papirus-icon-theme.nix) ];
 
       # clone config in /etc/nixos
       system.activationScripts.setGitRemote = ''
@@ -77,6 +76,15 @@
       environment.pathsToLink = [ "/share/zsh" ];
 
       nix.optimise.automatic = true;
+
+      # sync channel based commands to flake input
+      systemd.tmpfiles.rules = [
+        "L+ /etc/nixPath - - - - ${pkgs.path}"
+      ];
+
+      nix = {
+        nixPath = [ "nixpkgs=/etc/nixPath" ];
+      };
 
       # Bootloader
       boot.loader.efi.canTouchEfiVariables = true;

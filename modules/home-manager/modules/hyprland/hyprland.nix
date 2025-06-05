@@ -85,7 +85,6 @@
           "waybar"
           "dunst"
           "systemctl --user start hyprpolkitagent"
-          "nm-applet &"
         ];
 
         # Environment variables

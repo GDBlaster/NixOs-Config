@@ -21,6 +21,7 @@
           modules-left = [
             "image"
             "tray"
+            "network"
             "custom/separator"
             "hyprland/window"
           ];
@@ -31,6 +32,24 @@
             "battery"
             "group/power"
           ];
+
+          clock = {
+            tooltip-format = "<tt><small>{calendar}</small></tt>";
+            calendar = {
+              mode = "year";
+              mode-mon-col = 3;
+              weeks-pos = "right";
+              on-scroll = 1;
+              format = {
+                months = "<span color='${config.lib.stylix.colors.withHashtag.base0A}'><b>{}</b></span>";
+                days = "<span color='${config.lib.stylix.colors.withHashtag.base08}'><b>{}</b></span>";
+                weeks = "<span color='${config.lib.stylix.colors.withHashtag.base0B}'><b>W{}</b></span>";
+                weekdays = "<span color='${config.lib.stylix.colors.withHashtag.base09}'><b>{}</b></span>";
+                today = "<span color='${config.lib.stylix.colors.withHashtag.base0E}'><b><u>{}</u></b></span>";
+              };
+            };
+
+          };
 
           "group/power" = {
             orientation = "horizontal";
@@ -109,6 +128,25 @@
               warning = 25;
               critical = 10;
             };
+          };
+
+          network = {
+            format = "{icon}";
+            format-disconnected = "󰤮";
+            format-ethernet = "󰈀";
+            tooltip-format-wifi = "{ssid} ({strength}%)";
+            tooltip-format-ethernet = "{interface}";
+            tooltip-format-disconnected = "Disconnected";
+            format-icons = {
+              default = [
+                "󰤯"
+                "󰤟"
+                "󰤢"
+                "󰤥"
+                "󰤨"
+              ];
+            };
+            on-click = "${pkgs.rofi-network-manager}/bin/rofi-network-manager";
           };
 
           "hyprland/window" = {
@@ -195,6 +233,10 @@
         }
         #battery.full {
           color: ${config.lib.stylix.colors.withHashtag.base0B};
+        }
+
+        #network {
+          font-size: 25px;
         }
 
         #image {

@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   config,
   ...
@@ -29,7 +28,7 @@ in
       };
       Service = {
         Type = "oneshot";
-        ExecStart = ''bin/sh -xc \"set -auEeo pipefail ; home-manager switch --flake ~/NixOs-Config#$USER@%H\"'';
+        ExecStart = ''home-manager switch'';
         Environment = [
           ''NIX_CONFIG="experimental-features=nix-command flakes"''
           ''PATH="$PATH:/run/current-system/sw/bin:/home/$USER/.nix-profile/bin"''

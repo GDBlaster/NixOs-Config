@@ -70,6 +70,8 @@
 
       services.tailscale.enable = true;
 
+      services.preload.enable = true;
+
       programs.steam.enable = lib.mkIf (!(config.desktop == "none")) true;
 
       # Zsh Completion for system packages

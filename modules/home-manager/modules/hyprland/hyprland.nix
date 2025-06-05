@@ -44,10 +44,11 @@
           "$move, Q, movewindow, l"
           "$move, D, movewindow, r"
           "$mod, F, exec, firefox"
+          "$mod, V, exec, code"
           "$mod, E, exec, thunar"
           "$mod, C, killactive"
           "$mod, M, fullscreen, 1"
-          "$mod, V, togglefloating"
+          "$mod, B, togglefloating"
           "$mod, J, togglesplit"
           "$mod, L, exec, hyprlock"
           "$mod, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m window"
@@ -103,6 +104,10 @@
           numlock_by_default = true;
         };
 
+        misc = {
+          focus_on_activate = true;
+        };
+
         windowrulev2 = [
           "rounding 0, fullscreen:1"
           "bordersize 0, fullscreen:1"
@@ -117,7 +122,6 @@
           "f[1], gapsout:0, gapsin:0"
         ];
 
-        # General configuration
         general = {
           gaps_in = 5;
           gaps_out = 10;
@@ -128,7 +132,6 @@
           no_border_on_floating = true;
         };
 
-        # Decoration configuration
         decoration = {
           rounding = 10;
           blur = {
@@ -202,7 +205,9 @@
         "-ep"
         "-w 25"
         "-c 10"
-        ''-W "Battery Low" -C "Battery Critical" -D "systemctl hibernate"''
+        ''-W "Battery Low"''
+        ''-C "Battery Critical"''
+        ''-D "systemctl hibernate"''
       ];
     };
 

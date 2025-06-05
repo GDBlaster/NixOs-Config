@@ -117,7 +117,7 @@
       haskell.symbol = " ";
       haxe.symbol = " ";
       hg_branch.symbol = " ";
-      hostname.ssh_symbol = " ";
+      hostname.ssh_symbol = "";
       java.symbol = " ";
       julia.symbol = " ";
       kotlin.symbol = " ";

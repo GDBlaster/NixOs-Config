@@ -29,7 +29,7 @@ in
       };
       Service = {
         Type = "oneshot";
-        ExecStart = ''${lib.getExe pkgs.home-manager}'';
+        ExecStart = ''${lib.getExe pkgs.home-manager} switch --flake /home/$USER/NixOs/#${config.home.username}@%H'';
         Environment = [
           ''NIX_CONFIG="experimental-features=nix-command flakes"''
           ''PATH="$PATH:/run/current-system/sw/bin:/home/$USER/.nix-profile/bin"''

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -28,7 +29,7 @@ in
       };
       Service = {
         Type = "oneshot";
-        ExecStart = ''home-manager switch'';
+        ExecStart = ''${lib.getExe pkgs.home-manager}'';
         Environment = [
           ''NIX_CONFIG="experimental-features=nix-command flakes"''
           ''PATH="$PATH:/run/current-system/sw/bin:/home/$USER/.nix-profile/bin"''

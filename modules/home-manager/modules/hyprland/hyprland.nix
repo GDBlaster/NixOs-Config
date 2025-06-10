@@ -34,7 +34,6 @@
         "$move" = "ALT";
         "$shift" = "SHIFT";
 
-        # Keybindings
         bind = [
           "$mod, A, exec, kitty"
           "$mod, Q, movetoworkspace, -1"
@@ -78,7 +77,6 @@
           "eDP-1, highres, auto, 1"
         ];
 
-        # Autostart applications
         exec-once = [
           "swww init"
           "swww img ~/Pictures/wallpaper.jpg"
@@ -87,7 +85,6 @@
           "systemctl --user start hyprpolkitagent"
         ];
 
-        # Environment variables
         env = [
           "NIXOS_OZONE_WL, 1"
           "QT_QPA_PLATFORM, wayland"
@@ -95,7 +92,6 @@
           "MOZ_ENABLE_WAYLAND, 1"
         ];
 
-        # Input configuration
         input = {
           kb_layout = "fr";
           follow_mouse = 1;
@@ -140,7 +136,6 @@
           };
         };
 
-        # Animations
         animations = {
           enabled = true;
           bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
@@ -154,13 +149,11 @@
           ];
         };
 
-        # Dwindle layout
         dwindle = {
           pseudotile = true;
           preserve_split = true;
         };
 
-        # Gestures
         gestures = {
           workspace_swipe = true;
         };

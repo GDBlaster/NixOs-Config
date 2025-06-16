@@ -25,6 +25,10 @@
   environment.systemPackages = with pkgs ; [
     tpm2-tss
     exegol
+    burpsuite
+    hashcat
+    ocl-icd
+    clinfo
   ];
 
   swapDevices = [{
@@ -44,6 +48,15 @@
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [python314];
+  };
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-ocl
+      intel-compute-runtime
+    ];
   };
 
   virtualisation.docker.enable = true;

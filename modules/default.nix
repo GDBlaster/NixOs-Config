@@ -89,10 +89,13 @@
       };
 
       # Bootloader
-      boot.loader.efi.canTouchEfiVariables = true;
-      boot.loader.grub = {
-        efiSupport = true;
-        device = "nodev";
+      boot.loader = {
+        efi.canTouchEfiVariables = true;
+        grub = {
+          efiSupport = true;
+          device = "nodev";
+        };
+        timeout = 2;
       };
 
       # Enable networking

@@ -7,7 +7,7 @@
 {
   config = lib.mkIf (config.desktop == "hyprland") {
     home.packages = with pkgs; [
-      networkmanagerapplet
+      # networkmanagerapplet
     ];
 
     programs.waybar = {
@@ -28,6 +28,7 @@
           modules-center = [ "clock" ];
           modules-right = [
             #"group/hardware"
+            "bluetooth"
             "backlight"
             "battery"
             "group/power"
@@ -149,6 +150,19 @@
             on-click = "${pkgs.rofi-network-manager}/bin/rofi-network-manager";
           };
 
+          bluetooth = {
+            format-no-controller = "";
+            format-off = "󰂲";
+            format-disabled = "󰂲";
+            format-on = "󰂳";
+            format-connected = "󰂯 {num_connections}";
+            format-connected-battery = "{num_connections} 󰥈󰂯 ({battery}%)";
+            tooltip-format = "{device_enumerate}";
+            tootltip-format-enumerate-connected = "{device_name}";
+            tootltip-format-enumerate-connected-battery = "{device_name} 󰥈󰂯 ({battery}%)";
+            on-click = "${pkgs.blueman}/bin/blueman-manager";
+          };
+
           "hyprland/window" = {
             format = " {}";
             rewrite = {
@@ -237,6 +251,14 @@
 
         #network {
           font-size: 25px;
+        }
+
+        #bluetooth.connected {
+          color: ${config.lib.stylix.colors.withHashtag.base0D};
+        }
+
+        bluetooth.discovering {
+          color: ${config.lib.stylix.colors.withHashtag.base0E};
         }
 
         #image {

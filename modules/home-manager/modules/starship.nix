@@ -32,10 +32,15 @@
         "$container"
         "$nix_shell"
         "[ ](fg:magenta)"
+        "$fill"
+        "$sudo"
+        "$memory_usage"
         "$line_break"
         "[╰](bold purple)"
         "$character"
       ];
+
+      right_format = "$cmd_duration";
 
       os = {
         disabled = false;
@@ -86,6 +91,29 @@
         style = "bold white bg:magenta";
       };
 
+      fill = {
+        symbol = " ";
+      };
+
+      sudo = {
+        format = "[$symbol]($style)";
+        style = "purple_again";
+        disabled = false;
+      };
+
+      memory_usage = {
+        threshold = -1;
+        format = "[$symbol $ram | $swap]($style)";
+        style = "purple_again";
+        disabled = false;
+      };
+
+      cmd_duration = {
+        format = "[ $duration]($style)";
+        style = "bold purple_again";
+        show_notifications = true;
+      };
+
       palettes.purpleblue = {
         dark_gray = "#333333";
         purple = "#600080";
@@ -122,7 +150,7 @@
       julia.symbol = " ";
       kotlin.symbol = " ";
       lua.symbol = " ";
-      memory_usage.symbol = "󰍛 ";
+      memory_usage.symbol = " ";
       meson.symbol = "󰔷 ";
       nim.symbol = "󰆥 ";
       nix_shell.symbol = " ";
@@ -184,6 +212,7 @@
       ruby.symbol = " ";
       rust.symbol = "󱘗 ";
       scala.symbol = " ";
+      sudo.symbol = "󰌾 ";
       swift.symbol = " ";
       zig.symbol = " ";
       gradle.symbol = " ";

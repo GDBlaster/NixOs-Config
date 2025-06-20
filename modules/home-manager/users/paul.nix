@@ -114,6 +114,8 @@
           options = ["--alias" "fuck"];
         };
 
+        newsboat.enable = true;
+
         git = {
           enable = true;
           userName = "GDBlaster";
@@ -135,6 +137,7 @@
     ./../modules/starship.nix
     ./../modules/discord.nix
     ./../modules/hm-autoupdate.nix
+    ./../modules/newsboat.nix
     ./../scripts/nu.nix
     ./../../stylix/stylix.nix
   ];

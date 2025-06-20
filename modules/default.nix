@@ -74,6 +74,8 @@
 
       programs.steam.enable = lib.mkIf (!(config.desktop == "none")) true;
 
+      programs.nix-ld.enable = true;
+
       # Zsh Completion for system packages
       environment.pathsToLink = [ "/share/zsh" ];
 

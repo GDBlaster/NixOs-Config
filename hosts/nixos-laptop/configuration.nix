@@ -24,7 +24,7 @@
   boot.initrd.systemd.enable = true;
   environment.systemPackages = with pkgs ; [
     tpm2-tss
-    exegol
+    # exegol # package doesnt build
     burpsuite
     hashcat
     ocl-icd

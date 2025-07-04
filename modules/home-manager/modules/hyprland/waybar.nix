@@ -26,13 +26,18 @@
             "hyprland/window"
           ];
           modules-center = [ "clock" ];
-          modules-right = [
-            #"group/hardware"
-            "bluetooth"
-            "backlight"
-            "battery"
-            "group/power"
-          ];
+          modules-right =
+            [
+              #"group/hardware";
+            ]
+            ++ 
+            lib.optional config.programs.newsboat.enable "custom/newsboat"
+            ++ [
+              "bluetooth"
+              "backlight"
+              "battery"
+              "group/power"
+            ];
 
           clock = {
             tooltip-format = "<tt><small>{calendar}</small></tt>";
@@ -65,6 +70,19 @@
               "custom/hibernate"
               "custom/logout"
             ];
+          };
+
+          "custom/newsboat" = lib.mkIf (config.programs.newsboat.enable) {
+            exec = pkgs.writeShellScript "newsboat" ''
+              ${pkgs.newsboat}/bin/newsboat -x reload > /dev/null
+              unread=$(${pkgs.newsboat}/bin/newsboat -x print-unread | cut -d ' ' -f1)
+              echo "󰎕 ($unread)"
+            '';
+            interval = 60;
+            format = "{}";
+            tooltip-format = "Newsboat";
+            on-click = "kitty -e ${pkgs.newsboat}/bin/newsboat";
+            class = "button";
           };
 
           "custom/separator" = {

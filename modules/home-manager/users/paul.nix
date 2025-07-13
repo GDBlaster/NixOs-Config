@@ -36,7 +36,7 @@
 
       home.packages = with pkgs; [
         tailscale
-        neofetch
+        fastfetch
         neovim
         atuin
         git
@@ -82,7 +82,7 @@
           enable = true;
           historyControl = [ "ignoreboth" ];
           initExtra = ''
-            neofetch
+            fastfetch
           '';
         };
 

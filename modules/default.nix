@@ -60,6 +60,7 @@
         nil
         nixfmt-rfc-style
         firefox
+        chromium
       ];
 
       # Enable Flakes

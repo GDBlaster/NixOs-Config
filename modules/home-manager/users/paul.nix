@@ -95,7 +95,7 @@
           };
           history.append = true;
           initContent = ''
-            neofetch
+            fastfetch
           '';
         };
 

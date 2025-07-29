@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }:
 
@@ -68,6 +69,11 @@
         "nix-command"
         "flakes"
       ];
+
+      _module.args.stable = import inputs.nixpkgs-stable {
+        inherit (pkgs.stdenv.hostPlatform) system;
+        inherit (config.nixpkgs) config;
+      };
 
       services.tailscale.enable = true;
 

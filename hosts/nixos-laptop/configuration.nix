@@ -5,7 +5,9 @@
 {
   #inputs,
   #config,
+  lib,
   pkgs,
+  stable,
   ...
 }:
 
@@ -19,22 +21,37 @@
   ];
 
   networking.hostName = "nixos-laptop"; # Define your hostname.
-# needed for auto hard drive decrypt
+  # needed for auto hard drive decrypt
 
   boot.initrd.systemd.enable = true;
-  environment.systemPackages = with pkgs ; [
-    tpm2-tss
-    # exegol # package doesnt build
-    burpsuite
-    hashcat
-    ocl-icd
-    clinfo
+  environment = lib.mkMerge [
+    {
+      systemPackages = with pkgs; [
+        tpm2-tss
+        burpsuite
+        hashcat
+        ocl-icd
+        clinfo
+      ];
+    }
+    {
+      systemPackages = with stable; [
+        exegol
+      ];
+    }
   ];
 
-  swapDevices = [{
-  	device = "/var/lib/swapfile";
-	size = 8*1024;
-  }];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024;
+    }
+  ];
+
+  # Enable hibernation
+  boot.kernelParams = [ "resume_offset=8790016" ];
+  boot.resumeDevice = "/dev/disk/by-uuid/8a9aa982-48fe-44b0-b4f8-868bbbf16664";
+  powerManagement.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
@@ -47,7 +64,7 @@
       "docker"
     ];
     shell = pkgs.zsh;
-    packages = with pkgs; [python314];
+    packages = with pkgs; [ python314 ];
   };
 
   hardware.graphics = {
@@ -78,7 +95,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
-
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

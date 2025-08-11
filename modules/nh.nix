@@ -13,8 +13,8 @@
     clean = {
       enable = true;
       dates = "daily";
+      extraArgs = "--keep-since 2d --keep 3";
     };
-    clean.extraArgs = "--keep-since 2d --keep 3";
     flake = "/etc/nixos";
   };
 

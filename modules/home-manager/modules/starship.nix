@@ -62,6 +62,7 @@
       directory = {
         truncation_symbol = ".../";
         style = "bold white bg:midnight";
+        read_only_style = "bold red bg:midnight";
         format = "[$path]($style)[$read_only]($read_only_style)";
       };
 

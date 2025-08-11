@@ -22,10 +22,6 @@
         jellyfin-media-player
         obsidian
         vscode
-        lutris
-        bottles
-        wineWowPackages.stable
-        winetricks
         qbittorrent
       ];
     })

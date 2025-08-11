@@ -20,8 +20,7 @@
     ./../../modules/stylix/stylix.nix
   ];
 
-  networking.hostName = "nixos-laptop"; # Define your hostname.
-  # needed for auto hard drive decrypt
+  networking.hostName = "nixos-laptop";
 
   boot.initrd.systemd.enable = true;
   environment = lib.mkMerge [
@@ -40,6 +39,8 @@
       ];
     }
   ];
+
+  module.gaming.enable = true;
 
   swapDevices = [
     {

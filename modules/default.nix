@@ -11,6 +11,7 @@
     ./options.nix
     ./hyprland.nix
     ./gnome.nix
+    ./gaming.nix
   ];
 
   config = lib.mkMerge [
@@ -78,8 +79,6 @@
       services.tailscale.enable = true;
 
       services.preload.enable = true;
-
-      programs.steam.enable = lib.mkIf (!(config.desktop == "none")) true;
 
       programs.nix-ld.enable = true;
 

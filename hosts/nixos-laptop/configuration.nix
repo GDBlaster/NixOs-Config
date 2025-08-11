@@ -42,6 +42,12 @@
 
   module.gaming.enable = true;
 
+  home-manager.users = {
+    paul = {
+      module.dev.enable = true;
+    };
+  };
+
   swapDevices = [
     {
       device = "/var/lib/swapfile";

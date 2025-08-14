@@ -14,8 +14,10 @@
       heroic
       mangohud
       gamemode
+      gamescope
       wineWowPackages.stable
       winetricks
+      steam
     ];
     programs.steam.enable = true;
   };

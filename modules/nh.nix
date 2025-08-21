@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs,lib, ... }:
 {
   environment.systemPackages = with pkgs; [
     nh
@@ -18,4 +18,9 @@
     flake = "/etc/nixos";
   };
 
+  systemd.services.nh-clean = {
+    serviceConfig = {
+      Type = lib.mkForce "simple";
+    };
+  };
 }

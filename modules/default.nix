@@ -54,7 +54,7 @@
       '';
 
       environment.systemPackages = with pkgs; [
-        neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+        neovim
         wget
         curl
         git
@@ -132,10 +132,9 @@
       services.xserver.xkb = {
         layout = "fr";
         variant = "azerty";
+        options = "caps:ctrl-modifier";
       };
-
-      # Configure console keymap
-      console.keyMap = "fr";
+      console.useXkbConfig = true;
 
       # Allow unfree packages
       nixpkgs.config.allowUnfree = true;

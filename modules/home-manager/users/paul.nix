@@ -33,7 +33,6 @@
       home.packages = with pkgs; [
         tailscale
         fastfetch
-        neovim
         atuin
         git
         nh
@@ -74,6 +73,13 @@
       ];
 
       programs = {
+        neovim = {
+          enable = true;
+          extraLuaConfig = ''
+            vim.keymap.set({"i", "n", "v"}, "<CapsLock>", "<Esc>")
+            '';
+        };
+
         bash = {
           enable = true;
           historyControl = [ "ignoreboth" ];

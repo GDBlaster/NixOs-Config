@@ -97,9 +97,11 @@
           follow_mouse = 1;
           sensitivity = 0;
           numlock_by_default = true;
+          kb_options = "caps:ctrl_modifier";
         };
 
         misc = {
+          middle_click_paste = false;
           focus_on_activate = true;
         };
 

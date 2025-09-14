@@ -13,7 +13,7 @@
       dunst
       libnotify
       swww
-      rofi-wayland
+      rofi
       xarchiver
       rofi-bluetooth
     ];

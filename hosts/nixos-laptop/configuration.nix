@@ -12,6 +12,11 @@
 }:
 
 {
+
+  #### TO REMOVE WHEN JELLYFIN IS PORTED TO QT6 ####
+  nixpkgs.config.permittedInsecurePackages = [ "qtwebengine-5.15.19" ];
+  ##################################################
+
   imports = [
     ./hardware-configuration.nix
     ./../../modules/default.nix

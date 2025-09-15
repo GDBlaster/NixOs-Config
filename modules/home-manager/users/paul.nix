@@ -19,7 +19,7 @@
         aspell
         aspellDicts.en
         aspellDicts.fr
-        jellyfin-media-player
+        # jellyfin-media-player
         obsidian
         vscode
         qbittorrent

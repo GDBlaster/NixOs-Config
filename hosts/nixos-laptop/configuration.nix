@@ -51,8 +51,8 @@
 
   swapDevices = [
     {
-      device = "/var/lib/swapfile";
-      size = 8 * 1024;
+      device = "/dev/nvme0n1p3";
+      randomEncryption.enable = true;
     }
   ];
 

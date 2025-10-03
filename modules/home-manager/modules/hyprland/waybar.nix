@@ -65,9 +65,10 @@
             };
             modules = [
               "custom/shutdown"
+              "custom/hibernate"
+              "custom/reboot"
               "custom/lock"
               "custom/sleep"
-              "custom/hibernate"
               "custom/logout"
             ];
           };
@@ -115,6 +116,13 @@
             format = " 󰗽 ";
             tooltip-format = "Logout";
             on-click = "hyprctl dispatch exit";
+            class = "button";
+          };
+
+          "custom/reboot" = {
+            format = " 󰜉 ";
+            tooltip-format = "Reboot";
+            on-click = "systemctl reboot";
             class = "button";
           };
 
@@ -324,6 +332,13 @@
           border-radius: 3px;
         }
 
+        #custom-reboot {
+          padding-left: 4px;
+          padding-right: 4px;
+          margin-left: 1px;
+          margin-right: 1px;
+          border-radius: 3px;
+        }
                 
         #custom-shutdown:hover {
           background: ${config.lib.stylix.colors.withHashtag.base04};
@@ -350,6 +365,12 @@
         }
 
         #custom-logout:hover {
+          background: ${config.lib.stylix.colors.withHashtag.base04};
+          border-radius: 5px;
+          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+        }
+
+        #custom-reboot:hover {
           background: ${config.lib.stylix.colors.withHashtag.base04};
           border-radius: 5px;
           box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};

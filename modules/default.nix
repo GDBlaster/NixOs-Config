@@ -27,6 +27,8 @@
 
       hardware.bluetooth.enable = true;
       hardware.bluetooth.powerOnBoot = true;
+
+      systemd.services.NetworkManager-wait-online.enable = false;
     })
 
     {

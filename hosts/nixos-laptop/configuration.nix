@@ -57,8 +57,6 @@
   ];
 
   # Enable hibernation
-  boot.kernelParams = [ "resume_offset=8790016" ];
-  boot.resumeDevice = "/dev/disk/by-uuid/8a9aa982-48fe-44b0-b4f8-868bbbf16664";
   powerManagement.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

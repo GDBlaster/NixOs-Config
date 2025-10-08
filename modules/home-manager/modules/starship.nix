@@ -84,6 +84,7 @@
       };
 
       container = {
+        format = "[$symbol $name ]($style)";
         style = "bold white bg:magenta";
       };
 
@@ -131,6 +132,7 @@
       c.symbol = " ";
       cmake.symbol = " ";
       conda.symbol = " ";
+      container.symbol = " ";
       crystal.symbol = " ";
       dart.symbol = " ";
       directory.read_only = " 󰌾";

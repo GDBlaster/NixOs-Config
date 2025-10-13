@@ -32,6 +32,7 @@
         hashcat
         ocl-icd
         clinfo
+        distrobox
       ];
     }
     {

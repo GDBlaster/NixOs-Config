@@ -28,7 +28,6 @@
     {
       systemPackages = with pkgs; [
         tpm2-tss
-        burpsuite
         hashcat
         ocl-icd
         clinfo

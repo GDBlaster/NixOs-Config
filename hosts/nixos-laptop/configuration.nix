@@ -32,11 +32,12 @@
         ocl-icd
         clinfo
         distrobox
+        exegol
       ];
     }
     {
       systemPackages = with stable; [
-        exegol
+        
       ];
     }
   ];

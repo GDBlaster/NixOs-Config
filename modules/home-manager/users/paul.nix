@@ -77,7 +77,7 @@
           enable = true;
           extraLuaConfig = ''
             vim.keymap.set({"i", "n", "v"}, "<CapsLock>", "<Esc>")
-            '';
+          '';
         };
 
         bash = {
@@ -113,15 +113,20 @@
 
         pay-respects = {
           enable = true;
-          options = ["--alias" "fuck"];
+          options = [
+            "--alias"
+            "fuck"
+          ];
         };
 
         newsboat.enable = true;
 
         git = {
           enable = true;
-          userName = "GDBlaster";
-          userEmail = "65135527+GDBlaster@users.noreply.github.com";
+          settings = {
+            user.name = "GDBlaster";
+            user.email = "65135527+GDBlaster@users.noreply.github.com";
+          };
         };
       };
 

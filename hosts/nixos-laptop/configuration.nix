@@ -37,7 +37,7 @@
     }
     {
       systemPackages = with stable; [
-        
+
       ];
     }
   ];
@@ -90,8 +90,10 @@
 
   desktop = "hyprland";
 
-  services.logind.powerKey = "suspend";
-  services.logind.powerKeyLongPress = "poweroff";
+  services.logind.settings.Login = {
+    HandlePowerKey = "suspend";
+    HandlePowerKeyLongPress = "poweroff";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

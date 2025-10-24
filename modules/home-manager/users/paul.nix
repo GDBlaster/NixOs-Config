@@ -3,6 +3,7 @@
   config,
   lib,
   osConfig,
+  inputs,
   ...
 }:
 
@@ -25,6 +26,17 @@
         qbittorrent
       ];
     })
+
+    (
+      let
+      nixvim-package = inputs.nixvim.packages.x86_64-linux.default;
+      extended-nixvim = nixvim-package.extend config.stylix.targets.nixvim.exportedModule;
+      in 
+      {
+       home.packages = [ extended-nixvim ];
+      }
+    )
+
 
     {
       home.username = "paul";
@@ -73,12 +85,6 @@
       ];
 
       programs = {
-        neovim = {
-          enable = true;
-          extraLuaConfig = ''
-            vim.keymap.set({"i", "n", "v"}, "<CapsLock>", "<Esc>")
-          '';
-        };
 
         bash = {
           enable = true;
@@ -135,6 +141,7 @@
       programs.home-manager.enable = true;
     }
   ];
+
   imports = [
     ./default.nix
     ./../../options.nix

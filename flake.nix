@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim.url = "github:/GDBlaster/NixVim";
+
     stylix.url = "github:danth/stylix";
   };
 
@@ -18,6 +20,7 @@
       nixpkgs,
       nixpkgs-stable,
       home-manager,
+      nixvim,
       ...
     }@inputs:
     {

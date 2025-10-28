@@ -83,6 +83,7 @@
           "waybar"
           "dunst"
           "systemctl --user start hyprpolkitagent"
+          "keepassxc"
         ];
 
         env = [

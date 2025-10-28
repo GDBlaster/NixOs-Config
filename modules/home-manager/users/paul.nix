@@ -25,6 +25,8 @@
         vscode
         qbittorrent
       ];
+
+      programs.keepassxc.enable = true;
     })
 
     (

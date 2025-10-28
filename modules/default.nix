@@ -23,6 +23,7 @@
 
       environment.systemPackages = with pkgs; [
         lan-mouse
+        mpv
       ];
 
       hardware.bluetooth.enable = true;

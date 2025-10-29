@@ -42,19 +42,6 @@
         ];
       };
 
-      homeConfigurations."paul@pop-os" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config = {
-            allowUnfree = true;
-          };
-        };
-        modules = [
-          inputs.stylix.homeModules.stylix
-          ./hosts/pop-os/home.nix
-        ];
-      };
-
       homeConfigurations."paul@fujiserver" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
@@ -62,6 +49,7 @@
             allowUnfree = true;
           };
         };
+        extraSpecialArgs = { inherit inputs;};
         modules = [
           inputs.stylix.homeModules.stylix
           ./hosts/fujiserver/home.nix

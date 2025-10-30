@@ -74,6 +74,7 @@
         })
 
         {
+          nsc = "nh clean all --keep 3; nix store optimise -v";
           ls = "ls --color=auto";
           grep = "grep --color=auto";
           fgrep = "fgrep --color=auto";

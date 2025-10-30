@@ -76,7 +76,7 @@
             exec = pkgs.writeShellScript "newsboat" ''
               ${pkgs.newsboat}/bin/newsboat -x reload > /dev/null
               unread=$(${pkgs.newsboat}/bin/newsboat -x print-unread | cut -d ' ' -f1)
-              echo "󰎕 ($unread)"
+              echo " 󰎕 ($unread)"
             '';
             interval = 60;
             format = "{}";

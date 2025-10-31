@@ -12,6 +12,7 @@
     ./hyprland.nix
     ./gnome.nix
     ./gaming.nix
+    ./syncthing.nix
   ];
 
   config = lib.mkMerge [

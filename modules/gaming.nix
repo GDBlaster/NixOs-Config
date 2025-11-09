@@ -18,6 +18,10 @@
       wineWowPackages.stable
       winetricks
       steam
+      ryubing
+      dolphin-emu
+      azahar
+      retroarch-full
     ];
     programs.steam.enable = true;
   };

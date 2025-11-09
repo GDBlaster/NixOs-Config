@@ -124,8 +124,6 @@
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
-          "col.active_border" = lib.mkDefault "rgba(33ccffee) rgba(00ff99ee) 45deg";
-          "col.inactive_border" = lib.mkDefault "rgba(595959aa)";
           layout = "dwindle";
           no_border_on_floating = true;
         };
@@ -173,7 +171,6 @@
 
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi;
       terminal = "${pkgs.kitty}/bin/kitty";
       theme =
         let

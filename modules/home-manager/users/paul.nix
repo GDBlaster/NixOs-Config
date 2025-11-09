@@ -67,14 +67,15 @@
         (lib.mkIf config.hmIsModule {
           nr = "git -C /etc/nixos pull ; nh os switch";
           nb = "git -C /etc/nixos pull ; nh os boot";
+          nsc = "nh clean all --keep 3; nix store optimise -v";
         })
 
         (lib.mkIf (!config.hmIsModule) {
           nr = "git -C ~/NixOs-Config pull ; nh home switch -b backup";
+          nsc = "nh clean user --keep 3; nix store optimise -v";
         })
 
         {
-          nsc = "nh clean all --keep 3; nix store optimise -v";
           ls = "ls --color=auto";
           grep = "grep --color=auto";
           fgrep = "fgrep --color=auto";
@@ -83,6 +84,8 @@
           ll = "ls -alF";
           la = "ls -A";
           lc = "ls -CF";
+
+          salope = "sudo !!";
 
         }
       ];

@@ -34,6 +34,9 @@
     {
       # nixpkgs.overlays = [ (import ./../overlays/ ) ];
 
+
+      programs.nh.enable = lib.mkDefault true;
+
       # clone config in /etc/nixos
       system.activationScripts.setGitRemote = ''
         export PATH="${pkgs.git}/bin:$PATH"

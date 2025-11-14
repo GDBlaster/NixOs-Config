@@ -21,7 +21,7 @@
       ryubing
       dolphin-emu
       azahar
-      retroarch-full
+      retroarch-free
     ];
     programs.steam.enable = true;
   };

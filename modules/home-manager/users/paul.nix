@@ -20,7 +20,6 @@
         aspell
         aspellDicts.en
         aspellDicts.fr
-        # jellyfin-media-player
         obsidian
         vscode
         qbittorrent
@@ -85,7 +84,7 @@
           la = "ls -A";
           lc = "ls -CF";
 
-          salope = "sudo !!";
+          salope = "sudo $(fc -ln -1)";
 
         }
       ];

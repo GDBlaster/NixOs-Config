@@ -21,11 +21,6 @@
     ./../../modules/stylix/stylix.nix
   ];
 
-  stacks = {
-    enable = true;
-    httpd.enable = true;
-  };
-
   networking.hostName = "nixos-laptop";
 
   boot.initrd.systemd.enable = true;

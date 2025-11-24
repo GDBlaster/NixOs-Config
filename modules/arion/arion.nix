@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   config,
   ...
@@ -11,16 +10,15 @@
   ];
 
   options.stacks = {
-    enable = lib.mkEnableOption "Enable managed docker";
     httpd.enable = lib.mkEnableOption "httpd stack";
   };
 
-  config = lib.mkIf config.stacks.enable {
+  config ={
     virtualisation.docker.enable = true;
     virtualisation.podman.enable = true;
 
     virtualisation.arion = {
-      backend = "docker";
+      backend = lib.mkDefault "docker";
     };
   };
 }

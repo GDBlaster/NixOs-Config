@@ -20,6 +20,8 @@
       };
     };
 
+    services.hyprpaper.enable = true;
+
     home.sessionVariables = {
       XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
       XDG_DOWNLOADS_DIR = "${config.home.homeDirectory}/Downloads";
@@ -36,8 +38,10 @@
 
         bind = [
           "$mod, A, exec, kitty"
-          "$mod, Q, movetoworkspace, -1"
-          "$mod, D, movetoworkspace, +1"
+          "$mod + $move, Q, movetoworkspace, -1"
+          "$mod, Q, workspace, -1"
+          "$mod + $move, D, movetoworkspace, +1"
+          "$mod, D, workspace, +1"
           "$move, Z, movewindow, u"
           "$move, S, movewindow, d"
           "$move, Q, movewindow, l"
@@ -78,8 +82,7 @@
         ];
 
         exec-once = [
-          "swww init"
-          "swww img ~/Pictures/wallpaper.jpg"
+          "hyprpaper"
           "waybar"
           "dunst"
           "systemctl --user start hyprpolkitagent"

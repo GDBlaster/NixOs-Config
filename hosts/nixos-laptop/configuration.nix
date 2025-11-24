@@ -21,6 +21,11 @@
     ./../../modules/stylix/stylix.nix
   ];
 
+  stacks = {
+    enable = true;
+    httpd.enable = true;
+  };
+
   networking.hostName = "nixos-laptop";
 
   boot.initrd.systemd.enable = true;
@@ -33,6 +38,8 @@
         clinfo
         distrobox
         exegol
+        burpsuite
+        borgbackup
       ];
     }
     {
@@ -43,6 +50,10 @@
   ];
 
   module.gaming.enable = true;
+
+  backup.client = {
+    enable = true;
+  };
 
   home-manager.users = {
     paul = {
@@ -84,6 +95,8 @@
       intel-compute-runtime
     ];
   };
+
+  virtualisation.vmware.host.enable = true;
 
   virtualisation.docker.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;

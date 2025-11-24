@@ -10,9 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim.url = "github:/GDBlaster/NixVim";
+    nixvim.url = "github:GDBlaster/NixVim";
 
     stylix.url = "github:danth/stylix";
+
+    arion.url = "github:hercules-ci/arion";
   };
 
   outputs =
@@ -21,6 +23,7 @@
       nixpkgs-stable,
       home-manager,
       nixvim,
+      arion,
       ...
     }@inputs:
     {
@@ -39,6 +42,7 @@
         modules = [
           ./hosts/nixos-laptop/configuration.nix
           inputs.stylix.nixosModules.stylix
+          inputs.arion.nixosModules.arion
         ];
       };
 

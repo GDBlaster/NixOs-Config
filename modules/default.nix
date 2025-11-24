@@ -13,6 +13,8 @@
     ./gnome.nix
     ./gaming.nix
     ./syncthing.nix
+    ./backup.nix
+    ./arion/arion.nix
   ];
 
   config = lib.mkMerge [

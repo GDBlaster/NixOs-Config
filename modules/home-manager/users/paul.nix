@@ -71,7 +71,7 @@
 
         (lib.mkIf (!config.hmIsModule) {
           nr = "git -C ~/NixOs-Config pull ; nh home switch -b backup";
-          nsc = "nh clean user --keep 3; nix store optimise -v";
+          nsc = "nh clean user --keep 3 -v; nix store optimise -v";
         })
 
         {

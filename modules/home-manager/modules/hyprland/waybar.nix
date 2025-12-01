@@ -26,18 +26,16 @@
             "hyprland/window"
           ];
           modules-center = [ "clock" ];
-          modules-right =
-            [
-              #"group/hardware";
-            ]
-            ++ 
-            lib.optional config.programs.newsboat.enable "custom/newsboat"
-            ++ [
-              "bluetooth"
-              "backlight"
-              "battery"
-              "group/power"
-            ];
+          modules-right = [
+            #"group/hardware";
+          ]
+          ++ lib.optional config.programs.newsboat.enable "custom/newsboat"
+          ++ [
+            "bluetooth"
+            "backlight"
+            "battery"
+            "group/power"
+          ];
 
           clock = {
             tooltip-format = "<tt><small>{calendar}</small></tt>";
@@ -67,7 +65,8 @@
               "custom/shutdown"
               "custom/lock"
               "custom/sleep"
-              "custom/hibernate"
+              #"custom/hibernate"
+              "custom/reboot"
               "custom/logout"
             ];
           };
@@ -104,24 +103,31 @@
             class = "button";
           };
 
-          "custom/hibernate" = {
-            format = " 󰜗 ";
-            tooltip-format = "Hibernate";
-            on-click = "systemctl hibernate";
-            class = "button";
-          };
+          #"custom/hibernate" = {
+          #  format = " 󰜗 ";
+          #  tooltip-format = "Hibernate";
+          #  on-click = "systemctl hibernate";
+          #  class = "button";
+          #};
 
           "custom/logout" = {
             format = " 󰗽 ";
             tooltip-format = "Logout";
-            on-click = "hyprctl dispatch exit";
+            on-click = ''${pkgs.zenity}/bin/zenity --question --title=Logout --text="Are you sure?" --icon="system-log-out" ; hyprctl dispatch exit'';
+            class = "button";
+          };
+
+          "custom/reboot" = {
+            format = " 󰜉 ";
+            tooltip-format = "Reboot";
+            on-click = ''${pkgs.zenity}/bin/zenity --question --title=Reboot --text="Are you sure?" --icon="system-reboot" ; reboot'';
             class = "button";
           };
 
           "custom/shutdown" = {
             format = " 󰐥 ";
             tooltip-format = "Shutdown";
-            on-click = "systemctl poweroff";
+            on-click = ''${pkgs.zenity}/bin/zenity --question --title=Shutdown --text="Are you sure?" --icon="system-shutdown" ; systemctl poweroff'';
             class = "button";
           };
 

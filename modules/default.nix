@@ -84,8 +84,6 @@
 
       services.tailscale.enable = true;
 
-      services.preload.enable = true;
-
       programs.nix-ld.enable = true;
 
       # Zsh Completion for system packages

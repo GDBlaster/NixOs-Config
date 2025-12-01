@@ -12,7 +12,7 @@
     keepass = {
       id = "2jdu2-tpqpm";
       label = "Keepass";
-      path = "/home/paul/keepass";
+      path = "~/keepass";
       versioning = {
         type = "simple";
         params.keep = 5;

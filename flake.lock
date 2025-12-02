@@ -423,11 +423,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1764665344,
-        "narHash": "sha256-fsQuDpxMNzXfux52QOg8aRotfs3qXISct4aaOvXbJSg=",
+        "lastModified": 1764693641,
+        "narHash": "sha256-bsZIk+35yXXLycAFaWi5QzeDL1RdmIhEFsNLwhlRv2M=",
         "owner": "GDBlaster",
         "repo": "NixVim",
-        "rev": "e0e588b383c341b29798dee22b14832e2086da89",
+        "rev": "6ede4d38c7a5d4b73307b90b2441e39c3925308f",
         "type": "github"
       },
       "original": {

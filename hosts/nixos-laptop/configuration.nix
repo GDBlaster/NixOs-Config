@@ -96,6 +96,7 @@
   virtualisation.docker.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
+  formFactor = "laptop";
   desktop = "hyprland";
 
   services.syncthing.enable = true;

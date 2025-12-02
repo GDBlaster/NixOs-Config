@@ -10,6 +10,16 @@
       default = "none";
       description = "Select desktop environment. Options: hyprland, gnome, none.";
     };
+    formFactor = lib.mkOption {
+	type = lib.types.enum [
+	"laptop"
+	"desktop"
+	];
+	default = "desktop";
+	description = "device form factor";
+    };
+
+    
     hmIsModule = lib.mkOption {
       type = lib.types.bool;
       default = true;

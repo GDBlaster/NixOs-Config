@@ -9,6 +9,7 @@
 {
   imports = [
     ./options.nix
+    ./laptop.nix
     ./hyprland.nix
     ./gnome.nix
     ./gaming.nix

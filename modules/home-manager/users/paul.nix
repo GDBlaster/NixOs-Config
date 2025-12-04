@@ -91,6 +91,10 @@
 
       programs = {
 
+        vscode = lib.mkIf (!(config.desktop == "none")) {
+          enable = true;
+        };
+
         bash = {
           enable = true;
           historyControl = [ "ignoreboth" ];

@@ -298,6 +298,14 @@
           border-radius: 3px;
         }
 
+        #custom-reboot {
+          padding-left: 4px;
+          padding-right: 4px;
+          margin-left: 1px;
+          margin-right: 6px;
+          border-radius: 3px;
+        }
+
         #custom-sleep {
           padding-left: 4px;
           padding-right: 4px;
@@ -332,6 +340,12 @@
 
                 
         #custom-shutdown:hover {
+          background: ${config.lib.stylix.colors.withHashtag.base04};
+          border-radius: 5px;
+          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+        }
+
+        #custom-reboot:hover {
           background: ${config.lib.stylix.colors.withHashtag.base04};
           border-radius: 5px;
           box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};

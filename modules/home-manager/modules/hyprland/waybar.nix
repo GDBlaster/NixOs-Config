@@ -232,7 +232,7 @@
 
         .modules-left, .modules-right, .modules-center {
           background: @base00;
-          border-color: rgb(51,204,255);
+          border-color: ${config.lib.stylix.colors.withHashtag.base09};
         }
 
         .modules-left {
@@ -338,7 +338,6 @@
           border-radius: 3px;
         }
 
-                
         #custom-shutdown:hover {
           background: ${config.lib.stylix.colors.withHashtag.base04};
           border-radius: 5px;

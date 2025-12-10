@@ -127,6 +127,8 @@
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
+          "col.active_border" =
+            lib.mkForce "rgb(${config.lib.stylix.colors.base09}) rgb(${config.lib.stylix.colors.base0E}) 45deg";
           layout = "dwindle";
           no_border_on_floating = true;
         };

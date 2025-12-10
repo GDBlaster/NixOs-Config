@@ -16,6 +16,7 @@
     ./syncthing.nix
     ./backup.nix
     ./arion/arion.nix
+    ./autoManagement.nix
   ];
 
   config = lib.mkMerge [
@@ -36,7 +37,6 @@
 
     {
       # nixpkgs.overlays = [ (import ./../overlays/ ) ];
-
 
       programs.nh.enable = lib.mkDefault true;
 

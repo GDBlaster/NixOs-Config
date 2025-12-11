@@ -15,8 +15,9 @@
     ./gaming.nix
     ./syncthing.nix
     ./backup.nix
-    ./arion/arion.nix
+    ./arion
     ./autoManagement.nix
+    ./nh.nix
   ];
 
   config = lib.mkMerge [

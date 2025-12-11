@@ -15,9 +15,8 @@
 
   imports = [
     ./hardware-configuration.nix
-    ./../../modules/default.nix
-    ./../../modules/home-manager/home-manager.nix
-    ./../../modules/nh.nix
+    ./../../modules
+    ./../../modules/home-manager
     ./../../modules/stylix/stylix.nix
   ];
 
@@ -68,8 +67,12 @@
   boot.resumeDevice = "/dev/disk/by-uuid/8a9aa982-48fe-44b0-b4f8-868bbbf16664";
   powerManagement.enable = true;
 
+  programs = {
+    zsh.enable = true;
+    nh.enable = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  programs.zsh.enable = true;
   users.users.paul = {
     isNormalUser = true;
     description = "Paul";

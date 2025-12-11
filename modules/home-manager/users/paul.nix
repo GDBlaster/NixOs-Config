@@ -30,14 +30,13 @@
 
     (
       let
-      nixvim-package = inputs.nixvim.packages.x86_64-linux.default;
-      extended-nixvim = nixvim-package.extend config.stylix.targets.nixvim.exportedModule;
-      in 
+        nixvim-package = inputs.nixvim.packages.x86_64-linux.default;
+        extended-nixvim = nixvim-package.extend config.stylix.targets.nixvim.exportedModule;
+      in
       {
-       home.packages = [ extended-nixvim ];
+        home.packages = [ extended-nixvim ];
       }
     )
-
 
     {
       home.username = "paul";
@@ -152,7 +151,6 @@
   ];
 
   imports = [
-    ./default.nix
     ./../../options.nix
     ./../modules/dev.nix
     ./../modules/lf/lf.nix
@@ -160,7 +158,6 @@
     ./../modules/gnome/gnome.nix
     ./../modules/starship.nix
     ./../modules/discord.nix
-    ./../modules/hm-autoupdate.nix
     ./../modules/newsboat.nix
     ./../scripts/nu.nix
     ./../../stylix/stylix.nix

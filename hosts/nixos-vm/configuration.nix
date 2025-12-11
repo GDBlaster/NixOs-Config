@@ -12,7 +12,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./../../modules/default.nix
+    ./../../modules
     ./../../modules/home-manager/home-manager.nix
     ./../../modules/nh.nix
     ./../../modules/stylix/stylix.nix

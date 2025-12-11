@@ -15,5 +15,8 @@
     users = {
       paul = import ./users/paul.nix;
     };
+    sharedModules = [
+      ./users
+    ];
   };
 }

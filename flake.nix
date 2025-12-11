@@ -33,6 +33,7 @@
         modules = [
           ./hosts/nixos-vm/configuration.nix
           inputs.stylix.nixosModules.stylix
+          inputs.arion.nixosModules.arion
         ];
       };
 
@@ -53,7 +54,7 @@
             allowUnfree = true;
           };
         };
-        extraSpecialArgs = { inherit inputs;};
+        extraSpecialArgs = { inherit inputs; };
         modules = [
           inputs.stylix.homeModules.stylix
           ./hosts/fujiserver/home.nix

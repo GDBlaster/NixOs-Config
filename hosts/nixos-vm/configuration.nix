@@ -13,8 +13,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules
-    ./../../modules/home-manager/home-manager.nix
-    ./../../modules/nh.nix
+    ./../../modules/home-manager
     ./../../modules/stylix/stylix.nix
   ];
 
@@ -29,6 +28,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
   users.users.paul = {
+    password = "cheese";
     isNormalUser = true;
     description = "Paul";
     extraGroups = [
@@ -39,7 +39,9 @@
     # packages = with pkgs; [ ];
   };
 
-  desktop = "gnome";
+  desktop = "none";
+
+  autoManagement.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -56,11 +58,6 @@
 
   virtualisation.vmware.guest.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -8,7 +8,7 @@
   config = lib.mkIf (config.autoManagement.enable) {
     system.autoUpgrade = {
       enable = true;
-      flake = "github:GDBlaster/NixOs-Config#${config.networking.hostname}";
+      flake = "github:GDBlaster/NixOs-Config#${config.networking.hostName}";
       upgrade = false;
       allowReboot = true;
       persistent = true;
@@ -18,11 +18,11 @@
       enable = true;
       clean = {
         enable = true;
-        extraArgs = "--keep-since 24h --optimise";
+        extraArgs = lib.mkForce "--keep-since 24h --optimise";
       };
     };
 
-    systemd.services.nixos-upgrade.untiConfig = {
+    systemd.services.nixos-upgrade.unitConfig = {
       OnSuccess = lib.mkForce "nh-clean.service";
     };
   };

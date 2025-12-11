@@ -41,7 +41,7 @@
 
   desktop = "none";
 
-  autoManagement.enable = true;
+  stacks."mc-1.21.5".enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -56,8 +56,13 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  virtualisation.vmware.guest.enable = true;
-
+  virtualisation.vmVariant = {
+    virtualisation = {
+      vmware.guest.enable = true;
+      memorySize = 4096;
+      cores = 4;
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

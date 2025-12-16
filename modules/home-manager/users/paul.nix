@@ -111,7 +111,7 @@
           };
           history.append = true;
           initContent = ''
-            fastfetch
+            ${pkgs.fastfetch}/bin/fastfetch
           '';
         };
 
@@ -140,6 +140,10 @@
           settings = {
             user.name = "GDBlaster";
             user.email = "65135527+GDBlaster@users.noreply.github.com";
+
+            init.defaultBranch = "master";
+
+            pull.rebase = true;
           };
         };
       };

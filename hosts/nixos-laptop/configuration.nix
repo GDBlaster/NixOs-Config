@@ -32,7 +32,6 @@
         clinfo
         distrobox
         exegol
-        burpsuite
         borgbackup
       ];
     }

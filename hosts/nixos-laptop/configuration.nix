@@ -32,6 +32,7 @@
         clinfo
         distrobox
         exegol
+        jellyfin-media-player
         borgbackup
       ];
     }

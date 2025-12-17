@@ -22,7 +22,16 @@
       dolphin-emu
       azahar
       retroarch-free
+      jre17_minimal
+      jre21_minimal
+      jdk
     ];
-    programs.steam.enable = true;
+    programs = {
+      steam.enable = true;
+      java = {
+        enable = true;
+        binfmt = true;
+      };
+    };
   };
 }

@@ -113,21 +113,21 @@
           "custom/logout" = {
             format = " 󰗽 ";
             tooltip-format = "Logout";
-            on-click = ''${pkgs.zenity}/bin/zenity --question --title=Logout --text="Are you sure?" --icon="system-log-out" ; hyprctl dispatch exit'';
+            on-click = ''${pkgs.zenity}/bin/zenity --question --title=Logout --text="Are you sure?" --icon="system-log-out" && hyprctl dispatch exit'';
             class = "button";
           };
 
           "custom/reboot" = {
             format = " 󰜉 ";
             tooltip-format = "Reboot";
-            on-click = ''${pkgs.zenity}/bin/zenity --question --title=Reboot --text="Are you sure?" --icon="system-reboot" ; reboot'';
+            on-click = ''${pkgs.zenity}/bin/zenity --question --title=Reboot --text="Are you sure?" --icon="system-reboot" && reboot'';
             class = "button";
           };
 
           "custom/shutdown" = {
             format = " 󰐥 ";
             tooltip-format = "Shutdown";
-            on-click = ''${pkgs.zenity}/bin/zenity --question --title=Shutdown --text="Are you sure?" --icon="system-shutdown" ; systemctl poweroff'';
+            on-click = ''${pkgs.zenity}/bin/zenity --question --title=Shutdown --text="Are you sure?" --icon="system-shutdown" && systemctl poweroff'';
             class = "button";
           };
 

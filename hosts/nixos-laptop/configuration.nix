@@ -31,14 +31,13 @@
         ocl-icd
         clinfo
         distrobox
-        exegol
         jellyfin-media-player
         borgbackup
       ];
     }
     {
       systemPackages = with stable; [
-
+        exegol
       ];
     }
   ];
@@ -90,16 +89,17 @@
     packages = with pkgs; [ python314 ];
   };
 
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      intel-ocl
-      intel-compute-runtime
-    ];
+  hardware = {
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        intel-ocl
+        intel-compute-runtime
+      ];
+    };
+    enableRedistributableFirmware = true;
   };
-
-  virtualisation.vmware.host.enable = true;
 
   virtualisation.docker.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;

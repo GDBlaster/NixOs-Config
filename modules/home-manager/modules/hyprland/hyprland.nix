@@ -20,7 +20,17 @@
       };
     };
 
-    services.hyprpaper.enable = true;
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        wallpaper = [
+          {
+            monitor = "";
+            path = "${config.stylix.image}";
+          }
+        ];
+      };
+    };
 
     home.sessionVariables = {
       XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
@@ -109,13 +119,11 @@
           focus_on_activate = true;
         };
 
-        windowrulev2 = [
-          "rounding 0, fullscreen:1"
-          "bordersize 0, fullscreen:1"
-          "bordersize 0, floating:0, onworkspace:w[tv1]"
-          "rounding 0, floating:0, onworkspace:w[tv1]"
-          "bordersize 0, floating:0, onworkspace:f[1]"
-          "rounding 0, floating:0, onworkspace:f[1]"
+        windowrule = [
+          "match:float true, border_size 0"
+          "match:fullscreen true, rounding 0, border_size 0"
+          "match:workspace w[tv1], match:float false, rounding 0, border_size 0"
+          "match:workspace f[1], match:float false, rounding 0, border_size 0"
         ];
 
         workspace = [
@@ -130,7 +138,6 @@
           "col.active_border" =
             lib.mkForce "rgb(${config.lib.stylix.colors.base09}) rgb(${config.lib.stylix.colors.base0E}) 45deg";
           layout = "dwindle";
-          no_border_on_floating = true;
         };
 
         decoration = {

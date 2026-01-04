@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  stable,
   ...
 }:
 {
@@ -10,21 +11,29 @@
   };
 
   config = lib.mkIf config.module.gaming.enable {
-    environment.systemPackages = with pkgs; [
-      heroic
-      mangohud
-      gamemode
-      gamescope
-      wineWowPackages.stable
-      winetricks
-      steam
-      ryubing
-      dolphin-emu
-      azahar
-      retroarch-free
-      jre17_minimal
-      jre21_minimal
-      jdk
+    environment = lib.mkMerge [
+      {
+        systemPackages = with pkgs; [
+          heroic
+          mangohud
+          gamemode
+          gamescope
+          wineWowPackages.stable
+          winetricks
+          steam
+          ryubing
+          dolphin-emu
+          jre17_minimal
+          jre21_minimal
+          jdk
+        ];
+      }
+      {
+        systemPackages = with stable; [
+          azahar
+          retroarch-free
+        ];
+      }
     ];
     programs = {
       steam.enable = true;

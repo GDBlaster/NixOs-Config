@@ -29,7 +29,7 @@
 
     programs.thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
+      plugins = with pkgs; [
         thunar-archive-plugin
         thunar-volman
       ];
@@ -45,7 +45,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time -r --asterisks --user-menu --cmd Hyprland";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time -r --asterisks --user-menu --cmd start-hyprland";
           user = "greeter";
         };
       };
@@ -53,7 +53,10 @@
 
     systemd.services.greetd = {
       serviceConfig.Type = "idle";
-      unitConfig.After = ["docker.service" "nh-clean.service"];
+      unitConfig.After = [
+        "docker.service"
+        "nh-clean.service"
+      ];
     };
 
     systemd.services.numLockOnTty = {

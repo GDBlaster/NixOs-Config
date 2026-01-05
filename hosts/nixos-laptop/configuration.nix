@@ -51,10 +51,6 @@
 
   sops = {
     enable = true;
-    secrets = {
-      test_key = { };
-      "test_service/dir/secret" = { };
-    };
   };
 
   home-manager.users = {
@@ -88,6 +84,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "borg"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [ python314 ];

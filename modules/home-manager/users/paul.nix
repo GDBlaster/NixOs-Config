@@ -79,6 +79,8 @@
           fgrep = "fgrep --color=auto";
           egrep = "egrep --color=auto";
 
+          v = "nvim";
+
           ll = "ls -alF";
           la = "ls -A";
           lc = "ls -CF";

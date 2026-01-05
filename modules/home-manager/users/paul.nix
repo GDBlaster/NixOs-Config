@@ -145,7 +145,16 @@
 
             init.defaultBranch = "master";
 
-            pull.rebase = true;
+            pull = {
+              rebase = true;
+              autostash = true;
+            };
+
+            rebase.autostash = true;
+
+            alias = {
+              graph = "log --all --decorate --oneline --graph";
+            };
           };
         };
       };

@@ -49,6 +49,14 @@
     enable = true;
   };
 
+  sops = {
+    enable = true;
+    secrets = {
+      test_key = { };
+      "test_service/dir/secret" = { };
+    };
+  };
+
   home-manager.users = {
     paul = {
       module.dev.enable = true;
@@ -121,7 +129,10 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = false;
+  services.openssh = {
+    enable = false;
+    generateHostKeys = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

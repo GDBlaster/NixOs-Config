@@ -18,6 +18,7 @@
     ./arion
     ./autoManagement.nix
     ./nh.nix
+    ./sops.nix
   ];
 
   config = lib.mkMerge [

@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim.url = "github:GDBlaster/NixVim";
 
     stylix.url = "github:danth/stylix";
@@ -24,6 +29,7 @@
       home-manager,
       nixvim,
       arion,
+      sops-nix,
       ...
     }@inputs:
     {
@@ -44,6 +50,7 @@
           ./hosts/nixos-laptop/configuration.nix
           inputs.stylix.nixosModules.stylix
           inputs.arion.nixosModules.arion
+          sops-nix.nixosModules.sops
         ];
       };
 

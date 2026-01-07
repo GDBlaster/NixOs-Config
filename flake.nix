@@ -48,6 +48,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/nixos-laptop/configuration.nix
+          ./users
           inputs.stylix.nixosModules.stylix
           inputs.arion.nixosModules.arion
           sops-nix.nixosModules.sops

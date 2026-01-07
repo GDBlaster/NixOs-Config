@@ -77,17 +77,8 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.paul = {
-    isNormalUser = true;
-    description = "Paul";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-      "borg"
-    ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [ python314 ];
+  users = {
+    paul.enable = true;
   };
 
   hardware = {

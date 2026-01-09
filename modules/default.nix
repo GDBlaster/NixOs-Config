@@ -69,7 +69,7 @@
         git
         htop
         nil
-        nixfmt-rfc-style
+        nixfmt
         firefox
         chromium
       ];

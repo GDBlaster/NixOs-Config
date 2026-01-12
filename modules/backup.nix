@@ -39,6 +39,8 @@
                     -e "**/.cache" \
                     -e "*/Games" \
                     -e "*/.local/share/Steam" \
+                    -e "*/.local/state" \
+                    -e "*/.minecraft" \
                     -e "**/Trash" \
                     -e "*/Downloads" \
                     -e "*/.exegol" \

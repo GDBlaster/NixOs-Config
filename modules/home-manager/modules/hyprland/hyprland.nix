@@ -225,8 +225,18 @@
           mouse_middle_click = "do_action";
           mouse_right_click = "close_current";
         };
+
+        urgency_critical = {
+          background = lib.mkForce "${config.lib.stylix.colors.withHashtag.base01}55";
+        };
+
+        urgency_low = {
+          background = lib.mkForce "${config.lib.stylix.colors.withHashtag.base01}55";
+        };
+
         urgency_normal = {
           frame_color = lib.mkForce config.lib.stylix.colors.withHashtag.base09;
+          background = lib.mkForce "${config.lib.stylix.colors.withHashtag.base01}55";
         };
       };
     };

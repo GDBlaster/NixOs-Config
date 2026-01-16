@@ -17,7 +17,7 @@
           output = [ "eDP-1" ];
           layer = "top";
           position = "top";
-          height = 30;
+          height = 34;
           modules-left = [
             "image"
             "tray"
@@ -222,23 +222,27 @@
           background: transparent;
         }
 
+        tooltip {
+          border-color: @base09;
+        }
+
         window#waybar.solo {
-          background: alpha(@base00, 1.00000)
+          background: alpha(@base00, 0.85000);
         }
 
         window#waybar.fullscreen {
-          background: alpha(@base00, 1.00000)
+          background: alpha(@base00, 0.85000);
         }
 
         .modules-left, .modules-right, .modules-center {
-          background: @base00;
-          border-color: ${config.lib.stylix.colors.withHashtag.base09};
+          background: alpha(@base00, 0.85000);
         }
 
         .modules-left {
           border-bottom: 2px solid;
           border-right: 2px solid;
           border-bottom-right-radius: 5px;
+          border-color: @base09;
         }
 
         .modules-center {
@@ -247,12 +251,14 @@
           border-right: 2px solid;
           border-bottom-right-radius: 5px;
           border-bottom-left-radius: 5px;
+          border-color: @base09;
         }
 
         .modules-right {
           border-bottom: 2px solid;
           border-left: 2px solid;
           border-bottom-left-radius: 5px;
+          border-color: @base09;
         }
 
         window#waybar.fullscreen box.horizontal.modules-left, window#waybar.fullscreen box.horizontal.modules-center, window#waybar.fullscreen box.horizontal.modules-right {
@@ -264,13 +270,15 @@
         }
 
         #battery.warning {
-          color: ${config.lib.stylix.colors.withHashtag.base08};
+          color: @base08;
         }
+
         #battery.critical {
           color: red;
         }
+
         #battery.full {
-          color: ${config.lib.stylix.colors.withHashtag.base0B};
+          color: @base0B;
         }
 
         #network {
@@ -278,11 +286,11 @@
         }
 
         #bluetooth.connected {
-          color: ${config.lib.stylix.colors.withHashtag.base0D};
+          color: @base0D;
         }
 
         bluetooth.discovering {
-          color: ${config.lib.stylix.colors.withHashtag.base0E};
+          color: @base0E;
         }
 
         #image {
@@ -339,39 +347,39 @@
         }
 
         #custom-shutdown:hover {
-          background: ${config.lib.stylix.colors.withHashtag.base04};
+          background: @base04;
           border-radius: 5px;
-          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+          box-shadow: inset 0 0 4px @base01;
         }
 
         #custom-reboot:hover {
-          background: ${config.lib.stylix.colors.withHashtag.base04};
+          background: @base04;
           border-radius: 5px;
-          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+          box-shadow: inset 0 0 4px @base01;
         }
 
         #custom-sleep:hover {
-          background: ${config.lib.stylix.colors.withHashtag.base04};
+          background: @base04;
           border-radius: 5px;
-          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+          box-shadow: inset 0 0 4px @base01;
         }
 
         #custom-lock:hover {
-          background: ${config.lib.stylix.colors.withHashtag.base04};
+          background: @base04;
           border-radius: 5px;
-          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+          box-shadow: inset 0 0 4px @base01;
         }
 
         #custom-hibernate:hover {
-          background: ${config.lib.stylix.colors.withHashtag.base04};
+          background: @base04;
           border-radius: 5px;
-          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+          box-shadow: inset 0 0 4px @base01;
         }
 
         #custom-logout:hover {
-          background: ${config.lib.stylix.colors.withHashtag.base04};
+          background: @base04;
           border-radius: 5px;
-          box-shadow: inset 0 0 4px ${config.lib.stylix.colors.withHashtag.base01};
+          box-shadow: inset 0 0 4px @base01;
         }
       '';
     };

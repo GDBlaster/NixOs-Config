@@ -95,7 +95,6 @@
         exec-once = [
           "hyprpaper"
           "waybar"
-          "dunst"
           "systemctl --user start hyprpolkitagent"
           "keepassxc"
         ];
@@ -225,6 +224,9 @@
           mouse_left_click = "do_action";
           mouse_middle_click = "do_action";
           mouse_right_click = "close_current";
+        };
+        urgency_normal = {
+          frame_color = lib.mkForce config.lib.stylix.colors.withHashtag.base09;
         };
       };
     };

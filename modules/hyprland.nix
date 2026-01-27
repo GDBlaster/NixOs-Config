@@ -15,6 +15,8 @@
       swww
       rofi
       xarchiver
+      p7zip
+      unrar
       rofi-bluetooth
     ];
 

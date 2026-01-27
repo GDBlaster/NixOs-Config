@@ -72,6 +72,8 @@
         nixfmt
         firefox
         chromium
+        autopsy
+        sleuthkit
       ];
 
       # Enable Flakes

@@ -33,6 +33,7 @@
         distrobox
         jellyfin-media-player
         borgbackup
+        pulseview
       ];
     }
     {

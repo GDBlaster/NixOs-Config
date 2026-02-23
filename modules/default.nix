@@ -117,8 +117,9 @@
       networking.networkmanager.enable = true;
       # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-      OpenSSH.settings = {
+      services.openssh.settings = {
         passwordAuthentication = false;
+        generateHostKeys = true;
       };
 
       # Set your time zone.

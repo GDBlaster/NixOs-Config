@@ -25,10 +25,10 @@
   boot.initrd.systemd.enable = true;
   environment = lib.mkMerge [
     {
-      systemPackages = with pkgs; [];
+      systemPackages = with pkgs; [ ];
     }
     {
-      systemPackages = with stable; [];
+      systemPackages = with stable; [ ];
     }
   ];
 
@@ -61,7 +61,6 @@
   desktop = "none";
   autoManagement.enable = true;
 
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -71,12 +70,6 @@
   # };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    generateHostKeys = true;
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

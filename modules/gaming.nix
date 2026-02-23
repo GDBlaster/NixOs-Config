@@ -18,7 +18,7 @@
           mangohud
           gamemode
           gamescope
-          wineWowPackages.stable
+          wineWow64Packages.full
           winetricks
           steam
           ryubing

@@ -135,23 +135,7 @@
     zpool = {
       data = {
         type = "zpool";
-        mode = {
-          topology = {
-            type = "topology";
-            vdev = [
-              {
-                members = [
-                  "data1"
-                  "data2"
-                  "data3"
-                  "data4"
-                  "data5"
-                  "data6"
-                ];
-              }
-            ];
-          };
-        };
+        mode = "raidz1";
         datasets = {
           data = {
             type = "zfs_fs";
@@ -167,4 +151,3 @@
 
   };
 }
-

@@ -72,8 +72,6 @@
         nixfmt
         firefox
         chromium
-        autopsy
-        sleuthkit
       ];
 
       # Enable Flakes
@@ -118,6 +116,10 @@
       # Enable networking
       networking.networkmanager.enable = true;
       # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+      OpenSSH.settings = {
+        passwordAuthentication = false;
+      };
 
       # Set your time zone.
       time.timeZone = "Europe/Paris";

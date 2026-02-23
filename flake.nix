@@ -66,6 +66,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/hpserver/configuration.nix
+          inputs.stylix.nixosModules.stylix
           inputs.disko.nixosModules.disko
           inputs.arion.nixosModules.arion
           sops-nix.nixosModules.sops

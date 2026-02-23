@@ -43,25 +43,25 @@
       programs.nh.enable = lib.mkDefault true;
 
       # clone config in /etc/nixos
-      system.activationScripts.setGitRemote = ''
-        export PATH="${pkgs.git}/bin:$PATH"
-
-
-        REPO_PATH="/etc/nixos"
-        HTTPS_URL="https://github.com/GDBlaster/NixOs-Config.git"
-        SSH_URL="git@github.com:GDBlaster/NixOs-Config.git"
-
-        if [ -d "$REPO_PATH/.git" ]; then
-          echo "Configuring Git remotes for repository at $REPO_PATH."
-          git -C "$REPO_PATH" remote set-url origin "$HTTPS_URL"
-          git -C "$REPO_PATH" remote set-url --push origin "$SSH_URL"
-        else
-          echo "No repository found at $REPO_PATH. Initializing a new Git repository and configuring remotes."
-          git -C "$REPO_PATH" init
-          git -C "$REPO_PATH" remote add origin "$HTTPS_URL"
-          git -C "$REPO_PATH" remote set-url --push origin "$SSH_URL"
-        fi
-      '';
+      #      system.activationScripts.setGitRemote = ''
+      #        export PATH="${pkgs.git}/bin:$PATH"
+      #
+      #
+      #        REPO_PATH="/etc/nixos"
+      #        HTTPS_URL="https://github.com/GDBlaster/NixOs-Config.git"
+      #        SSH_URL="git@github.com:GDBlaster/NixOs-Config.git"
+      #
+      #        if [ -d "$REPO_PATH/.git" ]; then
+      #          echo "Configuring Git remotes for repository at $REPO_PATH."
+      #          git -C "$REPO_PATH" remote set-url origin "$HTTPS_URL"
+      #          git -C "$REPO_PATH" remote set-url --push origin "$SSH_URL"
+      #        else
+      #          echo "No repository found at $REPO_PATH. Initializing a new Git repository and configuring remotes."
+      #          git -C "$REPO_PATH" init
+      #          git -C "$REPO_PATH" remote add origin "$HTTPS_URL"
+      #          git -C "$REPO_PATH" remote set-url --push origin "$SSH_URL"
+      #        fi
+      #      '';
 
       environment.systemPackages = with pkgs; [
         wget

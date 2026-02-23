@@ -1,0 +1,204 @@
+{
+  disko.devices = {
+    disk = {
+    boot = {
+      type = "disk";
+      device = "/dev/sda";
+      content = {
+        type = "gpt";
+        partitions = {
+          ESP = {
+            size = "64M";
+            type = "EF00";
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              mountpoint = "/boot";
+              mountOptions = [ "nofail" ];
+            };
+          };
+          swap = {
+            size = "16G";
+            type = "8200";
+            content = {
+              type = "swap";
+            };
+          };
+          root = {
+            size = "100%";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
+            };
+          };
+        };
+      };
+    };
+    data0 = {
+      type = "disk";
+      device = "/dev/sdb";
+      content = {
+        type = "gpt";
+        partitions = {
+          zfs = {
+            size = "100%";
+            content = {
+              type = "zfs";
+              pool = "data";
+            };
+          };
+        };
+      };
+    };
+    data1 = {
+      type = "disk";
+      device = "/dev/sdc";
+      content = {
+        type = "gpt";
+        partitions = {
+          zfs = {
+            size = "100%";
+            content = {
+              type = "zfs";
+              pool = "data";
+            };
+          };
+        };
+      };
+    };
+    data2 = {
+      type = "disk";
+      device = "/dev/sdd";
+      content = {
+        type = "gpt";
+        partitions = {
+          zfs = {
+            size = "100%";
+            content = {
+              type = "zfs";
+              pool = "data";
+            };
+          };
+        };
+      };
+    };
+    data3 = {
+      type = "disk";
+      device = "/dev/sde";
+      content = {
+        type = "gpt";
+        partitions = {
+          zfs = {
+            size = "100%";
+            content = {
+              type = "zfs";
+              pool = "data";
+            };
+          };
+        };
+      };
+    };
+    data4 = {type = "disk";
+      device = "/dev/sdf";
+      content = {
+        type = "gpt";
+        partitions = {
+          zfs = {
+            size = "100%";
+            content = {
+              type = "zfs";
+              pool = "data";
+            };
+          };
+        };
+      };
+    };
+    data5 = {type = "disk";
+      device = "/dev/sdg";
+      content = {
+        type = "gpt";
+        partitions = {
+          zfs = {
+            size = "100%";
+            content = {
+              type = "zfs";
+              pool = "data";
+            };
+          };
+        };
+      };};
+    data6 = {
+      type = "disk";
+      device = "/dev/sdh";
+      content = {
+        type = "gpt";
+        partitions = {
+          zfs = {
+            size = "100%";
+            content = {
+              type = "zfs";
+              pool = "data";
+            };
+          };
+        };
+      };
+    };
+    data7 = {
+      type = "disk";
+      device = "/dev/sdi";
+      content = {
+        type = "gpt";
+        partitions = {
+          zfs = {
+            size = "100%";
+            content = {
+              type = "zfs";
+              pool = "data";
+            };
+          };
+        };
+      };
+    };
+    };
+    zpool = {
+      data = {
+        type = "zpool";
+        mode = {
+          topology = {
+            type = "topology";
+            vdev = [
+              {
+                members = [ 
+                  "data0"
+                  "data1"
+                ];
+              }
+              {
+                members = [
+                  "data2"
+                  "data3"
+                  "data4"
+                  "data5"
+                  "data6"
+                  "data7"
+                ];
+              }
+            ];
+          };
+        };
+        datasets = {
+          data = {
+            type = "zfs_fs";
+            mountpoint = "/data";
+          };
+          media = {
+            type = "zfs_fs";
+            mountpoint = "/media";
+          };
+        };
+      };
+    };
+
+  };
+}

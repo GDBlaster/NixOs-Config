@@ -15,6 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }:
+
     nixvim.url = "github:GDBlaster/NixVim";
 
     stylix.url = "github:danth/stylix";
@@ -30,6 +35,7 @@
       nixvim,
       arion,
       sops-nix,
+      disko,
       ...
     }@inputs:
     {
@@ -50,6 +56,17 @@
           ./hosts/nixos-laptop/configuration.nix
           ./users
           inputs.stylix.nixosModules.stylix
+          inputs.arion.nixosModules.arion
+          sops-nix.nixosModules.sops
+        ];
+      };
+
+      nixosConfigurations.hpserver = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/hpserver/configuration.nix
+          inputs.disko.nixosModules.disko
           inputs.arion.nixosModules.arion
           sops-nix.nixosModules.sops
         ];

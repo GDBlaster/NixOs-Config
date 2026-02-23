@@ -15,6 +15,7 @@
 
   imports = [
     ./hardware-configuration.nix
+    ./disko.nix
     ./../../modules
     ./../../modules/home-manager
     ./../../modules/stylix/stylix.nix

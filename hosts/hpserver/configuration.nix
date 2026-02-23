@@ -58,7 +58,10 @@
 
   networking.hostId = "4e98920d";
 
-  boot.loader.grub.devices = [ "/dev/sdg" ];
+  boot.loader.grub = {
+    enable = true;
+    devices = [ "/dev/sdg" ];
+  };
 
   virtualisation.docker.enable = true;
 

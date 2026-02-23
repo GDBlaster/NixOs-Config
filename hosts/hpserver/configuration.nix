@@ -60,7 +60,7 @@
 
   boot.loader.grub = {
     enable = true;
-    mirror = [
+    mirroredBoots = [
       {
         devices = [ "/dev/sdg" ];
         path = "/boot";

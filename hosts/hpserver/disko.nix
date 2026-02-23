@@ -14,7 +14,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "nofail" ];
+                mountOptions = [ "umask=0077" ];
               };
             };
             swap = {
@@ -136,6 +136,10 @@
       data = {
         type = "zpool";
         mode = "raidz1";
+        options.cachefile = "none";
+        rootFsOptions = {
+          compression = "zstd";
+        };
         datasets = {
           data = {
             type = "zfs_fs";

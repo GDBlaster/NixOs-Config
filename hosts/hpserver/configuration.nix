@@ -24,6 +24,8 @@
   networking.hostName = "hpserver";
 
   boot.initrd.systemd.enable = true;
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.extraPools = [ "data" ];
   environment = lib.mkMerge [
     {
       systemPackages = with pkgs; [ ];

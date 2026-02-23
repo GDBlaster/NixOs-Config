@@ -55,6 +55,18 @@
         ];
       };
 
+      nixosConfigurations.hpserver = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/hpserver/configuration.nix
+          ./users
+          inputs.stylix.nixosModules.stylix
+          inputs.arion.nixosModules.arion
+          sops-nix.nixosModules.sops
+        ];
+      };
+
       homeConfigurations."paul@fujiserver" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";

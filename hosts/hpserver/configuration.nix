@@ -60,7 +60,12 @@
 
   boot.loader.grub = {
     enable = true;
-    devices = [ "/dev/sdg" ];
+    mirror = [
+      {
+        devices = [ "/dev/sdg" ];
+        path = "/boot";
+      }
+    ];
   };
 
   virtualisation.docker.enable = true;

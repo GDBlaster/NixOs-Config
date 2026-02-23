@@ -56,6 +56,10 @@
     enableRedistributableFirmware = true;
   };
 
+  networking.hostId = "4e98920d";
+
+  boot.loader.grub.devices = [ "/dev/sdg" ];
+
   virtualisation.docker.enable = true;
 
   formFactor = "desktop";

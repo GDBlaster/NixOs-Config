@@ -18,7 +18,7 @@
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
-    }:
+    };
 
     nixvim.url = "github:GDBlaster/NixVim";
 

@@ -35,7 +35,7 @@
         };
       };
     };
-    data0 = {
+    data1 = {
       type = "disk";
       device = "/dev/sdb";
       content = {
@@ -51,7 +51,7 @@
         };
       };
     };
-    data1 = {
+    data2 = {
       type = "disk";
       device = "/dev/sdc";
       content = {
@@ -67,7 +67,7 @@
         };
       };
     };
-    data2 = {
+    data3 = {
       type = "disk";
       device = "/dev/sdd";
       content = {
@@ -83,8 +83,7 @@
         };
       };
     };
-    data3 = {
-      type = "disk";
+    data4 = {type = "disk";
       device = "/dev/sde";
       content = {
         type = "gpt";
@@ -99,23 +98,8 @@
         };
       };
     };
-    data4 = {type = "disk";
-      device = "/dev/sdf";
-      content = {
-        type = "gpt";
-        partitions = {
-          zfs = {
-            size = "100%";
-            content = {
-              type = "zfs";
-              pool = "data";
-            };
-          };
-        };
-      };
-    };
     data5 = {type = "disk";
-      device = "/dev/sdg";
+      device = "/dev/sdf";
       content = {
         type = "gpt";
         partitions = {
@@ -130,23 +114,7 @@
       };};
     data6 = {
       type = "disk";
-      device = "/dev/sdh";
-      content = {
-        type = "gpt";
-        partitions = {
-          zfs = {
-            size = "100%";
-            content = {
-              type = "zfs";
-              pool = "data";
-            };
-          };
-        };
-      };
-    };
-    data7 = {
-      type = "disk";
-      device = "/dev/sdi";
+      device = "/dev/sdg";
       content = {
         type = "gpt";
         partitions = {
@@ -169,19 +137,13 @@
             type = "topology";
             vdev = [
               {
-                members = [ 
-                  "data0"
-                  "data1"
-                ];
-              }
-              {
                 members = [
+                  "data1"
                   "data2"
                   "data3"
                   "data4"
                   "data5"
                   "data6"
-                  "data7"
                 ];
               }
             ];

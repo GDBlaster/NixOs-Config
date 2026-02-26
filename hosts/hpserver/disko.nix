@@ -3,7 +3,7 @@
     disk = {
       boot = {
         type = "disk";
-        device = "/dev/sdg";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
@@ -17,13 +17,6 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            swap = {
-              size = "16G";
-              type = "8200";
-              content = {
-                type = "swap";
-              };
-            };
             root = {
               size = "100%";
               content = {
@@ -35,23 +28,31 @@
           };
         };
       };
-      data1 = {
-        type = "disk";
-        device = "/dev/sda";
-        content = {
-          type = "zfs";
-          pool = "data";
-        };
-      };
-      data2 = {
+      nix = {
         type = "disk";
         device = "/dev/sdb";
         content = {
-          type = "zfs";
-          pool = "data";
+          type = "gpt";
+          partitions = {
+            swap = {
+              size = "16G";
+              content = {
+                type = "swap";
+                randomencryption = true;
+              };
+            };
+            nix = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/nix";
+              };
+            };
+          };
         };
       };
-      data3 = {
+      data1 = {
         type = "disk";
         device = "/dev/sdc";
         content = {
@@ -59,7 +60,7 @@
           pool = "data";
         };
       };
-      data4 = {
+      data2 = {
         type = "disk";
         device = "/dev/sdd";
         content = {
@@ -67,7 +68,7 @@
           pool = "data";
         };
       };
-      data5 = {
+      data3 = {
         type = "disk";
         device = "/dev/sde";
         content = {
@@ -75,9 +76,25 @@
           pool = "data";
         };
       };
-      data6 = {
+      data4 = {
         type = "disk";
         device = "/dev/sdf";
+        content = {
+          type = "zfs";
+          pool = "data";
+        };
+      };
+      data5 = {
+        type = "disk";
+        device = "/dev/sdg";
+        content = {
+          type = "zfs";
+          pool = "data";
+        };
+      };
+      data6 = {
+        type = "disk";
+        device = "/dev/sdh";
         content = {
           type = "zfs";
           pool = "data";

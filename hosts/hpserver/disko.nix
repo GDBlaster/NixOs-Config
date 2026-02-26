@@ -38,7 +38,7 @@
               size = "16G";
               content = {
                 type = "swap";
-                randomencryption = true;
+                randomEncryption = true;
               };
             };
             nix = {

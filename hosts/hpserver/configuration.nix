@@ -24,6 +24,7 @@
   networking.hostName = "hpserver";
 
   boot.initrd.systemd.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.extraPools = [ "data" ];
   environment = lib.mkMerge [
@@ -59,16 +60,6 @@
   };
 
   networking.hostId = "4e98920d";
-
-  boot.loader.grub = {
-    enable = true;
-    mirroredBoots = [
-      {
-        devices = [ "/dev/sdg" ];
-        path = "/boot";
-      }
-    ];
-  };
 
   virtualisation.docker.enable = true;
 

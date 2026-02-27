@@ -27,7 +27,7 @@
     enable = true;
     efiSupport = true;
     efiInstallAsRemovable = true;
-    devices = [ "/dev/sdh" ];
+    devices = lib.mkForce [ "/dev/sdh" ];
   };
   boot.initrd.systemd.enable = true;
   boot.supportedFilesystems = [ "zfs" ];

@@ -23,6 +23,8 @@
 
   networking.hostName = "hpserver";
 
+  boot.loader.efi.canTouchEfiVariables = lib.mkforce false;
+
   boot.loader.grub = {
     enable = true;
     efiSupport = true;

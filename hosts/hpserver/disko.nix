@@ -3,7 +3,6 @@
     disk = {
       boot = {
         type = "disk";
-        label = "boot";
         content = {
           type = "gpt";
           partitions = {
@@ -41,7 +40,6 @@
       };
       data1 = {
         type = "disk";
-        label = "data1";
         content = {
           type = "zfs";
           pool = "data";
@@ -49,7 +47,6 @@
       };
       data2 = {
         type = "disk";
-        label = "data2";
         content = {
           type = "zfs";
           pool = "data";
@@ -57,7 +54,6 @@
       };
       data3 = {
         type = "disk";
-        label = "data3";
         content = {
           type = "zfs";
           pool = "data";
@@ -65,7 +61,6 @@
       };
       data4 = {
         type = "disk";
-        label = "data4";
         content = {
           type = "zfs";
           pool = "data";
@@ -73,7 +68,6 @@
       };
       data5 = {
         type = "disk";
-        label = "data5";
         content = {
           type = "zfs";
           pool = "data";
@@ -81,7 +75,6 @@
       };
       data6 = {
         type = "disk";
-        label = "data6";
         content = {
           type = "zfs";
           pool = "data";

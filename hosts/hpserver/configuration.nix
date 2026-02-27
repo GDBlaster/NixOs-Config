@@ -27,6 +27,7 @@
     enable = true;
     efiSupport = true;
     efiInstallAsRemovable = true;
+    devices = [ "/dev/sdh" ];
   };
   boot.initrd.systemd.enable = true;
   boot.supportedFilesystems = [ "zfs" ];

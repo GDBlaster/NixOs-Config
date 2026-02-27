@@ -7,6 +7,10 @@
         content = {
           type = "gpt";
           partitions = {
+            boot = {
+              size = "1M";
+              type = "EF02";
+            };
             ESP = {
               size = "64M";
               type = "EF00";
@@ -15,6 +19,13 @@
                 format = "vfat";
                 mountpoint = "/boot";
                 mountOptions = [ "umask=0077" ];
+              };
+            };
+            swap = {
+              size = "16G";
+              content = {
+                type = "swap";
+                randomEncryption = true;
               };
             };
             root = {

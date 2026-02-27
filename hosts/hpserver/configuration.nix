@@ -23,8 +23,12 @@
 
   networking.hostName = "hpserver";
 
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+  };
   boot.initrd.systemd.enable = true;
-  boot.loader.systemd-boot.enable = true;
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.extraPools = [ "data" ];
   environment = lib.mkMerge [

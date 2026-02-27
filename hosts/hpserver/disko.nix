@@ -39,33 +39,9 @@
           };
         };
       };
-      nix = {
-        type = "disk";
-        device = "/dev/sdb";
-        content = {
-          type = "gpt";
-          partitions = {
-            swap = {
-              size = "16G";
-              content = {
-                type = "swap";
-                randomEncryption = true;
-              };
-            };
-            nix = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/nix";
-              };
-            };
-          };
-        };
-      };
       data1 = {
         type = "disk";
-        device = "/dev/sdc";
+        device = "/dev/sdb";
         content = {
           type = "zfs";
           pool = "data";
@@ -73,7 +49,7 @@
       };
       data2 = {
         type = "disk";
-        device = "/dev/sdd";
+        device = "/dev/sdc";
         content = {
           type = "zfs";
           pool = "data";
@@ -81,7 +57,7 @@
       };
       data3 = {
         type = "disk";
-        device = "/dev/sde";
+        device = "/dev/sdd";
         content = {
           type = "zfs";
           pool = "data";
@@ -89,7 +65,7 @@
       };
       data4 = {
         type = "disk";
-        device = "/dev/sdf";
+        device = "/dev/sde";
         content = {
           type = "zfs";
           pool = "data";
@@ -97,7 +73,7 @@
       };
       data5 = {
         type = "disk";
-        device = "/dev/sdg";
+        device = "/dev/sdf";
         content = {
           type = "zfs";
           pool = "data";
@@ -105,7 +81,7 @@
       };
       data6 = {
         type = "disk";
-        device = "/dev/sdh";
+        device = "/dev/sdg";
         content = {
           type = "zfs";
           pool = "data";

@@ -29,7 +29,7 @@
     enable = true;
     efiSupport = true;
     efiInstallAsRemovable = true;
-    # devices = lib.mkForce [ "nodev" ];
+    devices = lib.mkForce [ "/dev/sdh" ];
   };
   boot.initrd.systemd.enable = true;
   boot.supportedFilesystems = [ "zfs" ];

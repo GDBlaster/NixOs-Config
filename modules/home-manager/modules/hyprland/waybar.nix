@@ -6,12 +6,8 @@
 }:
 {
   config = lib.mkIf (config.desktop == "hyprland") {
-    home.packages = with pkgs; [
-      # networkmanagerapplet
-    ];
-
     programs.waybar = {
-      enable = true;
+      enable = false;
       settings = {
         mainBar = {
           output = [ "eDP-1" ];

@@ -8,6 +8,7 @@
   imports = [
     ./hyprlock.nix
     ./waybar.nix
+    ./noctalia.nix
   ];
 
   config = lib.mkIf (config.desktop == "hyprland") {
@@ -93,8 +94,7 @@
         ];
 
         exec-once = [
-          "hyprpaper"
-          "waybar"
+          "noctalia-shell"
           "systemctl --user start hyprpolkitagent"
           "keepassxc"
         ];

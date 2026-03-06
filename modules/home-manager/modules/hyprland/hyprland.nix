@@ -38,6 +38,7 @@
       XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
       XDG_DOWNLOADS_DIR = "${config.home.homeDirectory}/Downloads";
       XDG_DOCUMENTS_DIR = "${config.home.homeDirectory}/Documents";
+      QS_ICON_THEME = "Papirus";
     };
 
     wayland.windowManager.hyprland = {
@@ -72,9 +73,9 @@
         ];
 
         bindl = [
-          '', XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%+; MUTE=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE "\[MUTED\]"); VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}'); if [ -n "$MUTE" ]; then notify-send "Muted" "" -h int:value:0 -h string:x-dunst-stack-tag:volume -u low; else notify-send "Volume: ''${VOLUME}%" "" -h int:value:''${VOLUME} -h string:x-dunst-stack-tag:volume -u low; fi''
-          '', XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%-; MUTE=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE "\[MUTED\]"); VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}'); if [ -n "$MUTE" ]; then notify-send "Muted" "" -h int:value:0 -h string:x-dunst-stack-tag:volume -u low; else notify-send "Volume: ''${VOLUME}%" "" -h int:value:''${VOLUME} -h string:x-dunst-stack-tag:volume -u low; fi''
-          '', XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle; MUTE=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oE "\[MUTED\]"); VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}'); if [ -n "$MUTE" ]; then notify-send "Muted" "" -h int:value:0 -h string:x-dunst-stack-tag:volume -u low; else notify-send "Volume: ''${VOLUME}%" "" -h int:value:''${VOLUME} -h string:x-dunst-stack-tag:volume -u low; fi''
+          '', XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%+''
+          '', XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%-''
+          '', XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle;''
           ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
           ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
           ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
@@ -82,7 +83,7 @@
         ];
 
         bindr = [
-          "$mod, Super_L, exec, pkill rofi || rofi -modes drun,ssh -show drun -layer -click-to-exit"
+          "$mod, Super_L, exec, noctalia-shell ipc call launcher toggle"
         ];
 
         bindm = [
@@ -94,7 +95,7 @@
         ];
 
         exec-once = [
-          "noctalia-shell"
+          "noctalia-shell &"
           "systemctl --user start hyprpolkitagent"
           "keepassxc"
         ];
@@ -173,14 +174,6 @@
       };
     };
 
-    programs.kitty = {
-      enable = true;
-      settings = lib.mkForce {
-        background_opacity = 0.8;
-        background_blur = 1;
-      };
-    };
-
     programs.rofi = {
       enable = true;
       terminal = "${pkgs.kitty}/bin/kitty";
@@ -203,6 +196,22 @@
         };
     };
 
+    services.swayidle = {
+      enable = true;
+      timeouts = [
+        {
+          timeout = 140;
+          command = "${pkgs.brightnessctl}/bin/brightnessctl -s set 1";
+          resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r";
+        }
+        {
+          timeout = 150;
+          command = "systemd-ac-power && hyprlock || systemctl suspend";
+        }
+      ];
+      events.before-sleep = "hyprlock &";
+    };
+
     services.batsignal = {
       enable = true;
       extraArgs = [
@@ -216,7 +225,7 @@
     };
 
     services.dunst = {
-      enable = true;
+      enable = false;
       settings = {
         global = {
           sort = true;

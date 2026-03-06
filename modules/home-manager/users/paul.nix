@@ -23,6 +23,7 @@
         obsidian
         vscode
         qbittorrent
+        supersonic-wayland
       ];
 
       programs.keepassxc.enable = true;
@@ -168,6 +169,7 @@
   imports = [
     ./../../options.nix
     ./../modules/dev.nix
+    ./../modules/kitty.nix
     ./../modules/lf/lf.nix
     ./../modules/hyprland/hyprland.nix
     ./../modules/gnome/gnome.nix

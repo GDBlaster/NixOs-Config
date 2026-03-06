@@ -9,15 +9,13 @@
 
     environment.systemPackages = with pkgs; [
       kitty
-      waybar
-      dunst
       libnotify
-      swww
       rofi
       xarchiver
       p7zip
       unrar
       rofi-bluetooth
+      hyprlock
     ];
 
     programs.hyprland = {

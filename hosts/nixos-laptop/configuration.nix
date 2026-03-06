@@ -96,6 +96,7 @@
   };
 
   virtualisation.docker.enable = true;
+  virtualisation.vmware.host.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
   formFactor = "laptop";

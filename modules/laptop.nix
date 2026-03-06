@@ -2,6 +2,8 @@
 {
   config = lib.mkIf (config.formFactor == "laptop") {
 
+    services.upower.enable = true;
+
     services.auto-cpufreq = {
       settings = {
         battery = {

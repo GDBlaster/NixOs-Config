@@ -15,6 +15,7 @@
       {
         systemPackages = with pkgs; [
           heroic
+          lutris
           mangohud
           gamemode
           gamescope

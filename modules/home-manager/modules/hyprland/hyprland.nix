@@ -124,7 +124,7 @@
           "match:float true, border_size 0"
           "match:fullscreen true, rounding 0, border_size 0"
           "match:workspace w[tv1], match:float false, rounding 0, border_size 0"
-          "match:workspace f[1], match:float false, rounding 0, border_size 0"
+          "match:workspace f[1], match:float false, rounding 0"
         ];
 
         workspace = [
@@ -206,10 +206,11 @@
         }
         {
           timeout = 150;
-          command = "systemd-ac-power && hyprlock || systemctl suspend";
+          command = "systemd-ac-power && hyprlock & || systemctl suspend";
         }
       ];
       events.before-sleep = "hyprlock &";
+      extraArgs = ["inhibit_idle" "fullscreen"];
     };
 
     services.batsignal = {

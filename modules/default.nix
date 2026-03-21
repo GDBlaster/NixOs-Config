@@ -74,6 +74,8 @@
         chromium
       ];
 
+      programs.gnupg.agent.enable = true;
+
       # Enable Flakes
       nix.settings.experimental-features = [
         "nix-command"

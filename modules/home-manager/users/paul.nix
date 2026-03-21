@@ -24,6 +24,7 @@
         vscode
         qbittorrent
         supersonic-wayland
+        gajim
       ];
 
       programs.keepassxc.enable = true;
@@ -140,9 +141,16 @@
 
         git = {
           enable = true;
+          signing.format = "openpgp";
           settings = {
             user.name = "GDBlaster";
             user.email = "65135527+GDBlaster@users.noreply.github.com";
+
+            gpg.format = "ssh";
+
+            user.signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+
+            commit.gpgsign = true;
 
             init.defaultBranch = "master";
 

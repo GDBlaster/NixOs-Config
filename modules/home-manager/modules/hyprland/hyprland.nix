@@ -121,10 +121,11 @@
         };
 
         windowrule = [
+          "match:class *, idle_inhibit fullscreen"
           "match:float true, border_size 0"
           "match:fullscreen true, rounding 0, border_size 0"
           "match:workspace w[tv1], match:float false, rounding 0, border_size 0"
-          "match:workspace f[1], match:float false, rounding 0, border_size 0"
+          "match:workspace f[1], match:float false, rounding 0"
         ];
 
         workspace = [

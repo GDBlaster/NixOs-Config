@@ -23,7 +23,11 @@
   networking.hostName = "hpserver";
 
   boot.initrd.systemd.enable = true;
-  boot.loader.grub.enable = false;
+  boot.loader.grub = {
+    enable = true;
+    device = "/dev/sdh";
+    efiSupport = lib.mkForce false;
+  };
 
   environment = lib.mkMerge [
     {

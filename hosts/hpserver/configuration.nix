@@ -25,7 +25,7 @@
   boot.initrd.systemd.enable = true;
   boot.loader.grub = {
     enable = true;
-    device = "/dev/sdh";
+    device = lib.mkForce "/dev/sdh";
     efiSupport = lib.mkForce false;
   };
 

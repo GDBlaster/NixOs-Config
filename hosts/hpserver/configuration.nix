@@ -23,6 +23,8 @@
   networking.hostName = "hpserver";
 
   boot.initrd.systemd.enable = true;
+  boot.loader.grub.enable = false;
+
   environment = lib.mkMerge [
     {
       systemPackages = with pkgs; [];

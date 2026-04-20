@@ -23,6 +23,8 @@
   networking.hostName = "nixos-laptop";
 
   boot.initrd.systemd.enable = true;
+  boot.loader.grub.enable = true;
+  
   environment = lib.mkMerge [
     {
       systemPackages = with pkgs; [

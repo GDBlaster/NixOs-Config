@@ -40,9 +40,18 @@
 
   boot.supportedFilesystems = [ "bcachefs" ];
 
-  fileSystems."/data" = {
-    device = "/dev/sdb";
-    fsType = "bcachefs";
+  fileSystems = {
+    "/data" = {
+      device = "/dev/sdb";
+      fsType = "bcachefs";
+      options = [ "subvol=data" ];
+    };
+
+    "/media" = {
+      device = "/dev/sdb";
+      fsType = "bcachefs";
+      options = [ "subvol=media" ];
+    };
   };
 
   # backup.server.enable = true;

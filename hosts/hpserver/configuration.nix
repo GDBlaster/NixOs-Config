@@ -40,6 +40,11 @@
 
   boot.supportedFilesystems = [ "bcachefs" ];
 
+  fileSystems."/data" = {
+    device = "/dev/sdb";
+    fsType = "bcachefs";
+  };
+
   # backup.server.enable = true;
 
   sops = {

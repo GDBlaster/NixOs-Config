@@ -38,6 +38,8 @@
     }
   ];
 
+  boot.supportedFilesystems = [ "bcachefs" ];
+
   # backup.server.enable = true;
 
   sops = {

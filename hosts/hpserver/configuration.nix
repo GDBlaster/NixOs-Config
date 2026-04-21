@@ -40,19 +40,27 @@
 
   boot.supportedFilesystems = [ "bcachefs" ];
 
-  fileSystems = {
-    "/data" = {
-      device = "/dev/sdb";
-      fsType = "bcachefs";
-      options = [ "subvol=data" ];
-    };
-
-    "/media" = {
-      device = "/dev/sdb";
-      fsType = "bcachefs";
-      options = [ "subvol=media" ];
-    };
+fileSystems = {
+  "/mnt/bcachefs-data" = {
+    device = "/dev/sdb";
+    fsType = "bcachefs";
+    options = [ "nofail" ];
   };
+
+  "/data" = {
+    device = "/mnt/bcachefs-data/data";
+    fsType = "none";
+    options = [ "bind" "nofail" ];
+    depends = [ "/mnt/bcachefs-data" ];
+  };
+
+  "/media" = {
+    device = "/mnt/bcachefs-data/media";
+    fsType = "none";
+    options = [ "bind" "nofail" ];
+    depends = [ "/mnt/bcachefs-data" ];
+  };
+};
 
   # backup.server.enable = true;
 

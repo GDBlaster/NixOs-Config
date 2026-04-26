@@ -31,36 +31,42 @@
 
   environment = lib.mkMerge [
     {
-      systemPackages = with pkgs; [];
+      systemPackages = with pkgs; [ ];
     }
     {
-      systemPackages = with stable; [];
+      systemPackages = with stable; [ ];
     }
   ];
 
   boot.supportedFilesystems = [ "bcachefs" ];
 
-fileSystems = {
-  "/mnt/bcachefs-data" = {
-    device = "/dev/sdb";
-    fsType = "bcachefs";
-    options = [ "nofail" ];
-  };
+  fileSystems = {
+    "/mnt/bcachefs-data" = {
+      device = "/dev/disk/by-uuid/b0450af8-2e68-4d38-95f4-055bd13c7dd5";
+      fsType = "bcachefs";
+      options = [ "nofail" ];
+    };
 
-  "/data" = {
-    device = "/mnt/bcachefs-data/data";
-    fsType = "none";
-    options = [ "bind" "nofail" ];
-    depends = [ "/mnt/bcachefs-data" ];
-  };
+    "/data" = {
+      device = "/mnt/bcachefs-data/data";
+      fsType = "none";
+      options = [
+        "bind"
+        "nofail"
+      ];
+      depends = [ "/mnt/bcachefs-data" ];
+    };
 
-  "/media" = {
-    device = "/mnt/bcachefs-data/media";
-    fsType = "none";
-    options = [ "bind" "nofail" ];
-    depends = [ "/mnt/bcachefs-data" ];
+    "/media" = {
+      device = "/mnt/bcachefs-data/media";
+      fsType = "none";
+      options = [
+        "bind"
+        "nofail"
+      ];
+      depends = [ "/mnt/bcachefs-data" ];
+    };
   };
-};
 
   # backup.server.enable = true;
 
@@ -90,7 +96,6 @@ fileSystems = {
   formFactor = "desktop";
   desktop = "none";
   autoManagement.enable = true;
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

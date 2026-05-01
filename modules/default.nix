@@ -3,6 +3,7 @@
   pkgs,
   config,
   inputs,
+  stable,
   ...
 }:
 
@@ -28,9 +29,13 @@
         nerd-fonts.fira-code
       ];
 
-      environment.systemPackages = with pkgs; [
-        lan-mouse
-        mpv
+      environment = lib.mkMerge [
+        {
+          systemPackages = with pkgs; [
+            lan-mouse
+          ];
+        }
+        { systemPackages = with stable; [ mpv ]; }
       ];
 
       hardware.bluetooth.enable = true;

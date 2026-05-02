@@ -5,9 +5,10 @@
       type = lib.types.enum [
         "kirby"
         "nixos"
+        "entergalactic"
       ];
       default = "kirby";
-      description = "Select theme. Options: kirby, nixos";
+      description = "Select theme. Options: kirby, nixos, entergalactic";
     };
   };
 
@@ -16,6 +17,7 @@
   imports = [
     ./themes/nixos.nix
     ./themes/kirby.nix
+    ./themes/entergalactic.nix
   ];
 }
 

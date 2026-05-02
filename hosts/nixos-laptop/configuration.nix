@@ -45,6 +45,8 @@
     }
   ];
 
+  ui.theme = "entergalactic";
+
   module.gaming.enable = true;
 
   backup.client = {

@@ -2,17 +2,12 @@
   pkgs,
   config,
   lib,
-  osConfig,
   inputs,
   ...
 }:
 
 {
   config = lib.mkMerge [
-    (lib.mkIf (config.hmIsModule) {
-      desktop = osConfig.desktop;
-    })
-
     (lib.mkIf (!(config.desktop == "none")) {
       home.packages = with pkgs; [
         gimp
@@ -185,6 +180,6 @@
     ./../modules/discord.nix
     ./../modules/newsboat.nix
     ./../scripts/nu.nix
-    ./../../stylix/stylix.nix
+    ./../../stylix
   ];
 }

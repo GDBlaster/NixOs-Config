@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
     ./../../modules
     ./../../modules/home-manager
-    ./../../modules/stylix/stylix.nix
+    ./../../modules/stylix
   ];
 
   networking.hostName = "nixos-vm"; # Define your hostname.

@@ -17,14 +17,14 @@
     ./hardware-configuration.nix
     ./../../modules
     ./../../modules/home-manager
-    ./../../modules/stylix/stylix.nix
+    ./../../modules/stylix
   ];
 
   networking.hostName = "nixos-laptop";
 
   boot.initrd.systemd.enable = true;
   boot.loader.grub.enable = true;
-  
+
   environment = lib.mkMerge [
     {
       systemPackages = with pkgs; [

@@ -1,4 +1,15 @@
-{ ... }:
 {
-  # Common stuff for every profile
+  lib,
+  osConfig,
+  config,
+  ...
+}:
+{
+  config = lib.mkMerge [
+    (lib.mkIf (config.hmIsModule) {
+      desktop = osConfig.desktop;
+      ui = osConfig.ui;
+    })
+  ];
 }
+

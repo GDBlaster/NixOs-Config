@@ -20,6 +20,7 @@
     ./autoManagement.nix
     ./nh.nix
     ./sops.nix
+    ./i2pd.nix
   ];
 
   config = lib.mkMerge [

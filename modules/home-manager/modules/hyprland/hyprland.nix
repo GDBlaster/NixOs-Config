@@ -73,9 +73,9 @@
         ];
 
         bindl = [
-          '', XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%+''
-          '', XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%-''
-          '', XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle;''
+          ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%-"
+          ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle;"
           ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
           ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
           ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
@@ -122,7 +122,7 @@
 
         windowrule = [
           "match:float true, border_size 0"
-          "match:fullscreen true, rounding 0, border_size 0"
+          "match:fullscreen true, rounding 0, border_size 0, idle_inhibit always"
           "match:workspace w[tv1], match:float false, rounding 0, border_size 0"
           "match:workspace f[1], match:float false, rounding 0"
         ];
@@ -209,8 +209,7 @@
           command = "systemd-ac-power && hyprlock & || systemctl suspend";
         }
       ];
-      events.before-sleep = "hyprlock &";
-      extraArgs = ["inhibit_idle" "fullscreen"];
+      events.before-sleep = "${pkgs.hyprlock}/bin/hyprlock &";
     };
 
     services.batsignal = {

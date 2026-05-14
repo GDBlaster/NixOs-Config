@@ -8,5 +8,6 @@
   imports = [
     ./paul.nix
     ./famille.nix
+    ./builder.nix
   ];
 }

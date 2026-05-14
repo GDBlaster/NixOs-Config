@@ -108,6 +108,8 @@
   formFactor = "laptop";
   desktop = "hyprland";
 
+  services.remoteBuild.client.enable = true;
+
   services.syncthing.settings.folders.keepass.enable = true;
 
   services.logind.settings.Login = {

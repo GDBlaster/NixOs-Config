@@ -64,6 +64,7 @@
           ./hosts/acer-netbook/configuration.nix
           ./users
           sops-nix.nixosModules.sops
+          inputs.arion.nixosModules.arion
         ];
       };
 

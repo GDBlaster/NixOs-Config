@@ -113,6 +113,8 @@
   stacks."mc-ddss2".enable = true;
   stacks."mc-lou".enable = true;
 
+  services.remoteBuild.host.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;

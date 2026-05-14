@@ -70,6 +70,11 @@
 
   # List services that you want to enable:
 
+  services.remoteBuild.client = {
+    enable = true;
+    onlyUseRemoteBuilders = true;
+  };
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;

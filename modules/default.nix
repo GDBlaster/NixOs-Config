@@ -12,6 +12,7 @@
     ./options.nix
     ./laptop.nix
     ./hyprland.nix
+    ./xfce.nix
     ./gnome.nix
     ./gaming.nix
     ./syncthing.nix

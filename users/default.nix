@@ -6,5 +6,6 @@
 
   imports = [
     ./paul.nix
+    ./builder.nix
   ];
 }

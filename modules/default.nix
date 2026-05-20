@@ -17,10 +17,8 @@
     ./gaming.nix
     ./syncthing.nix
     ./backup.nix
-    ./arion
     ./autoManagement.nix
     ./nh.nix
-    ./sops.nix
     ./i2pd.nix
   ];
 

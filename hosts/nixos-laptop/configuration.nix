@@ -18,6 +18,7 @@
     ./../../modules
     ./../../modules/home-manager
     ./../../modules/stylix
+    ./../../modules/sops.nix
   ];
 
   networking.hostName = "nixos-laptop";

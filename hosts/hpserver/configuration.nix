@@ -17,6 +17,7 @@
     ./hardware-configuration.nix
     ./../../modules
     ./../../modules/home-manager
+    ./../../modules/sops.nix
     ./../../modules/stylix
   ];
 

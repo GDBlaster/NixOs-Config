@@ -5,10 +5,11 @@
       type = lib.types.enum [
         "hyprland"
         "gnome"
+        "xfce"
         "none"
       ];
       default = "none";
-      description = "Select desktop environment. Options: hyprland, gnome, none.";
+      description = "Select desktop environment. Options: hyprland, gnome, xfce, none.";
     };
     formFactor = lib.mkOption {
       type = lib.types.enum [

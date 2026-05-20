@@ -63,6 +63,16 @@
         ];
       };
 
+      nixosConfigurations.acer-netbook = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/acer-netbook/configuration.nix
+          ./users
+          sops-nix.nixosModules.sops
+        ];
+      };
+
       nixosConfigurations.nixos-laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };

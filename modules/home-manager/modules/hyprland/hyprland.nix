@@ -51,10 +51,14 @@
 
         bind = [
           "$mod, A, exec, kitty"
-          "$mod + $move, Q, movetoworkspace, -1"
+          "$mod + $shift, Q, movetoworkspace, -1"
+          "$mod + $shift, Left, movetoworkspace, -1"
           "$mod, Q, workspace, -1"
-          "$mod + $move, D, movetoworkspace, +1"
+          "$mod, Left, workspace, -1"
+          "$mod + $shift, D, movetoworkspace, +1"
+          "$mod + $shift, Right, movetoworkspace, +1"
           "$mod, D, workspace, +1"
+          "$mod, Right, workspace, +1"
           "$move, Z, movewindow, u"
           "$move, S, movewindow, d"
           "$move, Q, movewindow, l"
@@ -65,7 +69,6 @@
           "$mod, C, killactive"
           "$mod, M, fullscreen, 1"
           "$mod, B, togglefloating"
-          "$mod, J, togglesplit"
           "$mod, L, exec, hyprlock"
           "$mod, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m window"
           ", PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m output"
@@ -164,7 +167,6 @@
         };
 
         dwindle = {
-          pseudotile = true;
           preserve_split = true;
         };
 

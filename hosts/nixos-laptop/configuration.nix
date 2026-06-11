@@ -41,7 +41,7 @@
     }
     {
       systemPackages = with stable; [
-        exegol
+        # exegol
       ];
     }
   ];

@@ -171,6 +171,7 @@
 
   imports = [
     ./../../options.nix
+    ./../modules/fastfetch.nix
     ./../modules/dev.nix
     ./../modules/kitty.nix
     ./../modules/lf/lf.nix

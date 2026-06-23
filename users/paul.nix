@@ -23,5 +23,10 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIFeLDbkDuXQUTCK0HTBEmKM/2Tg77x9vz7UCX12UYBO paul@DESKTOP-SPT4TVG"
       ];
     };
+
+    ## this only applies to VMs
+    virtualisation.vmVariant.users.users.paul = {
+      password = "cheese";
+    };
   };
 }

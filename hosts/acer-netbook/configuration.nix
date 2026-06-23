@@ -22,6 +22,11 @@
 
   boot.initrd.systemd.enable = true;
 
+  boot.loader = {
+    efi.canTouchEfiVariables = lib.mkForce false;
+    grub.efiInstallAsRemovable = true;
+  };
+
   environment = lib.mkMerge [
     {
       systemPackages = with pkgs; [ ];

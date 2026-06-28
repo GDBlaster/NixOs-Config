@@ -24,6 +24,7 @@
           steam
           ryubing
           dolphin-emu
+          moonlight-qt
           jre17_minimal
           jre21_minimal
           jdk

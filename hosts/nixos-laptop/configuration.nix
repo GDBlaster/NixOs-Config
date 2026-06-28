@@ -105,7 +105,6 @@
   formFactor = "laptop";
   desktop = "hyprland";
 
-  services.syncthing.enable = true;
   services.syncthing.settings.folders.keepass.enable = true;
 
   services.logind.settings.Login = {

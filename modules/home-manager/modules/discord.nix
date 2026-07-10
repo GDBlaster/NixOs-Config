@@ -5,7 +5,11 @@
   ...
 }:
 {
-  config = lib.mkIf (config.desktop != "none") {
+  options.discord = {
+    enable = lib.mkEnableOption "Enable discord";
+  };
+
+  config = lib.mkIf ((config.desktop != "none") && (config.discord.enable == true)) {
     home.packages = with pkgs; [
       jellyfin-rpc
     ];

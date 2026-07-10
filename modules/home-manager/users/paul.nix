@@ -114,6 +114,8 @@
           '';
         };
 
+        starship.enable = true;
+
         atuin = {
           enable = true;
           settings = {
@@ -163,6 +165,8 @@
         };
       };
 
+      discord.enable = true;
+
       home.stateVersion = "24.05";
 
       programs.home-manager.enable = true;
@@ -170,16 +174,8 @@
   ];
 
   imports = [
+    ./../modules
     ./../../options.nix
-    ./../modules/fastfetch.nix
-    ./../modules/dev.nix
-    ./../modules/kitty.nix
-    ./../modules/lf/lf.nix
-    ./../modules/hyprland/hyprland.nix
-    ./../modules/gnome/gnome.nix
-    ./../modules/starship.nix
-    ./../modules/discord.nix
-    ./../modules/newsboat.nix
     ./../scripts/nu.nix
     ./../../stylix
   ];

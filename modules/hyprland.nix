@@ -10,11 +10,9 @@
     environment.systemPackages = with pkgs; [
       kitty
       libnotify
-      rofi
       xarchiver
       p7zip
       unrar
-      rofi-bluetooth
       hyprlock
     ];
 

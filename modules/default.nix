@@ -20,6 +20,7 @@
     ./autoManagement.nix
     ./nh.nix
     ./i2pd.nix
+    ./arion
   ];
 
   config = lib.mkMerge [

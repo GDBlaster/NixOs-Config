@@ -109,7 +109,8 @@
   # List services that you want to enable:
 
   stacks."mc-aero".enable = false;
-  stacks."mc-reclaim".enable = true;
+  stacks."mc-reclaim".enable = false;
+  stacks."mc-ddss2".enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {

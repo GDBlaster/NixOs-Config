@@ -11,6 +11,7 @@
     ./stacks/mc-aero.nix
     ./stacks/mc-reclaim.nix
     ./stacks/mc-ddss2.nix
+    ./stacks/mc-lou.nix
   ];
 
   options.stacks = lib.mkOption {

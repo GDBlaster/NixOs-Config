@@ -73,13 +73,16 @@
           ];
         };
       };
+
       dock = {
         enabled = false;
       };
+
       location = {
         name = "Lyon";
         showWeekNumberInCalendar = true;
       };
+
       controlCenter = {
         shortcuts = {
           left = [
@@ -104,30 +107,31 @@
           ];
         };
       };
+
       audio = {
         volumeOverdrive = true;
       };
-    };
 
-    plugins = {
-      sources = [
-        {
-          enabled = true;
-          name = "Official Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
-        }
-      ];
-      states = {
-        catwalk = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+      plugins = {
+        sources = [
+          {
+            enabled = true;
+            name = "Official Noctalia Plugins";
+            url = "https://github.com/noctalia-dev/noctalia-plugins";
+          }
+        ];
+        states = {
+          catwalk = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+          kaomoji-provider = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
         };
-        kaomoji-provider = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
+        version = 2;
       };
-      version = 2;
     };
 
     customPalettes.stylix.dark = {

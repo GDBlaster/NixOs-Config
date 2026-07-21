@@ -7,7 +7,7 @@
 {
   imports = [ inputs.noctalia.homeModules.default ];
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = (config.desktop == "hyprland");
     settings = {
       general = {
@@ -130,10 +130,9 @@
       version = 2;
     };
 
-    colors = {
+    customPalettes.stylix.dark = {
       mPrimary = lib.mkForce config.lib.stylix.colors.withHashtag.base0E;
       mSecondary = lib.mkForce config.lib.stylix.colors.withHashtag.base0D;
     };
-
   };
 }

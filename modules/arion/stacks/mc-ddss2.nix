@@ -15,7 +15,7 @@
             OPS = "GD_Blaster";
             DIFFICULTY = "2";
             EULA = "TRUE";
-            MEMORY = "8064M";
+            MEMORY = "16000M";
             MOTD = "CHEESE";
             ONLINE_MODE = "true";
             MODRINTH_PROJECTS = ''

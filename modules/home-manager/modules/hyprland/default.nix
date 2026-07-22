@@ -86,7 +86,7 @@
         ];
 
         bindr = [
-          "$mod, Super_L, exec, noctalia-shell ipc call launcher toggle"
+          "$mod, Super_L, exec, noctalia msg panel-toggle launcher"
         ];
 
         bindm = [
@@ -98,7 +98,7 @@
         ];
 
         exec-once = [
-          "noctalia-shell &"
+          "noctalia &"
           "systemctl --user start hyprpolkitagent"
           "keepassxc"
         ];

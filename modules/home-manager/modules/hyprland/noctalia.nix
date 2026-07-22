@@ -10,127 +10,102 @@
   programs.noctalia = {
     enable = (config.desktop == "hyprland");
     settings = {
-      general = {
-        enableShadows = false;
-        dimmerOpacity = 0.3;
-        showSessionButtonsOnLockScreen = false;
-        passwordChars = true;
+      bar.widgets = {
+        margin_ends = 0;
+        radius_top_left = 0;
+        radius_top_right = 0;
+        background_opacity = 0.5;
+        capsule = true;
+        capsule_opacity = 0.6;
+
+        start = [
+          "control-center"
+          "network"
+          "workspaces"
+          "active_window"
+        ];
+
+        center = [
+          "clock"
+        ];
+
+        end = [
+          "media"
+          "tray"
+          "group:g1"
+          "notifications"
+          "battery"
+          "brightness"
+          "privacy"
+        ];
       };
 
-      ui = {
-        panelBackgroundOpacity = lib.mkForce 0.78;
-      };
-
-      bar = {
-        showCapsule = false;
-        outerCorners = false;
-
-        widgets = {
-          left = [
-            {
-              id = "ControlCenter";
-              useDistroLogo = true;
-            }
-            { id = "Network"; }
-            {
-              id = "Workspace";
-              pillSize = 0.44;
-              hideUnoccupied = true;
-              labelMode = "none";
-            }
-            {
-              id = "ActiveWindow";
-              coloriseIcons = true;
-              maxWidth = 675;
-            }
-          ];
-          center = [
-            {
-              id = "Clock";
-              formatHorizontal = "HH:mm:ss";
-              formatVertical = "HH:mm:ss";
-              tooltipFormat = "HH:mm:ss - ddd dd MMM yyyy";
-            }
-          ];
-          right = [
-            {
-              id = "MediaMini";
-              maxWidth = 400;
-              hideMode = "idle";
-              scrollingMode = "always";
-              showVisualizer = true;
-            }
-            { id = "Tray"; }
-            {
-              id = "SystemMonitor";
-              showSwapUsage = true;
-            }
-            { id = "NotificationHistory"; }
-            { id = "Battery"; }
-            { id = "Volume"; }
-            { id = "Brightness"; }
-            { id = "plugin:catwalk"; }
-          ];
-        };
-      };
-
-      dock = {
-        enabled = false;
-      };
-
-      location = {
-        name = "Lyon";
-        showWeekNumberInCalendar = true;
-      };
-
-      controlCenter = {
-        shortcuts = {
-          left = [
-            {
-              id = "Network";
-            }
-            {
-              id = "Bluetooth";
-            }
-          ];
-          right = [
-            {
-              id = "Notifications";
-            }
-            {
-              id = "KeepAwake";
-            }
-            {
-              id = "NightLight";
-            }
-
-          ];
-        };
+      osd = {
+        position = "top right";
       };
 
       audio = {
-        volumeOverdrive = true;
+        enable_overdrive = true;
+      };
+
+      wallpaper = {
+        enabled = false;
       };
 
       plugins = {
-        sources = [
-          {
-            enabled = true;
-            name = "Official Noctalia Plugins";
-            url = "https://github.com/noctalia-dev/noctalia-plugins";
-          }
-        ];
-        states = {
-          catwalk = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
-          kaomoji-provider = {
-            enabled = true;
-            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          };
+        enabled = [ "noctalia/kaomoji" ];
+      };
+      widget = {
+        control-center = {
+          custom_image = ./nixos-logo.png;
+          custom_image_colorize = true;
         };
-        version = 2;
+        active_window = {
+          max_length = 600;
+          title_scroll = "on_hover";
+        };
+
+        battery = {
+          display_mode = "graphic";
+        };
+
+        clock = {
+          format = "{:%H:%M:%S}";
+        };
+
+        cpu = {
+          stat = "cpu_temp";
+        };
+
+        media = {
+          artist_first = true;
+          hide_album_art = true;
+          max_length = 303;
+          title_scroll = "on_hover";
+        };
+
+        network_rx = {
+          show_label = false;
+          stat = "swap_pct";
+        };
+
+        privacy = {
+          active_color = "error";
+          hide_inactive = true;
+        };
+
+        ram = {
+          show_label = false;
+        };
+
+        tray = {
+          drawer = true;
+        };
+
+        workspaces = {
+          display = "none";
+          pill_scale = 0.75;
+        };
       };
     };
 

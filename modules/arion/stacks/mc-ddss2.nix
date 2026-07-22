@@ -19,10 +19,12 @@
             MOTD = "CHEESE";
             ONLINE_MODE = "true";
             MODRINTH_PROJECTS = ''
-              	      ferrite-core
-                            lithium
-              	      distanthorizons:beta
-              	    '';
+              ferrite-core
+              distanthorizons:beta
+              ai-improvements
+              get-it-together-drops
+              radon
+            '';
             MODRINTH_DOWNLOAD_DEPENDENCIES = "optional";
             USE_MEOWICE_FLAGS = "true";
             SPAWN_PROTECTION = "0";

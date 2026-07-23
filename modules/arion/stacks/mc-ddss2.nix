@@ -26,12 +26,6 @@
               radon
             '';
             MODRINTH_DOWNLOAD_DEPENDENCIES = "optional";
-            CURSEFORGE_FILES = ''
-              mcmt-multithreading
-            '';
-            CF_EXCLUDE_MODS = "roadrunner";
-            CF_OVERRIDES_EXCLUSIONS = "mods/Roadrunner*.jar";
-            CF_FORCE_SYNCHRONIZE = "true";
             USE_MEOWICE_FLAGS = "true";
             SPAWN_PROTECTION = "0";
           };

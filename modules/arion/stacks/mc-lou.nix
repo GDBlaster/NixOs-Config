@@ -29,6 +29,7 @@
             SPAWN_PROTECTION = "0";
           };
           volumes = [ "/docker/mc-lou/:/data" ];
+          restart = "on-failure";
         };
       };
     };

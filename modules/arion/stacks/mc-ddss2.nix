@@ -33,7 +33,7 @@
             "/data/mc-ddss2/:/data"
             "/data/mc-ddss2-mods/:/mods"
           ];
-
+          restart = "on-failure";
         };
       };
     };

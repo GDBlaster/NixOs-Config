@@ -9,7 +9,7 @@
           ports = [ "25565:25565" ];
           environment = {
             TYPE = "AUTO_CURSEFORGE";
-            CF_PAGE_URL =  "https://www.curseforge.com/minecraft/modpacks/reclamation-reclaim-the-world";
+            CF_PAGE_URL = "https://www.curseforge.com/minecraft/modpacks/reclamation-reclaim-the-world";
             CF_API_KEY = "$$2a$$10$$patTU5A9RSaMjVpzE.BXIeeHdcU5kba3GHXpQFfcxXdmR9JLWSrwW";
             VERSION = "1.20.1";
             OPS = "GD_Blaster";
@@ -22,11 +22,11 @@
             USE_MEOWICE_FLAGS = "true";
             SPAWN_PROTECTION = "0";
           };
-          volumes = [ 
+          volumes = [
             "/data/mc-reclaim/:/data"
             "/data/mc-reclaim-mods/:/mods"
           ];
-          
+          restart = "on-failure";
         };
       };
     };

@@ -46,6 +46,11 @@
     {
       # nixpkgs.overlays = [ (import ./../overlays/ ) ];
 
+      boot.initrd = {
+        systemd.enable = true;
+        compressor = "zstd";
+      };
+
       programs.nh.enable = lib.mkDefault true;
 
       # clone config in /etc/nixos
@@ -115,10 +120,11 @@
       boot.loader = {
         efi.canTouchEfiVariables = true;
         grub = {
+          timeoutStyle = "hidden";
           efiSupport = true;
           device = "nodev";
         };
-        timeout = 2;
+        timeout = 0;
       };
 
       # Enable networking

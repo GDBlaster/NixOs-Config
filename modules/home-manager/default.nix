@@ -1,5 +1,7 @@
 {
   inputs,
+  lib,
+  config,
   ...
 }:
 
@@ -8,6 +10,7 @@
 
   home-manager = {
     useGlobalPkgs = true;
+    useUserPackages = true;
     extraSpecialArgs = {
       inherit inputs;
     };
@@ -19,4 +22,11 @@
       ./users
     ];
   };
+
+  systemd.services = lib.mapAttrs' (
+    user: _:
+    lib.nameValuePair "home-manager-${user}" {
+      wantedBy = lib.mkForce [ ];
+    }
+  ) config.home-manager.users;
 }

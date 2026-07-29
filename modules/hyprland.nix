@@ -51,9 +51,16 @@
 
     systemd.services.greetd = {
       serviceConfig.Type = "idle";
-      unitConfig.After = [
+      unitConfig.After = lib.mkForce [
         "docker.service"
         "nh-clean.service"
+        "basic.target"
+        "systemd-user-sessions.service"
+        "numLockOnTty.service"
+      ];
+      wants = [
+        "systemd-user-sessions.service"
+        "numLockOnTty.service"
       ];
     };
 

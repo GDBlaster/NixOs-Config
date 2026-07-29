@@ -23,7 +23,7 @@
 
   networking.hostName = "nixos-laptop";
 
-  boot.initrd.systemd.enable = true;
+  boot.initrd.includeDefaultModules = false;
   boot.loader.grub.enable = true;
 
   environment = lib.mkMerge [
@@ -98,7 +98,10 @@
     enableRedistributableFirmware = true;
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
   virtualisation.vmware.host.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 

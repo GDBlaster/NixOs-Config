@@ -43,135 +43,432 @@
 
     wayland.windowManager.hyprland = {
       enable = true;
+      configType = "lua";
 
       settings = {
-        "$mod" = "SUPER";
-        "$move" = "ALT";
-        "$shift" = "SHIFT";
-
-        bind = [
-          "$mod, A, exec, kitty"
-          "$mod + $shift, Q, movetoworkspace, -1"
-          "$mod + $shift, Left, movetoworkspace, -1"
-          "$mod, Q, workspace, -1"
-          "$mod, Left, workspace, -1"
-          "$mod + $shift, D, movetoworkspace, +1"
-          "$mod + $shift, Right, movetoworkspace, +1"
-          "$mod, D, workspace, +1"
-          "$mod, Right, workspace, +1"
-          "$move, Z, movewindow, u"
-          "$move, S, movewindow, d"
-          "$move, Q, movewindow, l"
-          "$move, D, movewindow, r"
-          "$mod, F, exec, firefox"
-          "$mod, V, exec, code"
-          "$mod, E, exec, thunar"
-          "$mod, C, killactive"
-          "$mod, M, fullscreen, 1"
-          "$mod, B, togglefloating"
-          "$mod, L, exec, hyprlock"
-          "$mod, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m window"
-          ", PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m output"
-          "$shift, PRINT, exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
-        ];
-
-        bindl = [
-          ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%+"
-          ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%-"
-          ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle;"
-          ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-          ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
-          ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
-          ", XF86AudioStop, exec, ${pkgs.playerctl}/bin/playerctl stop"
-        ];
-
-        bindr = [
-          "$mod, Super_L, exec, noctalia msg panel-toggle launcher"
-        ];
-
-        bindm = [
-          "$move, mouse:272, movewindow"
-        ];
-
-        monitor = [
-          "eDP-1, highres, auto, 1"
-        ];
-
-        exec-once = [
-          "noctalia &"
-          "systemctl --user start hyprpolkitagent"
-          "keepassxc"
-        ];
-
-        env = [
-          "NIXOS_OZONE_WL, 1"
-          "QT_QPA_PLATFORM, wayland"
-          "SDL_VIDEODRIVER, wayland"
-          "MOZ_ENABLE_WAYLAND, 1"
-        ];
-
-        input = {
-          kb_layout = "fr";
-          follow_mouse = 1;
-          sensitivity = 0;
-          numlock_by_default = true;
-          kb_options = "caps:ctrl_modifier";
+        mod = {
+          _var = "SUPER";
+        };
+        move = {
+          _var = "ALT";
+        };
+        shift = {
+          _var = "SHIFT";
         };
 
-        misc = {
-          middle_click_paste = false;
-          focus_on_activate = true;
-        };
+        config = {
+          general = {
+            gaps_in = 5;
+            gaps_out = 10;
+            border_size = 2;
+            "col.active_border" = lib.mkForce (
+              lib.generators.mkLuaInline ''{colors = { "rgb(${config.lib.stylix.colors.base09})", "rgb(${config.lib.stylix.colors.base0E})"}, angle = 45}''
+            );
+            layout = "dwindle";
+          };
 
-        windowrule = [
-          "match:float true, border_size 0"
-          "match:fullscreen true, rounding 0, border_size 0, idle_inhibit always"
-          "match:workspace w[tv1], match:float false, rounding 0, border_size 0"
-          "match:workspace f[1], match:float false, rounding 0"
-        ];
+          decoration = {
+            rounding = 10;
+            blur = {
+              enabled = true;
+              size = 3;
+              passes = 1;
+            };
+          };
 
-        workspace = [
-          "w[tv1], gapsout:0, gapsin:0"
-          "f[1], gapsout:0, gapsin:0"
-        ];
+          input = {
+            kb_layout = "fr";
+            follow_mouse = 1;
+            sensitivity = 0;
+            numlock_by_default = true;
+            kb_options = "caps:ctrl_modifier";
+          };
 
-        general = {
-          gaps_in = 5;
-          gaps_out = 10;
-          border_size = 2;
-          "col.active_border" =
-            lib.mkForce "rgb(${config.lib.stylix.colors.base09}) rgb(${config.lib.stylix.colors.base0E}) 45deg";
-          layout = "dwindle";
-        };
+          misc = {
+            middle_click_paste = false;
+            focus_on_activate = true;
+          };
 
-        decoration = {
-          rounding = 10;
-          blur = {
-            enabled = true;
-            size = 3;
-            passes = 1;
+          dwindle = {
+            preserve_split = true;
           };
         };
 
-        animations = {
-          enabled = true;
-          bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-          animation = [
-            "windows, 1, 7, myBezier"
-            "windowsOut, 1, 7, default, popin 80%"
-            "border, 1, 10, default"
-            "borderangle, 1, 8, default"
-            "fade, 1, 7, default"
-            "workspaces, 1, 6, default"
+        monitor = [
+          {
+            output = "eDP-1";
+            mode = "highres";
+            position = "auto";
+            scale = 1;
+          }
+        ];
+
+        on = {
+          _args = [
+            "hyprland.start"
+            (lib.generators.mkLuaInline ''
+              function()
+                hl.exec_cmd("noctalia &")
+                hl.exec_cmd("systemctl --user start hyprpolkitagent")
+                hl.exec_cmd("keepassxc")
+              end
+            '')
           ];
         };
 
-        dwindle = {
-          preserve_split = true;
+        env = [
+          {
+            _args = [
+              "NIXOS_OZONE_WL"
+              "1"
+            ];
+          }
+          {
+            _args = [
+              "QT_QPA_PLATFORM"
+              "wayland"
+            ];
+          }
+          {
+            _args = [
+              "SDL_VIDEODRIVER"
+              "wayland"
+            ];
+          }
+          {
+            _args = [
+              "MOZ_ENABLE_WAYLAND"
+              "1"
+            ];
+          }
+        ];
+
+        bind = [
+          # $mod, A, exec, kitty
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + A"'')
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("kitty")'')
+            ];
+          }
+          # $mod + $shift, Q / Left -> movetoworkspace -1
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + " .. shift .. " + Q"'')
+              (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "-1" })'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + " .. shift .. " + Left"'')
+              (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "-1" })'')
+            ];
+          }
+          # $mod, Q / Left -> workspace -1
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + Q"'')
+              (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "-1" })'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + Left"'')
+              (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "-1" })'')
+            ];
+          }
+          # $mod + $shift, D / Right -> movetoworkspace +1
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + " .. shift .. " + D"'')
+              (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "+1" })'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + " .. shift .. " + Right"'')
+              (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "+1" })'')
+            ];
+          }
+          # $mod, D / Right -> workspace +1
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + D"'')
+              (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "+1" })'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + Right"'')
+              (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "+1" })'')
+            ];
+          }
+          # $move window direction binds
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''move .. " + Z"'')
+              (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "up" })'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''move .. " + S"'')
+              (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "down" })'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''move .. " + Q"'')
+              (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "left" })'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''move .. " + D"'')
+              (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "right" })'')
+            ];
+          }
+          # app launchers
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + F"'')
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("firefox")'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + V"'')
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("code")'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + E"'')
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("thunar")'')
+            ];
+          }
+          # window management
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + C"'')
+              (lib.generators.mkLuaInline "hl.dsp.window.close()")
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + M"'')
+              (lib.generators.mkLuaInline ''hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" })'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + B"'')
+              (lib.generators.mkLuaInline ''hl.dsp.window.float({ action = "toggle" })'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + L"'')
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("hyprlock")'')
+            ];
+          }
+          # screenshots
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + PRINT"'')
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${pkgs.hyprshot}/bin/hyprshot -m window")'')
+            ];
+          }
+          {
+            _args = [
+              "PRINT"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${pkgs.hyprshot}/bin/hyprshot -m output")'')
+            ];
+          }
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''shift .. " + PRINT"'')
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${pkgs.hyprshot}/bin/hyprshot -m region")'')
+            ];
+          }
+          # media keys
+          {
+            _args = [
+              "XF86AudioRaiseVolume"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%+")'')
+              { locked = true; }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioLowerVolume"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 5%-")'')
+              { locked = true; }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioMute"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle")'')
+              { locked = true; }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPlay"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl play-pause")'')
+              { locked = true; }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioNext"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl next")'')
+              { locked = true; }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPrev"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl previous")'')
+              { locked = true; }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioStop"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl stop")'')
+              { locked = true; }
+            ];
+          }
+          # launcher
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''mod .. " + Super_L"'')
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("noctalia msg panel-toggle launcher")'')
+              { release = true; }
+            ];
+          }
+          # Window drag
+          {
+            _args = [
+              (lib.generators.mkLuaInline ''move .. " + mouse:272"'')
+              (lib.generators.mkLuaInline "hl.dsp.window.drag()")
+              { mouse = true; }
+            ];
+          }
+        ];
+
+        window_rule = [
+          {
+            match = {
+              float = true;
+            };
+            border_size = 0;
+          }
+          {
+            match = {
+              fullscreen = true;
+            };
+            rounding = 0;
+            border_size = 0;
+            idle_inhibit = "always";
+          }
+          {
+            match = {
+              workspace = "w[tv1]";
+              float = false;
+            };
+            rounding = 0;
+            border_size = 0;
+          }
+          {
+            match = {
+              workspace = "f[1]";
+              float = false;
+            };
+            rounding = 0;
+          }
+        ];
+
+        workspace_rule = [
+          {
+            workspace = "w[tv1]";
+            gaps_out = 0;
+            gaps_in = 0;
+          }
+          {
+            workspace = "f[1]";
+            gaps_out = 0;
+            gaps_in = 0;
+          }
+        ];
+
+        curve = {
+          _args = [
+            "myBezier"
+            {
+              type = "bezier";
+              points = [
+                [
+                  0.05
+                  0.9
+                ]
+                [
+                  0.1
+                  1.05
+                ]
+              ];
+            }
+          ];
         };
 
+        animation = [
+          {
+            leaf = "windows";
+            enabled = true;
+            speed = 7;
+            bezier = "myBezier";
+          }
+          {
+            leaf = "windowsOut";
+            enabled = true;
+            speed = 7;
+            bezier = "default";
+            style = "popin 80%";
+          }
+          {
+            leaf = "border";
+            enabled = true;
+            speed = 10;
+            bezier = "default";
+          }
+          {
+            leaf = "borderangle";
+            enabled = true;
+            speed = 8;
+            bezier = "default";
+          }
+          {
+            leaf = "fade";
+            enabled = true;
+            speed = 7;
+            bezier = "default";
+          }
+          {
+            leaf = "workspaces";
+            enabled = true;
+            speed = 6;
+            bezier = "default";
+          }
+        ];
+
         gesture = [
-          "3, horizontal, workspace"
+          {
+            fingers = 3;
+            direction = "horizontal";
+            action = "workspace";
+          }
         ];
       };
     };

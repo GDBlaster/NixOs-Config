@@ -41,27 +41,13 @@
 
     services.greetd = {
       enable = true;
+      useTextGreeter = true;
       settings = {
         default_session = {
           command = "${pkgs.tuigreet}/bin/tuigreet --time -r --asterisks --user-menu --cmd start-hyprland";
           user = "greeter";
         };
       };
-    };
-
-    systemd.services.greetd = {
-      serviceConfig.Type = "idle";
-      unitConfig.After = lib.mkForce [
-        "docker.service"
-        "nh-clean.service"
-        "basic.target"
-        "systemd-user-sessions.service"
-        "numLockOnTty.service"
-      ];
-      wants = [
-        "systemd-user-sessions.service"
-        "numLockOnTty.service"
-      ];
     };
 
     systemd.services.numLockOnTty = {

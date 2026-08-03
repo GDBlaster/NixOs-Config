@@ -18,7 +18,7 @@
         obsidian
         vscode
         qbittorrent
-        supersonic-wayland
+        gelly
         gajim
       ];
 

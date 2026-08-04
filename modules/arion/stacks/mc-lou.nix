@@ -1,10 +1,15 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 {
   config = lib.mkIf (config.stacks."mc-lou".enable or false) {
     virtualisation.arion.projects = {
       "mc-lou".settings.services = {
         mc.service = {
-          image = "itzg/minecraft-server:latest";
+          image = inputs.docker-pins.lib."itzg/minecraft-server".latest;
           tty = true;
           ports = [ "25566:25565" ];
           environment = {

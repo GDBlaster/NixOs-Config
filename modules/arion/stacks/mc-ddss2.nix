@@ -1,10 +1,15 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 {
   config = lib.mkIf (config.stacks."mc-ddss2".enable or false) {
     virtualisation.arion.projects = {
       "mc-ddss2".settings.services = {
         mc.service = {
-          image = "itzg/minecraft-server:java8";
+          image = inputs.docker-pins.lib."ghcr.io/itzg/minecraft-server".java8;
           tty = true;
           ports = [ "25565:25565" ];
           environment = {

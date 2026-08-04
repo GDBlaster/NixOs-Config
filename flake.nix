@@ -34,6 +34,8 @@
       url = "github:hercules-ci/arion";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    docker-pins.url = "github:GDBlaster/docker-image-pins";
   };
 
   outputs =

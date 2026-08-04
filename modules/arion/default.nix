@@ -12,6 +12,7 @@
     ./stacks/mc-reclaim.nix
     ./stacks/mc-ddss2.nix
     ./stacks/mc-lou.nix
+    ./stacks/jellyfin.nix
   ];
 
   options.stacks = lib.mkOption {

@@ -90,6 +90,21 @@
         "type": "github"
       }
     },
+    "docker-pins": {
+      "locked": {
+        "lastModified": 1785854668,
+        "narHash": "sha256-nKe6tcGzPYJKTPtPDK9krbDGxSzzU4zfYFAqLWa5rgk=",
+        "owner": "GDBlaster",
+        "repo": "docker-image-pins",
+        "rev": "bc35f4c8668b816c239737c2c291b7d16a3898f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "GDBlaster",
+        "repo": "docker-image-pins",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -412,6 +427,7 @@
     "root": {
       "inputs": {
         "arion": "arion",
+        "docker-pins": "docker-pins",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",

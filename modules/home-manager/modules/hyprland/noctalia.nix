@@ -49,7 +49,7 @@
               "cpu"
               "temp"
               "ram"
-              "cpu"
+              "sysmon"
             ];
             opacity = 0.6;
             padding = 6.0;
@@ -175,7 +175,7 @@
           hide_when_no_media = true;
         };
 
-        network_rx = {
+        sysmon = {
           show_value = false;
           stat = "swap_pct";
         };
@@ -194,7 +194,7 @@
         };
 
         workspaces = {
-          display = "none";
+          show_labels = false;
           capsule = true;
           pill_scale = 0.75;
         };

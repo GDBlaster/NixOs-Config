@@ -40,6 +40,25 @@
     }
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
+
+  boot.kernelParams = [
+    "mitigations=off"
+    "transparent_hugepage=madvise"
+    "preempt=full"
+  ];
+
+  boot.kernel.sysctl = {
+    "kernel.sched_migration_cost_ns" = 5000000;
+    "kernel.sched_autogroup_enabled" = 1;
+  };
+
+  services.udev.extraRules = ''
+    ACTION=="add|change", KERNEL=="sd[a-z]|nvme[0-9]n[0-9]|mmcblk[0-9]", ATTR{queue/scheduler}="bfq"
+  '';
+
+  powerManagement.cpuFreqGovernor = "performance";
+
   powerManagement.enable = true;
 
   programs = {

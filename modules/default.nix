@@ -159,9 +159,21 @@
       services.xserver.xkb = {
         layout = "fr";
         variant = "azerty";
-        options = "caps:ctrl-modifier";
       };
       console.useXkbConfig = true;
+
+      services.keyd = {
+        enable = true;
+        keyboards.default = {
+          ids = [ "*" ];
+          settings = {
+            main = {
+              capslock = "scrolllock";
+              "C-capslock" = "compose";
+            };
+          };
+        };
+      };
 
       # Allow unfree packages
       nixpkgs.config.allowUnfree = true;

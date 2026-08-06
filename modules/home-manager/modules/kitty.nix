@@ -8,6 +8,8 @@
     };
     keybindings = {
       f1 = "launch --type=os-window --cwd=current";
+
+      scroll_lock = ''send_text all \x1b'';
     };
   };
 

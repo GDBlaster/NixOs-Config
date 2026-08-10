@@ -4,6 +4,7 @@
     desktop = lib.mkOption {
       type = lib.types.enum [
         "hyprland"
+        "kde"
         "gnome"
         "xfce"
         "none"

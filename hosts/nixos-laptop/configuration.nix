@@ -106,7 +106,7 @@
   systemd.services.NetworkManager-wait-online.enable = false;
 
   formFactor = "laptop";
-  desktop = "kde";
+  desktop = "hyprland";
 
   services.remoteBuild.client.enable = true;
 

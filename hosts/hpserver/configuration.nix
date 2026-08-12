@@ -108,10 +108,14 @@
 
   # List services that you want to enable:
 
-  stacks."mc-aero".enable = false;
-  stacks."mc-reclaim".enable = false;
-  stacks."mc-ddss2".enable = true;
-  stacks."mc-lou".enable = true;
+  stacks = {
+    "mc-aero".enable = false;
+    "mc-reclaim".enable = false;
+    "mc-ddss2".enable = true;
+    "mc-lou".enable = true;
+
+    "jellyfin".enable = true;
+  };
 
   services.remoteBuild.host.enable = true;
 

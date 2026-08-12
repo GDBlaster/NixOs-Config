@@ -12,6 +12,7 @@
     ./options.nix
     ./laptop.nix
     ./hyprland.nix
+    ./kde.nix
     ./xfce.nix
     ./gnome.nix
     ./gaming.nix

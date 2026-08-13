@@ -18,7 +18,7 @@
         obsidian
         vscode
         qbittorrent
-        gelly
+        feishin
         gajim
       ];
 

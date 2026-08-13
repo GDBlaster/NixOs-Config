@@ -74,7 +74,7 @@
             SLSKD_REMOTE_CONFIGURATION = "true";
           };
           volumes = [
-            "/data/slskd:/app"
+            "/data/slskd:/config"
             "/media:/data"
           ];
           restart = "unless-stopped";

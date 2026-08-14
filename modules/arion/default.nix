@@ -6,6 +6,7 @@
 {
 
   imports = [
+    ./extend.nix
     ./stacks/httpd.nix
     ./stacks/mc-1.21.5.nix
     ./stacks/mc-aero.nix

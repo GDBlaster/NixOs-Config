@@ -97,12 +97,12 @@
           restart = "unless-stopped";
         };
 
-        #        flaresolverr.service = {
-        #          image = inputs.docker-pins.lib."ghcr.io/flaresolverr/flaresolverr".latest;
-        #          container_name = "flaresolverr";
-        #          ports = [ "8191:8191" ];
-        #          restart = "unless-stopped";
-        #        };
+        flaresolverr.service = {
+          image = inputs.docker-pins.lib."ghcr.io/flaresolverr/flaresolverr".latest;
+          container_name = "flaresolverr";
+          ports = [ "8191:8191" ];
+          restart = "unless-stopped";
+        };
         #
         #        sonarr.service = {
         #          image = inputs.docker-pins.lib."ghcr.io/hotio/sonarr".latest;
@@ -138,25 +138,25 @@
         #          ];
         #          restart = "unless-stopped";
         #        };
-        #
-        #        qbittorrent.service = {
-        #          image = inputs.docker-pins.lib."ghcr.io/hotio/qbittorrent".latest;
-        #          container_name = "qbittorrent";
-        #          ports = [ "8080:8080" ];
-        #          environment = {
-        #            PUID = "1000";
-        #            PGID = "1000";
-        #            UMASK = "002";
-        #            TZ = "Etc/UTC";
-        #            WEBUI_PORTS = "8080/tcp,8080/udp";
-        #          };
-        #          volumes = [
-        #            "/data/qbittorrent/config:/config"
-        #            "/media:/data"
-        #          ];
-        #          restart = "unless-stopped";
-        #        };
-        #
+
+        qbittorrent.service = {
+          image = inputs.docker-pins.lib."ghcr.io/hotio/qbittorrent".latest;
+          container_name = "qbittorrent";
+          ports = [ "8080:8080" ];
+          environment = {
+            PUID = "1000";
+            PGID = "1000";
+            UMASK = "002";
+            TZ = "Etc/UTC";
+            WEBUI_PORTS = "8080/tcp,8080/udp";
+          };
+          volumes = [
+            "/data/qbittorrent/config:/config"
+            "/media:/data"
+          ];
+          restart = "unless-stopped";
+        };
+
         #        unmanic.service = {
         #          image = inputs.docker-pins.lib."josh5/unmanic".latest;
         #          container_name = "unmanic";

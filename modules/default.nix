@@ -22,7 +22,6 @@
     ./nh.nix
     ./remote-builder.nix
     ./sops.nix
-    ./i2pd.nix
     ./arion
   ];
 

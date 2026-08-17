@@ -28,7 +28,7 @@
           jre17_minimal
           jre21_minimal
           jdk
-          beyond-all-reason
+          prismlauncher
         ];
       }
       {

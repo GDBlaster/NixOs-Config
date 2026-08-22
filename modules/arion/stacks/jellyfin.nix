@@ -143,6 +143,24 @@
           #          restart = "unless-stopped";
           #        };
 
+          chaptarr.service = {
+            image = inputs.docker-pins.lib."chaptarr/chaptarr".latest;
+            container_name = "chaptarr";
+            environment = {
+              PUID = "1000";
+              PGID = "1000";
+              TZ = "Etc/UTC";
+            };
+            volumes = [
+              "/data/chaptarr:/config"
+              "/media/Books/audiobooks:/audiobooks"
+              "/media/Books/Books:/ebooks"
+              "/media/downloads:/downloads"
+            ];
+            ports = [ "8789:8789" ];
+            restart = "unless-stopped";
+          };
+
           qbittorrent.service = {
             build = {
               context = "${pkgs.vuetorrent}/share";

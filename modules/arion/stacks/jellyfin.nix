@@ -153,9 +153,7 @@
             };
             volumes = [
               "/data/chaptarr:/config"
-              "/media/Books/audiobooks:/audiobooks"
-              "/media/Books/Books:/ebooks"
-              "/media/downloads:/downloads"
+              "/media:/data"
             ];
             ports = [ "8789:8789" ];
             restart = "unless-stopped";

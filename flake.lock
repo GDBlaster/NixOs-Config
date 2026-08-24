@@ -92,11 +92,11 @@
     },
     "docker-pins": {
       "locked": {
-        "lastModified": 1787417390,
-        "narHash": "sha256-JTs30zs29C7TmcS8uEnlD78So3VOckeN1CQtcUZZ+Yg=",
+        "lastModified": 1787565563,
+        "narHash": "sha256-96QtzQZm1862GS3hd8UI4HXqIrjkPtEfnyGNFUkBPMw=",
         "owner": "GDBlaster",
         "repo": "docker-image-pins",
-        "rev": "fe7195fbcb43f7c749ccc1880eda97674bb1090a",
+        "rev": "be5f97e7d0e6653db949428ab97b7e0df669bca2",
         "type": "github"
       },
       "original": {

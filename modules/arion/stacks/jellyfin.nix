@@ -159,6 +159,21 @@
             restart = "unless-stopped";
           };
 
+          audioBookShelf.service = {
+            image = inputs.docker-pins.lib."ghcr.io/advplyr/audiobookshelf".latest;
+            container_name = "audioBookShelf";
+            environment = {
+              TZ = "Etc/UTC";
+            };
+            volumes = [
+              "/data/audioBookShelf/config:/config"
+              "/data/audioBookShelf/metadata:/metadata"
+              "/media:/data"
+            ];
+            ports = [ "13378:80" ];
+            restart = "unless-stopped";
+          };
+
           qbittorrent.service = {
             build = {
               context = "${pkgs.vuetorrent}/share";

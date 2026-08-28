@@ -5,7 +5,6 @@
   ...
 }:
 {
-  imports = [ inputs.noctalia.homeModules.default ];
   programs.noctalia = {
     enable = (config.desktop == "hyprland");
     settings = {

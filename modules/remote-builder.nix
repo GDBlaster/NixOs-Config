@@ -67,7 +67,7 @@
 
         nix.buildMachines = map (machine: commonMachines // machine) [
           {
-            hostName = "hpserver";
+            hostName = "192.168.1.13";
             system = "x86_64-linux";
             maxJobs = 12;
             speedFactor = 4;

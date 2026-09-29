@@ -26,7 +26,7 @@
     };
 
     arion = {
-      url = "github:hercules-ci/arion";
+      url = "github:AnthonyDickson/arion/1bfc128ccb7d76846cd995211b23dce596bb6858";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

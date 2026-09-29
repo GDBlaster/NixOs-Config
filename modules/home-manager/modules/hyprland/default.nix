@@ -269,7 +269,7 @@
           {
             _args = [
               (lib.generators.mkLuaInline ''mod .. " + L"'')
-              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("hyprlock")'')
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("noctalia msg session lock")'')
             ];
           }
           # screenshots
@@ -473,43 +473,21 @@
       };
     };
 
-    programs.rofi = {
-      enable = true;
-      terminal = "${pkgs.kitty}/bin/kitty";
-      theme =
-        let
-          inherit (config.lib.formats.rasi) mkLiteral;
-        in
-        {
-          window = {
-            border = 2;
-            border-radius = 10;
-            padding = mkLiteral "5 0";
-          };
-          "#inputbar" = {
-            padding = mkLiteral "0 5";
-          };
-          element = {
-            padding = mkLiteral "0 5";
-          };
-        };
-    };
-
-    services.swayidle = {
-      enable = true;
-      timeouts = [
-        {
-          timeout = 140;
-          command = "${pkgs.brightnessctl}/bin/brightnessctl -s set 1";
-          resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r";
-        }
-        {
-          timeout = 150;
-          command = "systemd-ac-power && hyprlock & || systemctl suspend";
-        }
-      ];
-      events.before-sleep = "${pkgs.hyprlock}/bin/hyprlock &";
-    };
+    #    services.swayidle = {
+    #      enable = true;
+    #      timeouts = [
+    #        {
+    #          timeout = 140;
+    #          command = "${pkgs.brightnessctl}/bin/brightnessctl -s set 1";
+    #          resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r";
+    #        }
+    #        {
+    #          timeout = 150;
+    #          command = "systemd-ac-power && hyprlock & || systemctl suspend";
+    #        }
+    #      ];
+    #      events.before-sleep = "${pkgs.hyprlock}/bin/hyprlock &";
+    #    };
 
     services.batsignal = {
       enable = true;

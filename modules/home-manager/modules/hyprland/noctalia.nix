@@ -68,8 +68,7 @@
 
       shell.session.actions = [
         {
-          action = "command";
-          command = "hyprlock";
+          action = "lock";
           countdown_seconds = 0;
           enabled = true;
           glyph = "lock";
@@ -85,8 +84,7 @@
           variant = "default";
         }
         {
-          action = "command";
-          command = "systemctl suspend";
+          action = "suspend";
           countdown_seconds = 0;
           enabled = true;
           glyph = "suspend";
@@ -110,8 +108,11 @@
         }
       ];
 
+      shell.password_style = "random";
+
       lockscreen = {
-        enabled = false;
+        enabled = true;
+        blur_intensity = 0.7;
       };
 
       osd = {
@@ -128,6 +129,163 @@
 
       plugins = {
         enabled = [ "noctalia/kaomoji" ];
+      };
+
+      desktop_widgets = {
+        schema_version = 2;
+        widget_order = [ "desktop-widget-0000000000000001" ];
+        grid = {
+          cell_size = 16;
+          major_interval = 4;
+          visible = true;
+        };
+        widget = {
+          "desktop-widget-0000000000000001" = {
+            box_height = 208.0;
+            box_width = 1248.0;
+            cx = 960.0;
+            cy = 540.0;
+            output = "eDP-1";
+            placement_height = 1080.0;
+            placement_width = 1920.0;
+            rotation = 0.0;
+            type = "audio_visualizer";
+            settings = {
+              background = false;
+              background_color = "surface";
+              background_opacity = 0.8;
+              background_padding = 10;
+              background_radius = 12;
+              bands = 128;
+              centered = true;
+              color_1 = "primary";
+              color_2 = "primary";
+              mirrored = true;
+              reversed = false;
+              show_when_idle = false;
+            };
+          };
+        };
+      };
+
+      lockscreen_widgets = {
+        enabled = true;
+        schema_version = 2;
+        widget_order = [
+          "lockscreen-login-box@WAYLAND-1"
+          "lockscreen-login-box@eDP-1"
+          "lockscreen-widget-0000000000000001"
+          "lockscreen-widget-0000000000000002"
+          "lockscreen-widget-0000000000000003"
+        ];
+        grid = {
+          cell_size = 16;
+          major_interval = 4;
+          visible = false;
+        };
+        widget = {
+          "lockscreen-login-box@WAYLAND-1" = {
+            box_height = 196.0;
+            box_width = 720.0;
+            cx = 320.0;
+            cy = 178.0;
+            output = "WAYLAND-1";
+            placement_height = 0.0;
+            placement_width = 0.0;
+            rotation = 0.0;
+            type = "login_box";
+            settings = {
+              background_color = "surface_variant";
+              background_opacity = 0.88;
+              background_radius = 12.0;
+              center_password_text = false;
+              input_opacity = 1.0;
+              input_radius = 6.0;
+              layout = "regular";
+              show_caps_lock = true;
+              show_keyboard_layout = true;
+              show_login_button = true;
+              show_media = true;
+              show_session_buttons = true;
+              show_unlock_hint = true;
+              show_weather = true;
+            };
+          };
+          "lockscreen-login-box@eDP-1" = {
+            box_height = 70.0;
+            box_width = 541.85546875;
+            cx = 960.0;
+            cy = 775.50390625;
+            output = "eDP-1";
+            placement_height = 1080.0;
+            placement_width = 1920.0;
+            rotation = 0.0;
+            type = "login_box";
+            settings = {
+              background_color = "surface_variant";
+              background_opacity = 0.0;
+              background_radius = 21.0;
+              center_password_text = true;
+              input_opacity = 1.0;
+              input_radius = 19.0;
+              layout = "compact";
+              show_caps_lock = true;
+              show_keyboard_layout = false;
+              show_login_button = true;
+              show_media = false;
+              show_session_buttons = false;
+              show_unlock_hint = false;
+              show_weather = false;
+            };
+          };
+          "lockscreen-widget-0000000000000001" = {
+            box_height = 0.0;
+            box_width = 0.0;
+            cx = 224.0;
+            cy = 930.0;
+            output = "eDP-1";
+            placement_height = 1080.0;
+            placement_width = 1920.0;
+            rotation = 0.0;
+            type = "media_player";
+            settings = {
+              hide_when_no_media = true;
+              layout = "horizontal";
+            };
+          };
+          "lockscreen-widget-0000000000000002" = {
+            box_height = 128.0;
+            box_width = 368.0;
+            cx = 960.0;
+            cy = 332.0;
+            output = "eDP-1";
+            placement_height = 1080.0;
+            placement_width = 1920.0;
+            rotation = 0.0;
+            type = "clock";
+            settings = {
+              background = false;
+              clock_style = "digital";
+              color = "secondary";
+            };
+          };
+          "lockscreen-widget-0000000000000003" = {
+            box_height = 32.0;
+            box_width = 320.0;
+            cx = 960.0;
+            cy = 396.0;
+            output = "eDP-1";
+            placement_height = 1080.0;
+            placement_width = 1920.0;
+            rotation = 0.0;
+            type = "clock";
+            settings = {
+              background = false;
+              color = "secondary";
+              format = "{:%a %d/%m/%Y}";
+            };
+          };
+        };
       };
 
       widget = {

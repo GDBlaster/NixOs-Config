@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-26.05";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -37,6 +38,7 @@
     {
       nixpkgs,
       nixpkgs-stable,
+      nixos-wsl,
       home-manager,
       nixvim,
       arion,
@@ -86,6 +88,19 @@
           inputs.stylix.nixosModules.stylix
           inputs.arion.nixosModules.arion
           sops-nix.nixosModules.sops
+        ];
+      };
+
+      nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/wsl/configuration.nix
+          ./users
+          nixos-wsl.nixosModules.default
+          inputs.stylix.nixosModules.stylix
+          sops-nix.nixosModules.sops
+          inputs.arion.nixosModules.arion
         ];
       };
 

@@ -6,15 +6,20 @@
   };
 
   config = lib.mkIf config.module.dev.enable {
-    home.packages = with pkgs; [
-     vscode
-    ];
+      home = lib.mkMerge [
+        {
+          packages = lib.mkIf (!(config.desktop == "none")) [
+            pkgs.vscode
+          ];
+        }
+      ];
+      
 
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-    };
+      programs.direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+      };
   };
 }

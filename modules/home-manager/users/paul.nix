@@ -16,7 +16,6 @@
         aspellDicts.en
         aspellDicts.fr
         obsidian
-        vscode
         qbittorrent
         feishin
         gajim

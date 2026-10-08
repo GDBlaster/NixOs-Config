@@ -38,6 +38,7 @@
     services.gvfs.enable = true;
     services.tumbler.enable = true;
     services.blueman.enable = true;
+    services.gnome.gnome-keyring.enable = true;
 
     services.greetd = {
       enable = true;
@@ -65,6 +66,7 @@
     };
 
     security.pam.services.greetd.enableGnomeKeyring = true;
+    security.pam.services.login.enableGnomeKeyring = true;
 
   };
 }

@@ -18,7 +18,7 @@
         obsidian
         qbittorrent
         feishin
-        gajim
+        dino
       ];
 
       programs.keepassxc.enable = true;

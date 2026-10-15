@@ -14,7 +14,6 @@
       extraGroups = [
         "networkmanager"
         "wheel"
-        "docker"
         "borg"
       ];
       shell = pkgs.zsh;

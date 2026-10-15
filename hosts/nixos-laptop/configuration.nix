@@ -46,7 +46,7 @@
     }
   ];
 
-  ui.theme = "entergalactic";
+  ui.theme = "kirby";
 
   module.gaming.enable = true;
 

@@ -102,7 +102,8 @@
     enable = true;
     enableOnBoot = false;
   };
-  virtualisation.vmware.host.enable = true;
+  ## temporary for build failure
+  virtualisation.vmware.host.enable = false;
   systemd.services.NetworkManager-wait-online.enable = false;
 
   formFactor = "laptop";

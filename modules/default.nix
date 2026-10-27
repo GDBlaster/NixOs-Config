@@ -49,7 +49,6 @@
       # nixpkgs.overlays = [ (import ./../overlays/ ) ];
 
       boot.initrd = {
-        systemd.enable = true;
         compressor = "zstd";
       };
 

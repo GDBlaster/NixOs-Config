@@ -10,9 +10,6 @@
   };
 
   config = lib.mkIf ((config.desktop != "none") && (config.discord.enable == true)) {
-    home.packages = with pkgs; [
-      jellyfin-rpc
-    ];
     programs.vesktop = {
       enable = true;
       settings = {

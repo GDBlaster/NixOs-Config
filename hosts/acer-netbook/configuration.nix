@@ -20,8 +20,6 @@
 
   networking.hostName = "acer-netbook";
 
-  boot.initrd.systemd.enable = true;
-
   boot.loader = {
     efi.canTouchEfiVariables = lib.mkForce false;
     grub.efiInstallAsRemovable = true;

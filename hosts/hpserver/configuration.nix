@@ -23,7 +23,6 @@
 
   networking.hostName = "hpserver";
 
-  boot.initrd.systemd.enable = true;
   boot.loader.grub = {
     enable = true;
     device = lib.mkForce "/dev/sdh";

@@ -84,6 +84,8 @@
         nixfmt
         firefox
         chromium
+        comma
+        nix-index
       ];
 
       programs.gnupg.agent.enable = true;

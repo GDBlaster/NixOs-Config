@@ -55,6 +55,7 @@
       programs.nh.enable = lib.mkDefault true;
 
       # clone config in /etc/nixos
+      programs.git.config.safe.directory = [ "/etc/nixos" ];
       system.activationScripts.setGitRemote = ''
         export PATH="${pkgs.git}/bin:$PATH"
 
@@ -78,7 +79,6 @@
       environment.systemPackages = with pkgs; [
         wget
         curl
-        git
         htop
         nil
         nixfmt
@@ -87,6 +87,8 @@
         comma
         nix-index
       ];
+
+      programs.git.enable = true;
 
       programs.gnupg.agent.enable = true;
 

@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   ...
@@ -42,7 +41,7 @@
         capsule_group = [
           {
             enabled = true;
-            fill = "surface_variant";
+            fill = "surface_container";
             id = "g1";
             members = [
               "cpu"
@@ -195,7 +194,7 @@
             rotation = 0.0;
             type = "login_box";
             settings = {
-              background_color = "surface_variant";
+              background_color = "surface_container";
               background_opacity = 0.88;
               background_radius = 12.0;
               center_password_text = false;
@@ -222,7 +221,7 @@
             rotation = 0.0;
             type = "login_box";
             settings = {
-              background_color = "surface_variant";
+              background_color = "surface_container";
               background_opacity = 0.0;
               background_radius = 21.0;
               center_password_text = true;
@@ -320,7 +319,7 @@
           bands = 75;
           mirrored = false;
           show_when_idle = false;
-          color_1 = "outline";
+          color_1 = "outline_variant";
           color_2 = "on_surface";
         };
 

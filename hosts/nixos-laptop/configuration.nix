@@ -37,6 +37,7 @@
         jellyfin-media-player
         borgbackup
         pulseview
+        burpsuite
       ];
     }
     {

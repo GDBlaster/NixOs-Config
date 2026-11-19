@@ -68,7 +68,7 @@
     };
   };
 
-  # backup.server.enable = true;
+  backup.server.enable = true;
 
   sops = {
     enable = true;

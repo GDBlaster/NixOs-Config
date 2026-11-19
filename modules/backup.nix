@@ -10,12 +10,12 @@
       enable = lib.mkEnableOption "enable backup client";
       remote = lib.mkOption {
         type = lib.types.str;
-        default = "paul@fujiserver";
+        default = "borg@hpserver";
         description = "Remote for backups";
       };
       repo = lib.mkOption {
         type = lib.types.str;
-        default = "/home/paul/media/backups";
+        default = "/data/borg/${config.networking.hostName}";
         description = "Remote borg repo path";
       };
       auto = lib.mkOption {
@@ -54,17 +54,18 @@
     })
 
     (lib.mkIf config.backup.server.enable {
-
+      services.borgbackup.repos.laptop = {
+        path = "/data/borg/nixos-laptop";
+        authorizedKeys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMJMLS/zHTcw43m3pxj5mt2Q9Rm76zDMsLU7YQ5GZkLC paul@nixos-laptop"
+        ];
+      };
     })
 
     (lib.mkIf (config.backup.client.enable or config.backup.server.enable) {
-      users.users.borg = {
-        isSystemUser = true;
-        group = "borg";
-      };
       users.groups.borg = { };
       sops.secrets."borg/passphrase" = {
-        owner = "borg";
+        owner = "root";
         group = "borg";
         mode = "0440";
         sopsFile = ../secrets/borg.yaml;

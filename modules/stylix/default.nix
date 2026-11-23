@@ -12,7 +12,9 @@
     };
   };
 
-  config.stylix.enable = true;
+  config = {
+    stylix.enable = true;
+  };
 
   imports = [
     ./themes/nixos.nix

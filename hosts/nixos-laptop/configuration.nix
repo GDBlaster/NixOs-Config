@@ -103,8 +103,11 @@
     enable = true;
     enableOnBoot = false;
   };
-  ## temporary for build failure
-  virtualisation.vmware.host.enable = false;
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  users.users.paul.extraGroups = [ "libvirtd" ];
+
   systemd.services.NetworkManager-wait-online.enable = false;
 
   formFactor = "laptop";
